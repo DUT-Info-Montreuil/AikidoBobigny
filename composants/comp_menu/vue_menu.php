@@ -6,7 +6,7 @@ class VueMenu{
     }
     
     public function completecontenu(){
-             $this->contenue.="<a href='index.php?module=mod_connexion&action=Inscription'>Inscription</a><br>";
+             $this->contenue.="<a href='index.php?module=mod_inscription&action=Inscription'>Inscription</a><br>";
     }
 
     public function getContenue(){
