@@ -7,6 +7,9 @@ class VueInscription extends VueGenerique{
     }   
 
     public function form_inscription(){
+        $token = uniqid(rand(), true);       
+        $_SESSION['token'] = $token;
+        $_SESSION['token_time'] = time();
         echo'<form action="index.php?module=mod_inscription&action=ajout" method="POST">
 	        <p>Genre*:</p> <input type="text" name="sexe" required="required" maxlength="50"/>
             <p>Nom* :</p> <input type="text" name="nom" required="required" maxlength="50"/>
@@ -25,6 +28,7 @@ class VueInscription extends VueGenerique{
             <p>Nationalité*:</p> <input type="text" name="nationalite" required="required" maxlength="50"/>
             <p>Saison*:</p> <input type="text" name="saison" required="required" maxlength="50"/>
             <p>Club*:</p> <input type="text" name="club" required="required" maxlength="50"/>
+            <input type="hidden" name="token" id="token" value="'.$token.'"/>
             <input type="submit"/>
             </form>';
     }    
