@@ -19,3 +19,15 @@
     $menu = New CompMenu();
     include_once("templates.php");
 ?>
+
+<?php
+    include_once("Calendrier/Dates/Mois.php");
+    $mois = new Calendrier/Dates/Mois(1,2022);
+    $day = $month->getStartingDay()->modify('last monday');
+?>
+
+<h2><?= $month->toString();?></h2>
+<?php $month->getWeeks();
+?>
+
+
