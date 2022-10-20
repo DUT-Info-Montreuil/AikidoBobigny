@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 	<head>
-	    <title>MVC3</title>
-        <h1>MVC3</h1>
+	    <title>Aikido bobigny</title>
+        <h1>aikido bobigny</h1>
     </head>
     
 <body>
