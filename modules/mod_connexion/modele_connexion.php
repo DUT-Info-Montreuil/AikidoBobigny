@@ -12,7 +12,7 @@ class ModeleConnexion extends Connexion{
                     $log= parent::$bdd -> prepare('SELECT * FROM Connexion where login=?');
                     $log->execute(array(htmlspecialchars(($_POST['login']))));
                     $tab=$log->fetch();
-                    if(password_verify(htmlspecialchar($_POST['mdp']),$tab['mdp'])){
+                    if(password_verify(htmlspecialchars($_POST['mdp']),$tab['mdp'])){
                         echo"connexion OK";
                         $_SESSION['connexion'] = $tab['id'];
                     }else{
