@@ -22,6 +22,7 @@ class ModeleInscription extends Connexion{
                             $ajouter = parent::$bdd-> prepare('INSERT INTO info_inscription (reinscription,profession,nationalite,saison,club,ID_Adherent) VALUES (?,?,?,?,?,?)');
                             $ajouter->execute(array($_POST["reinscription"],$_POST["profession"],$_POST["nationalite"],$_POST["saison"],$_POST["club"],$id_adherent));
                             echo"Inscription réussi";
+                            return $id_adherent;
                         }
                     }
                 }
