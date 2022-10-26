@@ -1,6 +1,5 @@
 <?php
-
-    include_once 'cont_menu.php';
+  include_once 'cont_menu.php';
 
 	class CompMenu {
 

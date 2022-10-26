@@ -1,5 +1,4 @@
 <?php
-
 	include_once './vue_generique.php';
 
 	class VueMenu {
@@ -23,7 +22,8 @@
 			if(isset($_SESSION['connexion'])){
 				$this->contenu.="<li><a href='index.php?module=mod_connexion&action=deconnexion'>Deconnexion</a></li>";
 			}else{
-				$this->contenu.="<li><a href='index.php?module=mod_connexion&action=form_connexion'>Se connecter</a></li>";
+				$this->contenu.="<li><a href='index.php?module=mod_connexion&action=form_connexion'>Se connecter</a></li>
+                          <li><a href='index.php?module=mod_inscription&action=form_inscription'>Inscription</a></li>";
 			}
 			$this->contenu.="</ul></div>";
 		}
@@ -32,5 +32,4 @@
 			return $this->contenu;
 		}
     }
-
 ?>

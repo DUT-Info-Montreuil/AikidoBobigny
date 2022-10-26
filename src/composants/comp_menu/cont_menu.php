@@ -1,7 +1,7 @@
 <?php
 
-    include_once 'vue_menu.php';
-    include_once 'modele_menu.php';
+  include_once 'vue_menu.php';
+  include_once 'modele_menu.php';
 
 	class ContMenu {
 
@@ -18,5 +18,4 @@
         }
         
     }
-
 ?>

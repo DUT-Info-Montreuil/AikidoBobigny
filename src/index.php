@@ -1,7 +1,9 @@
 <?php
     session_start();
+
     include_once './modules/depot_fichier/mod_upload.php';
     include_once("modules/mod_connexion/mod_connexion.php");
+    include_once("modules/mod_inscription/mod_inscription.php");
     include_once './composants/comp_menu/comp_menu.php';
 
     Connexion::initConnexion();
@@ -16,6 +18,10 @@
             $mod_connexion = new Modconnexion();
             $contenu = $mod_connexion->afficheModule();
             break;
+        case "mod_inscription": 
+            $mod_inscription = new ModInscription();
+            $contenu = $mod_inscription->afficheModule();
+            break; 
         default:
             break;
     }
