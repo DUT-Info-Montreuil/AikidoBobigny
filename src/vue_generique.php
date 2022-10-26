@@ -1,15 +1,14 @@
 <?php
 
+    class VueGenerique {
 
-class VueGenerique{
+        public function __construct() {
+            ob_start();
+        }
 
-    public function __construct(){
-      ob_start();
-     }
-
-     public function getAffichage(){
-         return ob_get_clean();
-     }
-}
+        static function getAffichage() {
+            return ob_get_clean();
+        }
+    }
 
 ?>
