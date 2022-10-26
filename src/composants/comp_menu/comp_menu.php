@@ -1,15 +1,20 @@
 <?php
-require_once("cont_menu.php");
-class CompMenu{
 
-    private $contenue;
-    public function __construct(){ 
-        $controleur = new ContMenu();
-        $this->contenue = $controleur->exec();
+    include_once 'cont_menu.php';
+
+	class CompMenu {
+
+        private $contenu;
+
+		public function __construct() {
+            $controleur = new ContMenu();
+            $this->contenu = $controleur->exec();
+        }
+
+        public function affiche() {
+            echo $this->contenu;
+        }
+
     }
 
-    public function affiche(){
-        echo $this->contenue;
-    }
-}
 ?>
