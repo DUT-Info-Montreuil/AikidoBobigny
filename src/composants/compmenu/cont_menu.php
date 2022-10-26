@@ -7,9 +7,9 @@
 
         private $modele, $vue;
 
-		public function __construct(ModeleMenu $modele, VueMenu $vue) {
-            $this->modele = $modele;
-            $this->vue = $vue;
+		public function __construct() {
+            $this->modele = new ModeleMenu();
+            $this->vue = new VueMenu();
 		}
 
         public function exec() {

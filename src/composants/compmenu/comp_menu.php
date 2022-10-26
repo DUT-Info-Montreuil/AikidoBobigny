@@ -7,7 +7,7 @@
         private $contenu;
 
 		public function __construct() {
-            $controleur = new ContMenu(new ModeleMenu(), new VueMenu());
+            $controleur = new ContMenu();
             $this->contenu = $controleur->exec();
         }
 
