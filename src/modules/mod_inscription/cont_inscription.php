@@ -19,7 +19,11 @@ class ContInscription{
     public function exec(){
         switch($this->action){
             case ("ajout"):
-                $this->modele->ajoutInscription();
+                $id_ville=$this->modele->ajoutInscription_ville();
+                echo"idvillecontroleur = $id_ville";
+                $id_adherent=$this->modele->ajoutInscription_adherent($id_ville);
+                echo"idadherentcontroleur = $id_adherent";
+                $this->modele->ajoutInscription_inscription($id_adherent);
                 break;
             case ("Inscription"):
                 $this->vue->form_inscription();
