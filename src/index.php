@@ -2,7 +2,7 @@
     session_start();
     include_once './modules/depot_fichier/mod_upload.php';
     include_once("modules/mod_connexion/mod_connexion.php");
-    include_once './composants/compmenu/comp_menu.php';
+    include_once './composants/comp_menu/comp_menu.php';
 
     Connexion::initConnexion();
 
@@ -14,7 +14,7 @@
             break;
         case "mod_connexion": 
             $mod_connexion = new Modconnexion();
-            $mod = $mod_connexion->afficheModule();
+            $contenu = $mod_connexion->afficheModule();
             break;
         default:
             break;

@@ -21,11 +21,11 @@
 
 		public function completecontenu(){
 			if(isset($_SESSION['connexion'])){
-				$this->contenue.="<li><a href='index.php?module=mod_connexion&action=Deconnexion'>Deconnexion</a></li>";
+				$this->contenu.="<li><a href='index.php?module=mod_connexion&action=deconnexion'>Deconnexion</a></li>";
 			}else{
-				$this->contenue.="<li><a href='index.php?module=mod_connexion&action=Se-connecter'>Se connecter</a></li>";
+				$this->contenu.="<li><a href='index.php?module=mod_connexion&action=form_connexion'>Se connecter</a></li>";
 			}
-			$this->contenue.="</ul></div>";
+			$this->contenu.="</ul></div>";
 		}
 
 		public function getContenu() {

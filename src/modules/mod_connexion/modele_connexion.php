@@ -4,7 +4,8 @@ class ModeleConnexion extends Connexion{
        
         public function __construct(){
         }
-        public function Connexion(){
+
+        public function connexion(){
         if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
 	        if($_SESSION['token'] == htmlspecialchars($_POST['token'])){
 		        $timestamp_ancien = time() - (15*60);
@@ -25,7 +26,7 @@ class ModeleConnexion extends Connexion{
         
 
         
-        public function Deconnexion(){
+        public function deconnexion(){
             unset($_SESSION['connexion']);
             echo "Deconnexion réussi";
         }
