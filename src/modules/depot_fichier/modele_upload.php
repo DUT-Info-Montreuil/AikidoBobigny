@@ -1,5 +1,4 @@
 <?php
-
     include_once './connexion.php';
 
 	class ModeleUpload extends Connexion {
@@ -7,9 +6,7 @@
 		public function __construct() {}
 
         function upload() {
-            var_dump($_FILES);
-            var_dump($_POST);
-			if (isset($_FILES['piece_identite'])) {
+			if (isset($_FILES['piece_identite']) && isset($_FILES['attestation_sante']) && isset($_FILES['droit_image']) && isset($_FILES['certificat_medical']) && isset($_FILES['autorisation_parentale'])) {
 				$fichier1 = $_FILES['piece_identite'];
 				$fichier2 = $_FILES['attestation_sante'];
 				$fichier3 = $_FILES['droit_image'];
@@ -29,12 +26,8 @@
 							$nom_fichier = $nom_unique . '.' . $extension;// on crée le nom du fichier
 							$chemin_fichier = 'fichiers/' . $nom_fichier;// on crée le chemin du fichier
 							move_uploaded_file($fichier['tmp_name'], $chemin_fichier);// on déplace le fichier temporaire vers le chemin de destination
-                            $requete = self::$bdd->prepare("INSERT INTO pieces_justificatives (ID_pieces_justificatives, ID_Adherent, ID_type, nom_piece) VALUES (NULL, :ID_adherent, :ID_type, :nom_piece);");
-                            $requete->execute(array(
-                                'ID_adherent' => 1,
-                                'ID_type' => $i,
-                                'nom_piece' => $nom_fichier
-                            ));
+                            $requete = self::$bdd->prepare('INSERT INTO pieces_justificatives (ID_adherent, ID_type, nom_piece) VALUES (?, ?, ?)');
+                            $requete->execute(array(1, $i, $nom_fichier));
 							echo 'Le fichier ' . $fichier['name'] . ' a bien été envoyé.<br>';// on affiche un message de succès
 						} else {
 							echo 'Le fichier ' . $fichier['name'] . ' n\'a pas été envoyé car son extension n\'est pas autorisée.<br>';// on affiche un message d'erreur

@@ -6,7 +6,7 @@
 
     Connexion::initConnexion();
 
-    $module = isset($_GET['module'])?$_GET['module']:'connexion';
+    $module = isset($_GET['module'])?$_GET['module']:'upload';
     switch ($module) {
         case 'upload':
             $page = new ModUpload();

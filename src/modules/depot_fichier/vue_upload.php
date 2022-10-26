@@ -9,7 +9,7 @@
 		}
 
 		function form_upload() {
-			echo '<form action="index.php?module=upload&action=upload" method="post" enctype="multipart/form-data">
+			echo '<form action="index.php?module=upload&action=upload" method="post" enctype="multipart/form-data" id="form-upload">
 						<input type="file" name="piece_identite" id="piece_identite">
 						<input type="file" name="attestation_sante" id="attestation_sante">
 						<input type="file" name="droit_image" id="droit_image">
