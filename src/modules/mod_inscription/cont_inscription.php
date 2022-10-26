@@ -10,25 +10,26 @@ class ContInscription{
     public function __construct(ModeleInscription $modele,VueInscription $vue){
         $this->modele=$modele;
         $this->vue=$vue;
-        $this->action=isset($_GET['action'])?$_GET['action']:"default";
+        $this->action=isset($_GET['action'])?$_GET['action']:"form_inscription";
         $this->id=isset($_GET['id'])?$_GET['id']:1;
     }
 
-   
+    public function inscription () {
+        $this->modele->inscription();
+    }
+
+    public function form_inscription () {
+        $this->vue->form_inscription();
+    }
 
     public function exec(){
         switch($this->action){
-            case ("ajout"):
-                $id_ville=$this->modele->ajoutInscription_ville();
-                echo"idvillecontroleur = $id_ville";
-                $id_adherent=$this->modele->ajoutInscription_adherent($id_ville);
-                echo"idadherentcontroleur = $id_adherent";
-                $this->modele->ajoutInscription_inscription($id_adherent);
+            case ("inscription"):
+                $this->inscription();
                 break;
-            case ("Inscription"):
-                $this->vue->form_inscription();
+            case ("form_inscription"):
+                $this->form_inscription();
                 break;
-
         }
     
     }

@@ -16,11 +16,11 @@
             break;
         case "mod_connexion": 
             $mod_connexion = new Modconnexion();
-            $contenu = $mod_connexion->afficheModule();
+            $contenu = VueConnexion::getAffichage();
             break;
         case "mod_inscription": 
             $mod_inscription = new ModInscription();
-            $contenu = $mod_inscription->afficheModule();
+            $contenu = VueInscription::getAffichage();
             break; 
         default:
             break;

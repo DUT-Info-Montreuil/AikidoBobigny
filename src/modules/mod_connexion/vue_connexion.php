@@ -18,15 +18,6 @@ class VueConnexion extends VueGenerique{
             <input type="hidden" name="token" id="token" value="'.$token.'"/>
             </form>';
     }
-
-    public static function afficherDeconnexion(){
-        echo "<a href='index.php?module=mod_connexion&action=deconnexion'>Deconnexion</a><br>";
-    }
-
-    public static function afficherConnexion(){
-        echo "<a href='index.php?module=mod_connexion&action=form_connexion'>Se connecter</a><br>";
-    }
-
     
 }
 
