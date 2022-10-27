@@ -7,6 +7,7 @@ class ContInscription{
     private $vue;
     private $action;
     private $id;
+
     public function __construct(ModeleInscription $modele,VueInscription $vue){
         $this->modele=$modele;
         $this->vue=$vue;
