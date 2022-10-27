@@ -14,14 +14,15 @@ class ContInscription{
         $this->action=isset($_GET['action'])?$_GET['action']:"form_inscription";
         $this->id=isset($_GET['id'])?$_GET['id']:1;
     }
+    
+    public function form_inscription(){
+        $this->vue->form_inscription();
+    }
 
     public function inscription () {
         $this->modele->inscription();
     }
 
-    public function form_inscription () {
-        $this->vue->form_inscription();
-    }
 
     public function exec(){
         switch($this->action){
