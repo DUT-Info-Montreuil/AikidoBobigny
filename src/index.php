@@ -15,6 +15,10 @@
             $page = new ModUpload();
             $contenu = $page->getAffichage();
             break;
+        case 'mod_commentaire':
+            $page = new ModCommentaire();
+            $contenu = $page->getAffichage();
+            break;
         case "mod_connexion": 
             $page = new Modconnexion();
             $contenu = $page->getAffichage();

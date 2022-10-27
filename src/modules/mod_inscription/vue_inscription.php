@@ -3,8 +3,7 @@ require_once "./vue_generique.php";
 class VueInscription extends VueGenerique
 {
 
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 	}
 
