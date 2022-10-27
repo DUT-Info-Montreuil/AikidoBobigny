@@ -1,38 +1,76 @@
 <?php
 require_once "./vue_generique.php";
-class VueInscription extends VueGenerique{
+class VueInscription extends VueGenerique
+{
 
-    public function __construct(){
-        parent::__construct();
-    }   
+	public function __construct()
+	{
+		parent::__construct();
+	}
 
-    public function form_inscription(){
-        $token = uniqid(rand(), true);       
-        $_SESSION['token'] = $token;
-        $_SESSION['token_time'] = time();
-        echo'<form action="index.php?module=mod_inscription&action=ajout" method="POST">
-	        <p>Genre*:</p> <input type="text" name="sexe" required="required" maxlength="50"/>
-            <p>Nom* :</p> <input type="text" name="nom" required="required" maxlength="50"/>
-            <p>Prénom* :</p> <input type="text" name="prenom" required="required" maxlength="50"/>
-            <p>Date de naissance*:</p> <input type="date" name="date_de_naissance" required="required" maxlength="50"/>
-            <p>Adresse mail*:</p> <input type="email" name="adresse_mail" required="required" maxlength="50"/>
-            <p>Numéro de téléphone* :</p> <input type="tel" name="numero_de_telephone" required="required" maxlength="50"/>
-            <p>Adresse* :</p> <input type="text" name="adresse" required="required" maxlength="50"/>
-            <p>Code postal* :</p> <input type="text" name="Code_postal" required="required" maxlength="50"/>
-            <p>Ville* :</p> <input type="text" name="ville" required="required" maxlength="50"/>
-            <p>Login*:</p> <input type="text" name="login" required="required" maxlength="50"/>
-            <p>Votre mot de passe* :</p> <input type="password" name="mot_de_passe" required="required" maxlength="50"/>
-            <p>Numéro de licence (si ancien licencier) :</p> <input type="tel" name="numero_de_licence" required="required" maxlength="50"/>
-            <p>Reinscription:</p> <input type="text" name="reinscription" required="required" maxlength="50"/>
-            <p>Profession*:</p> <input type="text" name="profession" required="required" maxlength="50"/>
-            <p>Nationalité*:</p> <input type="text" name="nationalite" required="required" maxlength="50"/>
-            <p>Saison*:</p> <input type="text" name="saison" required="required" maxlength="50"/>
-            <p>Club*:</p> <input type="text" name="club" required="required" maxlength="50"/>
-            <input type="hidden" name="token" id="token" value="'.$token.'"/>
-            <input type="submit"/>
-            </form>';
-    }    
+	public function form_inscription() {
+		$token = uniqid(rand(), true);
+		$_SESSION['token'] = $token;
+		$_SESSION['token_time'] = time();
+		echo '
+			<form action="index.php?module=mod_inscription&action=ajout" method="POST">
+				<label for="genre">Genre* :</label>
+				<input type="radio" name="genre" value="M" checked> Homme<br>
+				<input type="radio" name="genre" value="F"> Femme<br>
+
+				<label for="nom">Nom* :</label>
+				<input type="text" name="nom" required maxlength="50"/>
+
+				<label for="prenom">Prenom :</label>
+				<input type="text" name="prenom" required maxlength="50"/>
+
+				<label for="email">Adresse mail* :</label>
+				<input type="email" name="email" required maxlength="50"/>
+
+				<label for="date_de_naissance">Date de naissance* :</label>
+				<input type="date" name="date_de_naissance" required/>
+
+				<label for="numero_de_telephone">Numéro de téléphone* :</label>
+				<input type="tel" name="numero_de_telephone" required maxlength="10"/>
+
+				<label for="adresse">Adresse* :</label>
+				<input type="text" name="adresse" required maxlength="50"/>
+
+				<label for="code_postal">Code postal* :</label>
+				<input type="text" name="code_postal" required maxlength="5"/>
+
+				<label for="ville">Ville* :</label>
+				<input type="text" name="ville" required maxlength="50"/>
+
+				<label for="pseudo">Pseudo* :</label>
+				<input type="text" name="pseudo" required maxlength="50"/>
+
+				<label for="mot_de_passe">Mot de passe* :</label>
+				<input type="password" name="mot_de_passe" required maxlength="50"/>
+
+				<label for="confirmation_mot_de_passe">Confirmation mot de passe* :</label>
+				<input type="password" name="confirmation_mot_de_passe" required maxlength="50"/>
+
+				<label for="numero_de_licence">Numéro de licence (si ancien licencié) :</label>
+				<input type="text" name="numero_de_licence" maxlength="50"/>
+
+				<label for="reinscription">Réinscription :</label>
+				<input type="checkbox" name="reinscription" value="1"/>
+
+				<label for="profession">Profession* :</label>
+				<input type="text" name="profession" required maxlength="50"/>
+
+				<label for="nationalite">Nationalité* :</label>
+				<input type="text" name="nationalite" required maxlength="50"/>
+
+				<label for="saison">Saison* :</label>
+				<input type="text" name="saison" required maxlength="50"/>
+
+				<label for="club">Club* :</label>
+				<input type="text" name="club" required maxlength="50"/>
+
+				<input type="hidden" name="token" value="'.$token.'"/>
+				<input type="submit" value="Envoyer" />
+			</form>';
+	}
 }
-
-
-?>

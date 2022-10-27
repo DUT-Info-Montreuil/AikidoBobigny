@@ -2,16 +2,16 @@
 require_once("cont_inscription.php");
 class ModInscription{
 
-    private $controleur;
-    public function __construct(){
-        $vue=new VueInscription();
-        $modele=new ModeleInscription();
-        $this->controleur = new ContInscription($modele,$vue);
-        echo($this->controleur->exec());
+    private $vue;
+
+    public function __construct() {
+        $this->vue = new VueInscription();
+        $controleur = new ContInscription(new ModeleInscription(), $this->vue);
+        $controleur->exec();
     }
 
-    public function afficheModule(){
-        return $this->controleur->afficheMod();
+    public function getAffichage() {
+        return $this->vue->getAffichage();
     }
 }
 ?>

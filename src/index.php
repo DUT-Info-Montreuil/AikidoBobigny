@@ -12,15 +12,15 @@
     switch ($module) {
         case 'upload':
             $page = new ModUpload();
-            $contenu = VueUpload::getAffichage();
+            $contenu = $page->getAffichage();
             break;
         case "mod_connexion": 
-            $mod_connexion = new Modconnexion();
-            $contenu = $mod_connexion->afficheModule();
+            $page = new Modconnexion();
+            $contenu = $page->getAffichage();
             break;
         case "mod_inscription": 
-            $mod_inscription = new ModInscription();
-            $contenu = $mod_inscription->afficheModule();
+            $page = new ModInscription();
+            $contenu = $page->getAffichage();
             break; 
         default:
             break;
