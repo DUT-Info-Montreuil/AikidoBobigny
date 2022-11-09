@@ -1,12 +1,13 @@
 <?php
-require_once("cont_connexion.php");
-class ModConnexion{
+
+require_once("cont_csv.php");
+class ModCSV{
 
     private $vue;
 
 	public function __construct() {
-        $this->vue = new VueConnexion();
-        $controleur = new ContConnexion(new ModeleConnexion(), $this->vue);
+        $this->vue = new VueCSV();
+        $controleur = new ContCSV(new ModeleCSV(), $this->vue);
         $controleur->exec();
     }
 
@@ -14,4 +15,5 @@ class ModConnexion{
         return $this->vue->getAffichage();
     }
 }
+
 ?>

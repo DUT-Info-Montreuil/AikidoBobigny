@@ -5,6 +5,7 @@
     include_once './modules/mod_connexion/mod_connexion.php';
     include_once './modules/mod_inscription/mod_inscription.php';
     include_once './modules/mod_commentaire/mod_commentaire.php';
+    include_once './modules/mod_csv/mod_csv.php';
     include_once './composants/comp_menu/comp_menu.php';
 
     Connexion::initConnexion();
@@ -15,18 +16,22 @@
             $page = new ModUpload();
             $contenu = VueUpload::getAffichage();
             break;
-        case "mod_connexion": 
+        case "connexion": 
             $mod_connexion = new Modconnexion();
             $contenu = VueConnexion::getAffichage();
             break;
-        case "mod_inscription": 
+        case "inscription": 
             $mod_inscription = new ModInscription();
             $contenu = VueInscription::getAffichage();
             break;
-        case "mod_commentaire": 
+        case "commentaire": 
             $mod_commentaires = new ModCommentaire();
             $contenu = VueCommentaire::getAffichage();
             break; 
+        case "csv":
+            $mod_csv = new ModCSV();
+            $contenu = VueCSV::getAffichage();
+            break;
         default:
             break;
     }
