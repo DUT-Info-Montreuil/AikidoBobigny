@@ -16,7 +16,7 @@ class VueMail extends VueGenerique{
         <html>
             <body>
                 <div align="center">
-                    <a href ="index.php?module=mod_mail&action=verifmail&id='.($_SESSION["idadh"]).'">Confirmation de votre mail </a>
+                    <a href ="http://sae/src/index.php?module=mod_mail&action=verifmail&id='.($_SESSION["idadh"]).'">Confirmation de votre mail </a>
                 </div>
             </body>
         </html>
