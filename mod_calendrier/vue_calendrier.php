@@ -31,8 +31,8 @@ class VueCalendrier{
     }
 
     public function affichageCalendrier(){
-        $calendar = fopen("calendrier.html","r");
-        echo $calendar;
+        $calendar = fopen("mod_calendrier/calendrier.html","r");
+        /* echo $calendar; */
     }
 
 }
