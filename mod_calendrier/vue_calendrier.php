@@ -7,12 +7,14 @@ class VueCalendrier{
     }
 
 
-    public function menu(){
-        echo '<a href = "index.php?module=calendrier&action=formEvenement">Ajout Evenements</a>', '<br/>';
+    public function menu($title){
+        echo '<a href="index.php?module=calendrier&action=formEvenement">Ajout evenement</a>', '<br/>';
+        echo '<a href="index.php?module=calendrier&action=affichageCalendrier">Voir le calendrier</a>', '<br/>';
     }
 
 
     public function formEvenement(){
+        echo'';
         echo'<form action="index.php?module=calendrier&action=insertEvenement" method="POST">
             <label for="evenement">Evenement </label>
             <input type="text" name = "titreEvenement" maxlength = "100">
@@ -26,6 +28,11 @@ class VueCalendrier{
             </form>
         ';
         echo'<br/>';
+    }
+
+    public function affichageCalendrier(){
+        $calendar = fopen("calendrier.html","r");
+        echo $calendar;
     }
 
 }

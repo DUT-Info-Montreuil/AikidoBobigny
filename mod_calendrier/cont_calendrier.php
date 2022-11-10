@@ -19,7 +19,7 @@ class ContCalendrier{
     }
 
     public function exec(){
-        $this->vue->menu();
+        $this->vue->menu("Bonjour");
         switch($this->action){
             case("formEvenement"):
                 $this->form_ajout();
@@ -28,6 +28,10 @@ class ContCalendrier{
                 //var_dump($this);
                 $this->ajout();
             break;
+            case("affichageCalendrier"):
+                $this->calendrier();
+            break;
+                
         }
 
     }
@@ -39,6 +43,10 @@ class ContCalendrier{
 
     public function ajout(){
         $this->modele->insertEvenement();
+    }
+
+    public function calendrier(){
+        $this->vue->affichageCalendrier();
     }
 
 
