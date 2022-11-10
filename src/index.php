@@ -1,36 +1,16 @@
 <?php
-    session_start();
 
-    include_once './modules/depot_fichier/mod_upload.php';
-    include_once './modules/mod_connexion/mod_connexion.php';
-    include_once './modules/mod_inscription/mod_inscription.php';
-    include_once './modules/mod_commentaire/mod_commentaire.php';
-    include_once './composants/comp_menu/comp_menu.php';
+include_once('mod_article/cont_article.php');
 
-    Connexion::initConnexion();
+Connexion::initConnexion();
 
-    $module = isset($_GET["module"]) ? $_GET["module"] : "mod_connexion";
-    switch ($module) {
-        case 'upload':
-            $page = new ModUpload();
-            $contenu = VueUpload::getAffichage();
-            break;
-        case "mod_connexion": 
-            $mod_connexion = new Modconnexion();
-            $contenu = VueConnexion::getAffichage();
-            break;
-        case "mod_inscription": 
-            $mod_inscription = new ModInscription();
-            $contenu = VueInscription::getAffichage();
-            break;
-        case "mod_commentaire": 
-            $mod_commentaires = new ModCommentaire();
-            $contenu = VueCommentaire::getAffichage();
-            break; 
-        default:
-            break;
-    }
-    $menu = new CompMenu();
-    include_once './template.php';
-    
-?>
+echo '<ul><li><a href="index.php?module=article">Articles</a></li>';
+
+$module = isset($_GET['module'])?$_GET['module'] : "article";
+
+switch($module){
+    case "article":
+        require_once('mod_article/mod_article.php');
+        $m = new ModArticle();  
+        break;
+}
