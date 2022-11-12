@@ -1,6 +1,14 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Akido Bobigny</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
 <?php
 
-include_once('mod_article/cont_article.php');
+include_once('mod_article/controller.article.php');
 
 Connexion::initConnexion();
 
@@ -14,3 +22,8 @@ switch($module){
         $m = new ModArticle();  
         break;
 }
+
+?>
+
+</body>
+</html>

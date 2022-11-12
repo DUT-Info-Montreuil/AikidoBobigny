@@ -1,6 +1,6 @@
 <?php
 
-class VueArticle{
+class ViewArticle{
 
     public function __construct(){
 
@@ -30,10 +30,10 @@ class VueArticle{
 
     public function rechercherArticle(){
         echo'</br>';
-        echo'<form action="index.php?module=article&action=articleRecherche" method = "POST">
-            <label for = "date"> Sélectionner une date :</label>
-            <input type = "date" name = "datevoulu">
-            <input type = "submit" value ="Rechercher">
+        echo'<form action="index.php?module=article&action=articleRecherche" method="POST">
+            <label for="date"> Sélectionner une date :</label>
+            <input type="date" name="datevoulu">
+            <input type="submit" value="Rechercher">
             </form>
             ';
         echo'</br>';
@@ -41,10 +41,13 @@ class VueArticle{
 
     public function afficherRecherche($recherche){
         if($recherche){
-                echo'</br>';
-                echo $recherche['titre'];
-                echo'</br>';
-                echo $recherche['texte'];
+            foreach($recherche as $row){
+                echo $row['titre'];
+                echo '</br>';
+                echo $row['texte'];
+                echo '</br>';
+            }
+
         }   
         else{
             echo'</br>';

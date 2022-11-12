@@ -1,25 +1,25 @@
 <?php
 
-include_once 'modele_article.php';
-include_once 'vue_article.php';
+include_once 'model.article.php';
+include_once 'view.article.php';
 
-class ContArticle{
+class ControllerArticle{
 
-    private $vue;
-    private $modele;
+    private $view;
+    private $model;
     private $action;
 
 
     public function __construct(){
-        $this->vue = new VueArticle;
-        $this->modele = new ModeleArticle;
+        $this->view = new ViewArticle;
+        $this->model = new ModelArticle;
         if(isset($_GET['action'])){
             $this->action = $_GET['action'];
         }
     }
 
     public function exec(){
-        $this->vue->menu();
+        $this->view->menu();
         switch($this->action){
             case("formArticle"):
                 $this->form_ajout();
@@ -39,19 +39,19 @@ class ContArticle{
 
 
     public function form_ajout(){
-        $this->vue->formArticle();
+        $this->view->formArticle();
     }
 
     public function ajout(){
-        $this->modele->insertArticle();
+        $this->model->insertArticle();
     }
 
     public function form_recherche(){
-        $this->vue->rechercherArticle();
+        $this->view->rechercherArticle();
     }
 
     public function faireRecherche(){
-        $this->vue->afficherRecherche($this->modele->articleRecherche());
+        $this->view->afficherRecherche($this->model->articleRecherche());
     }
 
 
