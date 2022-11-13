@@ -9,7 +9,9 @@ class ViewArticle{
 
     public function menu(){
         echo '<a href = "index.php?module=article&action=formArticle">Ajouter un article</a>', '<br/>';
+        echo '<a href = "index.php?module=article&action=formDelete">Supprimer un article</a>', '<br/>';
         echo '<a href = "index.php?module=article&action=rechercherArticle">Rechercher un article</a>', '<br/>';
+        
     }
 
 
@@ -22,8 +24,18 @@ class ViewArticle{
             <input type = "text" name = "titreArticle" maxlength = 100>
             <label for ="texte">Texte article</label>
             <input type = "text" name = "texteArticle">
-            <input type = "submit" name ="Send">
+            <input type = "submit" value ="Créer">
             </form>
+        ';
+        echo'<br/>';
+    }
+
+    public function formDelete(){
+        echo'</br>';
+        echo'<form action="index.php?module=article&action=deleteArticle" method="POST">
+        <label for="titre">Titre article dont vous voulez supprimer</label>
+        <input type ="text" name = "titrevoulu">
+        <input type = "submit" value ="Supprimer">
         ';
         echo'<br/>';
     }

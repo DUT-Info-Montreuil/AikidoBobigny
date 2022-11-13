@@ -22,7 +22,11 @@ class ModelArticle extends Connexion{
         return $sth->fetchAll();
     }
 
-    public function deleteArticle($id){
+    public function deleteArticle(){
+        $titreVoulu = $_POST['titrevoulu'];
+        $sql=("DELETE FROM article WHERE titre = '$titreVoulu'");
+        $sth = parent::$bdd->prepare($sql);
+        $sth->execute();
     }
 
 }

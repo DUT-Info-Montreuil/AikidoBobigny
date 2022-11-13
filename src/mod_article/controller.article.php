@@ -33,6 +33,12 @@ class ControllerArticle{
             case("articleRecherche"):
                 $this->faireRecherche();
             break;
+            case("formDelete"):
+                $this->form_delete_article();
+            break;
+            case("deleteArticle"):
+                $this->delete();
+            break;
         }
 
     }
@@ -46,6 +52,14 @@ class ControllerArticle{
         $this->model->insertArticle();
     }
 
+    public function delete(){
+        $this->model->deleteArticle();
+    }
+
+    public function form_delete_article(){
+        $this->view->formDelete();
+    }
+
     public function form_recherche(){
         $this->view->rechercherArticle();
     }
@@ -53,9 +67,6 @@ class ControllerArticle{
     public function faireRecherche(){
         $this->view->afficherRecherche($this->model->articleRecherche());
     }
-
-
-
 
 }
 
