@@ -3,85 +3,86 @@
 class ModeleCalendrier extends Connexion
 {
 
-	private $active_year, $active_month, $active_day;
 
-	public function __construct($date = null)
+
+	public function __construct()
 	{
-		$this->active_year = $date != null ? date('Y', strtotime($date)) : date('Y');
-		$this->active_month = $date != null ? date('m', strtotime($date)) : date('m');
-		$this->active_day = $date != null ? date('d', strtotime($date)) : date('d');
 	}
 
-	public function __toString()
+	public function getEvents()
 	{
+		$events = array();
+		$requete = self::$bdd->prepare("SELECT * FROM evenement");
+		$requete->execute();
+		while ($row = $requete->fetch(PDO::FETCH_ASSOC)) {
+			$e = array();
+			$e['id'] = $row['ID_evenement'];
+			$e['title'] = $row['intitule'];
+			$e['start'] = $row['debut_evenement'];
+			$e['end'] = $row['fin_evenement'];
+			$e['description'] = $row['evenement'];
+			$e['url'] = null;
+			$e['allDay'] = null;
+			$e['className'] = null;
+			array_push($events, $e);
+		}
+		return $events;
+	}
 
-		$req = self::$bdd->prepare("SELECT * FROM evenement");
-		$req->execute();
-		$events = $req->fetchAll(PDO::FETCH_ASSOC);
+	public function getTimeInfos()
+	{
+		$activeDay = date('d');
+		$activeMonth = date('m');
+		$activeYear = date('Y');
+		$numDays = date('t', mktime(0, 0, 0, $activeMonth, $activeDay, $activeYear));
+		$numDaysLastMonth = date('j', strtotime("last day of previous month", mktime(0, 0, 0, $activeMonth, $activeDay, $activeYear)));
+		$days = [0 => 'Lun', 1 => 'Mar', 2 => 'Mer', 3 => 'Jeu', 4 => 'Ven', 5 => 'Sam', 6 => 'Dim'];
+		$months = [1 => 'Janvier', 2 => 'Février', 3 => 'Mars', 4 => 'Avril', 5 => 'Mai', 6 => 'Juin', 7 => 'Juillet', 8 => 'Août', 9 => 'Septembre', 10 => 'Octobre', 11 => 'Novembre', 12 => 'Décembre'];
+		$firstDayOfWeek = date('N', strtotime($activeYear . '-' . $activeMonth . '-1'))-1;
 
-		$num_days = date('t', strtotime($this->active_day . '-' . $this->active_month . '-' . $this->active_year));
-		$num_days_last_month = date('j', strtotime('last day of previous month', strtotime($this->active_day . '-' . $this->active_month . '-' . $this->active_year)));
-		$days = [0 => 'Sun', 1 => 'Mon', 2 => 'Tue', 3 => 'Wed', 4 => 'Thu', 5 => 'Fri', 6 => 'Sat'];
-		$first_day_of_week = array_search(date('D', strtotime($this->active_year . '-' . $this->active_month . '-1')), $days);
-		$html = '<nav class="navtop">
-					<div>
-						<h1>Event Calendar</h1>
-					</div>
-				</nav>
-				<div class="content home">
-					<div class="calendar">
-						<div class="header">
-							<div class="month-year">
-							' . date('F Y', strtotime($this->active_year . '-' . $this->active_month . '-' . $this->active_day)) . '
-							</div>
-						</div>
-						<div class="days">
-		';
-		foreach ($days as $day) {
-			$html .= '
-				<div class="day_name">
-					' . $day . '
-				</div>
-			';
-		}
-		for ($i = $first_day_of_week; $i > 0; $i--) {
-			$html .= '
-				<div class="day_num ignore">
-					' . ($num_days_last_month - $i + 1) . '
-				</div>
-			';
-		}
-		for ($i = 1; $i <= $num_days; $i++) {
-			$selected = '';
-			if ($i == $this->active_day) {
-				$selected = ' selected';
-			}
-			$html .= '<div class="day_num' . $selected . '">';
-			$html .= '<span>' . $i . '</span>';
-			foreach ($events as $event) {
-				$debut = new DateTime($event['debut_evenement']);
-				$fin = new DateTime($event['fin_evenement']);
-				$duree = $debut->diff($fin)->format('%a');
-				for ($d = 0; $d < $duree; $d++) {
-					if (date('y-m-d', strtotime($this->active_year . '-' . $this->active_month . '-' . $i . ' -' . $d . ' day')) == date('y-m-d', strtotime($event['debut_evenement']))) {
-						$html .= '<div class="event.green">';
-						$html .= $event['evenement'];
-						$html .= '</div>';
-					}
-				}
-			}
-			$html .= '</div>';
-		}
-		for ($i = 1; $i <= (42 - $num_days - max($first_day_of_week, 0)); $i++) {
-			$html .= '
-				<div class="day_num ignore">
-					' . $i . '
-				</div>
-			';
-		}
-		$html .= '</div>';
-		$html .= '</div>';
-		return $html;
+		$timeInfos = array();
+		$timeInfos['activeDay'] = $activeDay;
+		$timeInfos['activeMonth'] = $activeMonth;
+		$timeInfos['activeYear'] = $activeYear;
+		$timeInfos['numDays'] = $numDays;
+		$timeInfos['numDaysLastMonth'] = $numDaysLastMonth;
+		$timeInfos['firstDayOfWeek'] = $firstDayOfWeek;
+		$timeInfos['days'] = $days;
+		$timeInfos['months'] = $months;
+
+		return $timeInfos;
+	}
+
+	public function addEvent($title, $start, $end, $description)
+	{
+		$requete = self::$bdd->prepare("INSERT INTO evenement (intitule, debut_evenement, fin_evenement, evenement) VALUES (:title, :start, :end, :description)");
+		$requete->execute(array(
+			'title' => $title,
+			'start' => $start,
+			'end' => $end,
+			'description' => $description
+		));
+	}
+
+	public function updateEvent($id, $title, $start, $end, $description)
+	{
+		$requete = self::$bdd->prepare("UPDATE evenement SET intitule = :title, debut_evenement = :start, fin_evenement = :end, evenement = :description WHERE ID_evenement = :id");
+		$requete->execute(array(
+			'title' => $title,
+			'start' => $start,
+			'end' => $end,
+			'description' => $description,
+			'id' => $id
+		));
+	}
+
+	public function deleteEvent($id)
+	{
+		$requete = self::$bdd->prepare("DELETE FROM evenement WHERE ID_evenement = :id");
+		$requete->execute(array(
+			'id' => $id
+		));
 	}
 }
+
 ?>

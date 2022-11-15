@@ -14,27 +14,15 @@
 		}
 
 		function calendar() {
-			echo $this->modele->__toString();
-		}
-
-		function fetchEvents() {
-			
-		}
-
-		function eventHandler() {
-			
+			$events = $this->modele->getEvents();
+			$timeInfos = $this->modele->getTimeInfos();
+			$this->vue->afficherCalendrier($timeInfos, $events);
 		}
 
 		function exec() {
 			switch ($this->action) {
 				case 'calendar':
 					$this->calendar();
-					break;
-				case 'fetchEvents':
-					$this->fetchEvents();
-					break;
-				case 'eventHandler':
-					$this->eventHandler();
 					break;
 				default:
 					$this->calendar();
