@@ -12,8 +12,5 @@
                 echo $contenu;
             }
         ?>
-        <div id="footer">
-			<p>© 2022 AIKIDO BOBIGNY</p>
-		</div>
     </body>
 </html>
