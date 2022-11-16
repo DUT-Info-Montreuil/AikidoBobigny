@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    include_once './modules/depot_fichier/mod_upload.php';
+    include_once './modules/mod_upload/mod_upload.php';
     include_once './modules/mod_connexion/mod_connexion.php';
     include_once './modules/mod_inscription/mod_inscription.php';
     include_once './modules/mod_commentaire/mod_commentaire.php';
@@ -14,11 +14,11 @@
     switch ($module) {
         case 'upload':
             $page = new ModUpload();
-            $contenu = VueUpload::getAffichage();
+            $contenu = $page->getAffichage();
             break;
         case "mod_connexion": 
-            $mod_connexion = new Modconnexion();
-            $contenu = VueConnexion::getAffichage();
+            $page = new Modconnexion();
+            $contenu = $page->getAffichage();
             break;
         case "mod_inscription": 
             $mod_inscription = new ModInscription();

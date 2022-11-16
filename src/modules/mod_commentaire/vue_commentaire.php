@@ -6,7 +6,7 @@ class VueCommentaire extends VueGenerique{
         parent::__construct();
     }   
 
-    public function form_Commentaire(){
+    public function form_commentaire(){
         echo'<form action="index.php?module=mod_commentaire&action=ajout" method="POST">
 	        <p>Commentaire:</p> <textarea <input type="textarea" name="commentaire" placeholder="Votre commentaire..."/></textarea></br>
             

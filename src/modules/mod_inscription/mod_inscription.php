@@ -4,7 +4,7 @@ class ModInscription{
 
     private $vue;
 
-	public function __construct() {
+    public function __construct() {
         $this->vue = new VueInscription();
         $controleur = new ContInscription(new ModeleInscription(), $this->vue);
         $controleur->exec();
