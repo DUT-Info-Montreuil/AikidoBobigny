@@ -5,6 +5,7 @@
     include_once './modules/mod_connexion/mod_connexion.php';
     include_once './modules/mod_inscription/mod_inscription.php';
     include_once './modules/mod_commentaire/mod_commentaire.php';
+    include_once './modules/mod_calendrier/mod_calendrier.php';
     include_once './modules/mod_faq/mod_faq.php';
     include_once './composants/comp_menu/comp_menu.php';
 
@@ -27,6 +28,10 @@
         case "mod_commentaire": 
             $mod_commentaires = new ModCommentaire();
             $contenu = VueCommentaire::getAffichage();
+            break;
+        case "calendrier":
+            $mod_calendrier = new ModCalendrier();
+            $contenu = VueCalendrier::getAffichage();
             break;
         case "mod_faq": 
             $mod_faq = new ModFAQ();
