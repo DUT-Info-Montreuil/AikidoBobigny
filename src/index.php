@@ -5,6 +5,7 @@
     include_once './modules/mod_connexion/mod_connexion.php';
     include_once './modules/mod_inscription/mod_inscription.php';
     include_once './modules/mod_commentaire/mod_commentaire.php';
+    include_once './modules/mod_mail/mod_mail.php';
     include_once './modules/mod_csv/mod_csv.php';
     include_once './modules/mod_calendrier/mod_calendrier.php';
     include_once './modules/mod_faq/mod_faq.php';
@@ -37,6 +38,9 @@
         case "mod_faq": 
             $mod_faq = new ModFAQ();
             $contenu = VueFAQ::getAffichage();
+            break; 
+        case "mod_mail": 
+            $mod_mail = new ModMail();
             break; 
         case "csv":
             $mod_csv = new ModCSV();
