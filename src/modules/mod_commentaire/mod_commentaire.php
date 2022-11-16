@@ -2,16 +2,16 @@
 require_once("cont_commentaire.php");
 class ModCommentaire{
 
-    private $controleur;
+    private $vue;
+
     public function __construct(){
-        $vue=new VueCommentaire();
-        $modele=new ModeleCommentaire();
-        $this->controleur = new ContCommentaire($modele,$vue);
-        echo($this->controleur->exec());
+        $this->vue=new VueCommentaire();
+        $controleur = new ContCommentaire(new ModeleCommentaire(),$this->vue);
+        $controleur->exec();
     }
 
-    public function afficheModule(){
-        return $this->controleur->afficheMod();
+    public function getAffichage(){
+        return $this->vue->getAffichage();
     }
 }
 ?>
