@@ -1,5 +1,4 @@
 <?php
-require_once("cont_connexion.php");
 class ModeleConnexion extends Connexion{
        
         public function __construct(){

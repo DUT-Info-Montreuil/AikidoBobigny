@@ -14,3 +14,4 @@ class ModConnexion{
         return $this->vue->getAffichage();
     }
 }
+?>
