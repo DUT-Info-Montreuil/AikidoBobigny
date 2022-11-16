@@ -16,9 +16,12 @@
 					<li><a href='index.php?module=tarif&action=affiche'>Tarifs</a></li>
 					<li><a href='index.php?module=blog&action=affiche'>Blog</a></li>
 					<li><a href='index.php?module=contact&action=affiche'>Contact</a></li>
-					<li><a href='index.php?module=upload&action=form_upload'>Déposer un fichier</a></li>
 					<li><a href='index.php?module=csv&action=menu'>Générer un fichier CSV</a></li>
-          			<li><a href='index.php?module=commentaire&action=Commentaire'>Commentaire</a><li>";
+					<li><a href='index.php?module=upload&action=form_upload'>Déposer un fichier</a></li>	
+					<li><a href='index.php?module=calendrier&action=calendar'>Calendrier</a><li>
+          <li><a href='index.php?module=mod_commentaire&action=commentaire'>Commentaire</a><li>
+					<li><a href='index.php?module=mod_faq&action=FAQ'>Posez une question</a></li>";
+					
 		}
 
 		public function completecontenu(){

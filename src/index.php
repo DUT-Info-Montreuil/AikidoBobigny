@@ -6,6 +6,8 @@
     include_once './modules/mod_inscription/mod_inscription.php';
     include_once './modules/mod_commentaire/mod_commentaire.php';
     include_once './modules/mod_csv/mod_csv.php';
+    include_once './modules/mod_calendrier/mod_calendrier.php';
+    include_once './modules/mod_faq/mod_faq.php';
     include_once './composants/comp_menu/comp_menu.php';
 
     Connexion::initConnexion();
@@ -14,11 +16,11 @@
     switch ($module) {
         case 'upload':
             $page = new ModUpload();
-            $contenu = VueUpload::getAffichage();
+            $contenu = $page->getAffichage();
             break;
-        case "connexion": 
-            $mod_connexion = new Modconnexion();
-            $contenu = VueConnexion::getAffichage();
+        case "mod_connexion": 
+            $page = new Modconnexion();
+            $contenu = $page->getAffichage();
             break;
         case "inscription": 
             $mod_inscription = new ModInscription();
@@ -27,6 +29,14 @@
         case "commentaire": 
             $mod_commentaires = new ModCommentaire();
             $contenu = VueCommentaire::getAffichage();
+            break;
+        case "calendrier":
+            $mod_calendrier = new ModCalendrier();
+            $contenu = VueCalendrier::getAffichage();
+            break;
+        case "mod_faq": 
+            $mod_faq = new ModFAQ();
+            $contenu = VueFAQ::getAffichage();
             break; 
         case "csv":
             $mod_csv = new ModCSV();
