@@ -11,9 +11,9 @@ class VueInscription extends VueGenerique
 		$token = uniqid(rand(), true);
 		$_SESSION['token'] = $token;
 		$_SESSION['token_time'] = time();
+
 		echo '
 		<form action="index.php?module=mod_inscription&action=ajout" method="post" enctype="multipart/form-data">
-
 		<div>
 			<label for="saison">Saison :</label>
 			<input type="text" name="saison" value="" readonly />
