@@ -1,6 +1,6 @@
 <?php
 require_once("vue_inscription.php");
-require_once("C:/wamp64/www/AikidoBobigny/src/modules/mod_mail/vue_mail.php");
+require_once("modules/mod_mail/vue_mail.php");
 require_once("modele_inscription.php");
 class ContInscription{
 

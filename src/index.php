@@ -17,11 +17,11 @@
     switch ($module) {
         case 'upload':
             $page = new ModUpload();
-            $contenu = $page->getAffichage();
+            $contenu = VueUpload::getAffichage();
             break;
-        case "mod_connexion": 
+        case "connexion": 
             $page = new Modconnexion();
-            $contenu = $page->getAffichage();
+            $contenu = VueConnexion::getAffichage();
             break;
         case "inscription": 
             $mod_inscription = new ModInscription();
@@ -35,11 +35,11 @@
             $mod_calendrier = new ModCalendrier();
             $contenu = VueCalendrier::getAffichage();
             break;
-        case "mod_faq": 
+        case "faq": 
             $mod_faq = new ModFAQ();
             $contenu = VueFAQ::getAffichage();
             break; 
-        case "mod_mail": 
+        case "mail": 
             $mod_mail = new ModMail();
             break; 
         case "csv":
