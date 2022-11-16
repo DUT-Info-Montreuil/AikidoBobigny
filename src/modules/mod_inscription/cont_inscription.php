@@ -9,6 +9,7 @@ class ContInscription{
     private $vuemail;
     private $action;
     private $id;
+
     public function __construct(ModeleInscription $modele,VueInscription $vue){
         $this->modele=$modele;
         $this->vue=$vue;
@@ -16,15 +17,16 @@ class ContInscription{
         $this->action=isset($_GET['action'])?$_GET['action']:"form_inscription";
         $this->id=isset($_GET['id'])?$_GET['id']:1;
     }
+    
+    public function form_inscription(){
+        $this->vue->form_inscription();
+    }
 
     public function inscription () {
         $this->modele->inscription();
         $this->vuemail->message_Verif_Mail();
     }
 
-    public function form_inscription () {
-        $this->vue->form_inscription();
-    }
 
     public function exec(){
         switch($this->action){
