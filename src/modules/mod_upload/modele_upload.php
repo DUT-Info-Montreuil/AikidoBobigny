@@ -5,8 +5,8 @@
 
 		public function __construct() {}
 
-        function upload() {
-			if (isset($_FILES['piece_identite'])) {
+    function upload() {
+			if (isset($_FILES['piece_identite']) && isset($_FILES['attestation_sante']) && isset($_FILES['droit_image']) && isset($_FILES['certificat_medical']) && isset($_FILES['autorisation_parentale'])) {
 				$fichier1 = $_FILES['piece_identite'];
 				$fichier2 = $_FILES['attestation_sante'];
 				$fichier3 = $_FILES['droit_image'];
