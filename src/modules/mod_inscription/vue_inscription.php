@@ -112,7 +112,7 @@ class VueInscription extends VueGenerique
 				<li>
 					<p>mon enfant à s’inscrire à la section</p>
 					<input type="text" name="section" value="A&iuml;kido" readonly />
-					<p>de l’Athétic Club de Bobigny.</p>
+					<p>de l’Athletic Club de Bobigny.</p>
 				</li>
 				<li>
 					<p>Les dirigeants de la section à faire hospitaliser mon enfant en cas de besoin.</p>
