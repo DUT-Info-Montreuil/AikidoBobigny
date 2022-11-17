@@ -2,13 +2,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Akido Bobigny</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!--<script src="https://cdn.tailwindcss.com"></script>-->
 </head>
 
 <body>
 <?php
 
-include_once('mod_article/controller.article.php');
+include_once('mod_article/cont_article.php');
 
 Connexion::initConnexion();
 

@@ -1,6 +1,6 @@
 <?php
 
-class ViewArticle{
+class VueArticle{
 
     public function __construct(){
 
@@ -54,23 +54,32 @@ class ViewArticle{
     public function afficherRecherche($recherche){
         if($recherche){
             foreach($recherche as $row){
-                echo $row['titre'];
+                $titre = $row['titre'];
+                $id = $row['ID_article'];
                 echo '</br>';
-                echo $row['texte'];
+                echo "<a href=index.php?module=article&action=articleDetails&id=$id>$titre</a>";
                 echo '</br>';
             }
-
         }   
         else{
             echo'</br>';
             echo'Aucun article est disponible sur cette date';
         }
-
-        
-
     }
 
+    public function articleDetails($rechercheDetails){
+        if($rechercheDetails){
+            foreach(array($rechercheDetails) as $row){
+                echo '</br>';
+                echo $row['titre'];
+                echo '</br>';
+                echo $row['texte'];
+            }
+        }
+    }
 }
+
+
 
 
 

@@ -1,9 +1,9 @@
 <?php
 
-include_once 'model.article.php';
-include_once 'view.article.php';
+include_once 'modele_article.php';
+include_once 'vue_article.php';
 
-class ControllerArticle{
+class ContArticle{
 
     private $view;
     private $model;
@@ -11,8 +11,8 @@ class ControllerArticle{
 
 
     public function __construct(){
-        $this->view = new ViewArticle;
-        $this->model = new ModelArticle;
+        $this->view = new VueArticle;
+        $this->model = new ModeleArticle;
         if(isset($_GET['action'])){
             $this->action = $_GET['action'];
         }
@@ -38,6 +38,9 @@ class ControllerArticle{
             break;
             case("deleteArticle"):
                 $this->delete();
+            break;
+            case("articleDetails"):
+                $this->rechercheDetails();
             break;
         }
 
@@ -66,6 +69,10 @@ class ControllerArticle{
 
     public function faireRecherche(){
         $this->view->afficherRecherche($this->model->articleRecherche());
+    }
+
+    public function rechercheDetails(){
+        $this->view->articleDetails($this->model->articleRechercheDetails($_GET['id']));
     }
 
 }

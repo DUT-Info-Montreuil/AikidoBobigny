@@ -1,11 +1,11 @@
 <?php
-include_once ('controller.article.php');
+include_once ('cont_article.php');
 
 class ModArticle{
 
     public function __construct(){
-        $controllerArticle = new ControllerArticle();
-        $controllerArticle->exec();
+        $controleurArticle = new ContArticle();
+        $controleurArticle->exec();
     }
 
 }

@@ -2,7 +2,7 @@
 
 include_once 'connexion.php';
 
-class ModelArticle extends Connexion{
+class ModeleArticle extends Connexion{
 
     public function __construct(){
 
@@ -16,10 +16,17 @@ class ModelArticle extends Connexion{
 
     public function articleRecherche(){
         $dateVoulu = $_POST['datevoulu'] ;
-        $sql =("SELECT titre,texte FROM article WHERE date = '$dateVoulu' ");
+        $sql =("SELECT titre,ID_article FROM article WHERE date = '$dateVoulu' ");
         $sth = parent::$bdd->prepare($sql);
         $sth->execute();
         return $sth->fetchAll();
+    }
+
+    public function articleRechercheDetails($id){ 
+        $sql =("SELECT titre,texte FROM article WHERE ID_article = ? ");
+        $sth = parent::$bdd->prepare($sql);
+        $sth->execute(array($id));
+        return $sth->fetch();
     }
 
     public function deleteArticle(){
