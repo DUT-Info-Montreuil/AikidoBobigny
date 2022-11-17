@@ -19,8 +19,9 @@
 					<li><a href='index.php?module=csv&action=menu'>Générer un fichier CSV</a></li>
 					<li><a href='index.php?module=upload&action=form_upload'>Déposer un fichier</a></li>	
 					<li><a href='index.php?module=calendrier&action=calendar'>Calendrier</a><li>
-          <li><a href='index.php?module=commentaire&action=commentaire'>Commentaire</a><li>
-					<li><a href='index.php?module=faq&action=FAQ'>Posez une question</a></li>";
+          			<li><a href='index.php?module=commentaire&action=commentaire'>Commentaire</a><li>
+					<li><a href='index.php?module=faq&action=FAQ'>Posez une question</a></li>
+					<li><a href='index.php?module=admin&action=admin'>Admin</a><li>";
 					
 		}
 

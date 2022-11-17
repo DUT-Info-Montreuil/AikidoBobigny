@@ -9,6 +9,7 @@
     include_once './modules/mod_csv/mod_csv.php';
     include_once './modules/mod_calendrier/mod_calendrier.php';
     include_once './modules/mod_faq/mod_faq.php';
+    include_once './modules/mod_admin/mod_admin.php';
     include_once './composants/comp_menu/comp_menu.php';
 
     Connexion::initConnexion();
@@ -45,6 +46,10 @@
         case "csv":
             $mod_csv = new ModCSV();
             $contenu = VueCSV::getAffichage();
+            break;
+        case "admin":
+            $mod_admin = new ModAdmin();
+            $contenu = VueAdmin::getAffichage();
             break;
         default:
             break;
