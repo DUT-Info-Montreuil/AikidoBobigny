@@ -1,5 +1,4 @@
 <?php
-require_once("cont_connexion.php");
 class ModeleConnexion extends Connexion{
        
         public function __construct(){
@@ -10,12 +9,12 @@ class ModeleConnexion extends Connexion{
 	        if($_SESSION['token'] == htmlspecialchars($_POST['token'])){
 		        $timestamp_ancien = time() - (15*60);
 		        if($_SESSION['token_time'] >= $timestamp_ancien){
-                    $log= parent::$bdd -> prepare('SELECT * FROM Connexion where login=?');
+                    $log= parent::$bdd -> prepare('SELECT * FROM adherent where login=?');
                     $log->execute(array(htmlspecialchars(($_POST['login']))));
                     $tab=$log->fetch();
-                    if(password_verify(htmlspecialchars($_POST['mdp']),$tab['mdp'])){
+                    if(password_verify(htmlspecialchars($_POST['mdp']),$tab['mot_de_passe'])){
                         echo"connexion OK";
-                        $_SESSION['connexion'] = $tab['id'];
+                        $_SESSION['connexion'] = $tab['ID_adherent'];
                     }else{
                         echo "Erreur Lors de la connexion";
             }

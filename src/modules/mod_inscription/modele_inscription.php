@@ -2,7 +2,7 @@
 require_once("cont_inscription.php");
 class ModeleInscription extends Connexion
 {
-
+							
 	public function __construct(){}
 
 	public function ajout_ville() {
@@ -28,7 +28,9 @@ class ModeleInscription extends Connexion
 				if ($_SESSION['token_time'] >= $timestamp_ancien) {
 					$ajouteradhe = self::$bdd->prepare('INSERT INTO adherent (sexe,nom,prenom,date_de_naissance,adresse_mail,numero_de_telephone,numero_de_licence,login,mot_de_passe,adresse,ID_ville) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
 					$ajouteradhe->execute(array($_POST['sexe'], $_POST['nom'], $_POST['prenom'], $_POST['date_de_naissance'], $_POST['adresse_mail'], $_POST['numero_de_telephone'], $_POST['numero_de_licence'], $_POST['login'], password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT), $_POST['adresse'], $this->ajout_ville()));
+					$_SESSION['mail'] = $_POST['adresse_mail'];
 					$id_adherent = self::$bdd->lastInsertId();
+					$_SESSION ['idadh']= $id_adherent;
 				}
 			}
 		}

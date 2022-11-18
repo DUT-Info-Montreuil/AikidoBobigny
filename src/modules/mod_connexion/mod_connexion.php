@@ -4,7 +4,7 @@ class ModConnexion{
 
     private $vue;
 
-	public function __construct() {
+    public function __construct() {
         $this->vue = new VueConnexion();
         $controleur = new ContConnexion(new ModeleConnexion(), $this->vue);
         $controleur->exec();
@@ -14,3 +14,4 @@ class ModConnexion{
         return $this->vue->getAffichage();
     }
 }
+?>

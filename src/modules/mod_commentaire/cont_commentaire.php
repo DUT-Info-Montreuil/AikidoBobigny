@@ -7,22 +7,22 @@ class ContCommentaire{
     private $vue;
     private $action;
     private $id;
+
     public function __construct(ModeleCommentaire $modele,VueCommentaire $vue){
         $this->modele=$modele;
         $this->vue=$vue;
-        $this->action=isset($_GET['action'])?$_GET['action']:"default";
+        $this->action=isset($_GET['action'])?$_GET['action']:"commentaire";
         $this->id=isset($_GET['id'])?$_GET['id']:1;
     }
 
-   
 
     public function exec(){
         switch($this->action){
             case ("ajout"):
                 $this->modele->ajoutCommentaire();
                 break;
-            case ("Commentaire"):
-                $this->vue->form_Commentaire();
+            case ("commentaire"):
+                $this->vue->form_commentaire();
                 break;
 
         }
