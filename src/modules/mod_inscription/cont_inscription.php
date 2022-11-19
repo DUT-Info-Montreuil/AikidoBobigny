@@ -24,7 +24,6 @@ class ContInscription{
 
     public function inscription () {
         $this->modele->inscription();
-        $this->vuemail->message_Verif_Mail();
     }
 
 

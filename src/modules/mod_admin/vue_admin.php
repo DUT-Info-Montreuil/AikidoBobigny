@@ -40,15 +40,16 @@ class VueAdmin extends VueGenerique{
         }
 
         public function gerer_faq(array $tableau){
-            echo"<input type ='submit' class='button' value='question/reponse' name ='question/reponse'/><br>";
+            echo"<input type ='submit' class='button' value='ajouter_question/reponse' name ='ajouter_question/reponse'/><br>";
             foreach($tableau as $cle => $valeur){
                 echo "<form>
                 <a href='index.php?module=admin&action=faq&id=".$valeur['id_faq']."'></a>
                 Question : ".$valeur['question']."<br>
                 Reponse : ".$valeur['reponse']."<br>
-                <input type ='submit' class='button' value='repondre' name ='repondre'/>
-                <input type ='submit' class='button' value='corriger' name = 'corriger'/>
-                <input type ='submit' class='button' value='suprimer' name = 'suprimer'/>
+                <input type ='submit' class='button' value='repondrequestion' name ='repondrequestion'/>
+                <input type ='submit' class='button' value='corrigerquestion' name = 'corrigerquestion'/>
+                <input type ='submit' class='button' value='suprimerquestion' name = 'suprimerquestion'/>
+                <input type ='submit' class='button' value='suprimerreponse' name = 'suprimerreponse'/>
                 </form>"
                      ; 
             }
