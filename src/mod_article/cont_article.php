@@ -3,6 +3,7 @@
 include_once 'modele_article.php';
 include_once 'vue_article.php';
 
+
 class ContArticle{
 
     private $view;

@@ -5,7 +5,6 @@ include_once 'connexion.php';
 class ModeleArticle extends Connexion{
 
     public function __construct(){
-
     }
 
     public function insertArticle(){

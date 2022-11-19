@@ -1,11 +1,11 @@
 <?php
 
+include_once(__DIR__ . '/../mod_commentaires/vue_commentaire.php');
 class VueArticle{
-
+    
     public function __construct(){
 
     }
-
 
     public function menu(){
         echo '<a href = "index.php?module=article&action=formArticle">Ajouter un article</a>', '<br/>';
@@ -74,8 +74,9 @@ class VueArticle{
                 echo $row['titre'];
                 echo '</br>';
                 echo $row['texte'];
-            }
+            }     
         }
+        form_commentaire();
     }
 }
 
