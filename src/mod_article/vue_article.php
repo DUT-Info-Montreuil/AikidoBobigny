@@ -76,7 +76,8 @@ class VueArticle{
                 echo $row['texte'];
             }     
         }
-        form_commentaire();
+        $vueCommentaire = new VueCommentaire;
+        $vueCommentaire->form_commentaire();
     }
 }
 
