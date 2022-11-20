@@ -11,7 +11,7 @@ class VueInscription extends VueGenerique
 		$token = uniqid(rand(), true);
 		$_SESSION['token'] = $token;
 		$_SESSION['token_time'] = time();
-
+		
 		echo '
 		<form action="index.php?module=mod_inscription&action=ajout" method="post" enctype="multipart/form-data">
 		<div>
@@ -161,6 +161,7 @@ class VueInscription extends VueGenerique
 			a faire : partie Cadre réservé au bureau de section
 		</div>
 		<input type="submit" name="submit" value="Envoyer" />
+		<input type="hidden" name="token" id="token" value="'.$token.'"/>
 	</form>
 	<script>
 		inputSaison = document.getElementsByName("saison")[0];

@@ -37,6 +37,8 @@ class ContAdmin{
                 break;
             case("inscription"):
                 $this->inscription();
+                //$this->supp_adherent();
+                /*
                 if (isset($_POST['function'])) {
                     switch ($_POST['function']) {
                         case 'supprimeradherent':
@@ -45,9 +47,7 @@ class ContAdmin{
                             break;
                     }
                 }
-                break;
-            case 'supprimeradherent':
-                $this->supp_adherent();
+                */
                 break;
             case("faq"):
                 $this->faq();

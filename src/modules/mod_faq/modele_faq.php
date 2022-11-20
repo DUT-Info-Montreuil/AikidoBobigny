@@ -10,7 +10,8 @@ class ModeleFAQ extends Connexion{
 	        if($_SESSION['token'] == htmlspecialchars($_POST['token'])){
 		        $timestamp_ancien = time() - (15*60);
 		        if($_SESSION['token_time'] >= $timestamp_ancien){
-
+                    $ajouterfaq = parent::$bdd -> prepare('INSERT INTO faq (question) VALUES (?)');
+                    $ajouterfaq->execute(array($_POST["question"]));
                 }
             }
         }
