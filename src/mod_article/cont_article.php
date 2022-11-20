@@ -2,6 +2,7 @@
 
 include_once 'modele_article.php';
 include_once 'vue_article.php';
+include_once(__DIR__ . '/../mod_commentaires/modele_commentaire.php');
 
 
 class ContArticle{
@@ -9,11 +10,13 @@ class ContArticle{
     private $view;
     private $model;
     private $action;
+    private $modelCom;
 
 
     public function __construct(){
         $this->view = new VueArticle;
         $this->model = new ModeleArticle;
+        $this->modelCom = new ModeleCommentaire;
         if(isset($_GET['action'])){
             $this->action = $_GET['action'];
         }
@@ -42,6 +45,9 @@ class ContArticle{
             break;
             case("articleDetails"):
                 $this->rechercheDetails();
+            break;
+            case("ajout"):
+                $this->modelCom->ajoutCommentaire();
             break;
         }
 
