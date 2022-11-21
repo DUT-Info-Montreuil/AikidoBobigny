@@ -36,18 +36,7 @@ class ContAdmin{
                 $this->vue->menu();
                 break;
             case("inscription"):
-                $this->inscription();
-                //$this->supp_adherent();
-                /*
-                if (isset($_POST['function'])) {
-                    switch ($_POST['function']) {
-                        case 'supprimeradherent':
-                            echo 'test';
-                            $this->supp_adherent();
-                            break;
-                    }
-                }
-                */
+                $this->inscription();    
                 break;
             case("faq"):
                 $this->faq();

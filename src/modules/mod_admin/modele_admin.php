@@ -32,6 +32,7 @@ class ModeleAdmin extends Connexion{
                     $timestamp_ancien = time() - (15*60);
                     if($_SESSION['token_time'] >= $timestamp_ancien){
                 $id = $_POST['ID_adherent'];
+                echo "$id";
                 $req1 = parent::$bdd -> prepare ('DELETE from info_inscription where ID_adherent= ? ');
                 $req1->execute(array($id));
                 $req = parent::$bdd -> prepare ('DELETE from adherent where ID_adherent= ? ');

@@ -16,7 +16,7 @@ class VueAdmin extends VueGenerique{
             echo "<a href='index.php?module=admin&action=calendrier'>Gerez votre calendrier/evenements </a><br>";
         }
         public function gerer_inscrip(array $tableau){    
-            $token = uniqid(rand(), true);       
+        $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
             echo"
@@ -37,6 +37,7 @@ class VueAdmin extends VueGenerique{
                 <input type ='submit' class='button' value='verifinscrip' name = 'verifinscrip'/>
                 <input type ='submit' class='button' value='validermail' name = 'validermail'/>
                 <input type ='submit' class='button' value='passeradmin' name = 'passeradmin'/><br>
+                <input type ='hidden' class='ID_adherent' value='".$valeur['ID_adherent']."' name = 'ID_adherent'/>
                 <input type='hidden' name='token' id='token' value='".$token."'/>
                 "
                      ; 
