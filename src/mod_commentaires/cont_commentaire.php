@@ -19,10 +19,10 @@ class ContCommentaire{
 
     public function exec(){
         switch($this->action){
-            case ("ajout"):
+            case "ajout":
                 $this->modele->ajoutCommentaire();
                 break;
-            case ("commentaire"):
+            case "commentaire":
                 $this->vue->form_commentaire();
                 break;
 

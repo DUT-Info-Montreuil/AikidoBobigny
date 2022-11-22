@@ -21,7 +21,7 @@ switch($module){
         require_once('mod_article/mod_article.php');
         $m = new ModArticle();  
         break;
-    case "commentaire":
+    case "mod_commentaire":
         require_once('mod_commentaires/mod_commentaire.php');
         $m = new ModCommentaire();
         break;

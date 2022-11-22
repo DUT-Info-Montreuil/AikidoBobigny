@@ -22,7 +22,7 @@ class ModeleArticle extends Connexion{
     }
 
     public function articleRechercheDetails($id){ 
-        $sql =("SELECT titre,texte FROM article WHERE ID_article = ? ");
+        $sql =("SELECT ID_article,titre,texte FROM article WHERE ID_article = ? ");
         $sth = parent::$bdd->prepare($sql);
         $sth->execute(array($id));
         return $sth->fetch();

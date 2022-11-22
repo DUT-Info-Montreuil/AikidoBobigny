@@ -77,7 +77,8 @@ class VueArticle{
             }     
         }
         $vueCommentaire = new VueCommentaire;
-        $vueCommentaire->form_commentaire();
+        $vueCommentaire->form_commentaire($rechercheDetails['ID_article']);
+        
     }
 }
 
