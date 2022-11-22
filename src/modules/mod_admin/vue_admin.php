@@ -19,14 +19,7 @@ class VueAdmin extends VueGenerique{
         $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
-            echo"
-            
-            <script src = 'https://code.jquery.com/jquery-3.6.1.min.js'
-                 integrity='sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ='
-                crossorigin = 'anonymous'></script>
-                <script src='modules/mod_admin/script.js'>
-            </script>
-                ";
+           
             foreach($tableau as $cle => $valeur){
                 echo "
                 Nom : ".htmlspecialchars($valeur['nom'])."<br>
@@ -37,10 +30,17 @@ class VueAdmin extends VueGenerique{
                 <input type ='submit' class='button' value='verifinscrip' name = 'verifinscrip'/>
                 <input type ='submit' class='button' value='validermail' name = 'validermail'/>
                 <input type ='submit' class='button' value='passeradmin' name = 'passeradmin'/><br>
-                <input type ='hidden' class='ID_adherent' value='".$valeur['ID_adherent']."' name = 'ID_adherent'/>
+                <input type ='text' class='ID_adherent' id='ID_adherent' value='".$valeur['ID_adherent']."' name = 'ID_adherent'/>
                 <input type='hidden' name='token' id='token' value='".$token."'/>
                 "
                      ; 
+                     echo"
+            
+                     <script src = 'https://code.jquery.com/jquery-3.6.1.min.js'
+                          integrity='sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ='
+                         crossorigin = 'anonymous'></script>
+                         <script src='modules/mod_admin/script.js'>
+                     </script>";
             }
         }
 
