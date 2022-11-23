@@ -1,30 +1,17 @@
 <?php
 
-header('Content-Type:application/json;charset=utf8');
 session_start();
-require_once("/home/etudiants/info/ydjahnit/local_html/SAE/AikidoBobigny/src/connexion.php");
+require_once("../../connexion.php");
 Connexion::initConnexion();
+            if($_POST["actionadherent"]==1){
 
-if (isset($_POST['function'])) {
-    switch ($_POST['function']) {
-        case 'supprimeradherent':
-            if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
-                if($_SESSION['token'] ==($_POST['token'])){
-                    $timestamp_ancien = time() - (15*60);
-                    if($_SESSION['token_time'] >= $timestamp_ancien){
-                        if (isset($_POST["ID_adherent"])) {
-                            $id = $_POST['ID_adherent'];
-                            echo "$id";
+                        if (isset($_POST["targetID"])) {
                             $req1 = Connexion::getConnexion()->prepare('DELETE from info_inscription where ID_adherent= ? ');
-                            $req1->execute(array($id));
+                            $req1->execute(array($_POST['targetID']));
                             $req = Connexion::getConnexion()->prepare('DELETE from adherent where ID_adherent= ? ');
-                            $req->execute(array($id));
-                            
-                            var_dump($id);
-                            echo "Suppresion effectué";  
+                            $req->execute(array($_POST['targetID']));
                         }
-                    }}}  
-            break;
-    }
-}
+            };
+
+                
 ?>

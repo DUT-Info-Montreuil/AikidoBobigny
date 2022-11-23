@@ -28,7 +28,7 @@ class ModeleAdmin extends Connexion{
 
         public function supprimerAdherents(){
             if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
-                if($_SESSION['token'] == htmlspecialchars($_POST['token'])){
+                if($_SESSION['token'] == ($_POST['token'])){
                     $timestamp_ancien = time() - (15*60);
                     if($_SESSION['token_time'] >= $timestamp_ancien){
                 $id = $_POST['ID_adherent'];

@@ -25,9 +25,6 @@ class ContAdmin{
     $this->vue->gerer_faq($tab);
     }
 
-    public function supp_adherent(){
-        $this->modele->supprimerAdherents();
-    }
 
 
     public function exec(){
