@@ -4,13 +4,11 @@ include_once 'modele_article.php';
 include_once 'vue_article.php';
 include_once(__DIR__ . '/../mod_commentaires/modele_commentaire.php');
 
-
 class ContArticle{
 
     private $view;
     private $model;
     private $action;
-    private $modelCom;
 
 
     public function __construct(){
@@ -46,9 +44,6 @@ class ContArticle{
             case("articleDetails"):
                 $this->rechercheDetails();
             break;
-            case("ajout"):
-                $this->modelCom->ajoutCommentaire();
-            break;
         }
 
     }
@@ -79,7 +74,7 @@ class ContArticle{
     }
 
     public function rechercheDetails(){
-        $this->view->articleDetails($this->model->articleRechercheDetails($_GET['id']));
+        $this->view->articleDetails($this->model->articleRechercheDetails($_GET['id']),$this->modelCom->voirCommentaire($_GET['id']));
     }
 
 }

@@ -17,13 +17,15 @@ class VueArticle{
 
     public function formArticle(){
         echo'</br>';
-        echo'<form action="index.php?module=article&action=insertArticle" method="POST">
+        echo'<form action="index.php?module=article&action=insertArticle" method="POST" enctype="multipart/form-data">
             <label for="date">Date Article</label>
             <input type = "date" name ="dateArticle">
             <label for = "titre">Titre article</label>
             <input type = "text" name = "titreArticle" maxlength = 100>
             <label for ="texte">Texte article</label>
             <input type = "text" name = "texteArticle">
+            <label for = "img">Charger une image : </label>
+            <input type = "file" name = "image">
             <input type = "submit" value ="Créer">
             </form>
         ';
@@ -67,18 +69,31 @@ class VueArticle{
         }
     }
 
-    public function articleDetails($rechercheDetails){
+    public function articleDetails($rechercheDetails,$rechercheCom){
         if($rechercheDetails){
             foreach(array($rechercheDetails) as $row){
+                echo '<img src = "data:image/jpg;base64,'. base64_encode($row['img_bin']) .'" width = "500px" height = "500px"/>'
+                .'</br>';
                 echo '</br>';
                 echo $row['titre'];
                 echo '</br>';
+                echo '</br>';
                 echo $row['texte'];
+                echo '</br>';
             }     
         }
         $vueCommentaire = new VueCommentaire;
         $vueCommentaire->form_commentaire($rechercheDetails['ID_article']);
-        
+        foreach($rechercheCom as $rowCom){
+            echo '</br>';
+            echo $rowCom['login'];
+            echo '</br>';
+            echo $rowCom['texte'];
+            echo '</br>';
+            echo '<p>écrit le '.$rowCom['date_com'] .'</p>';
+
+
+        } 
     }
 }
 
