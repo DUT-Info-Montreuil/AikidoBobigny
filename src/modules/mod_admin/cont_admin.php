@@ -25,6 +25,12 @@ class ContAdmin{
     $this->vue->gerer_faq($tab);
     }
 
+    public function calendrier(){
+        $tab = $this->modele->getcalendrier();
+        $this->vue->gerercalendrier($tab);
+    }
+
+
 
 
     public function exec(){
@@ -38,9 +44,11 @@ class ContAdmin{
             case("faq"):
                 $this->faq();
                 break;
+            case("calendrier"):
+                $this->calendrier();
+                break;
 
         }
-    
     }
     public function afficheMod(){
         return $this->vue->getAffichage();

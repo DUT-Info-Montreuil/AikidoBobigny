@@ -26,22 +26,6 @@ class ModeleAdmin extends Connexion{
             return $tab->fetchAll();
         }
 
-        public function supprimerAdherents(){
-            if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
-                if($_SESSION['token'] == ($_POST['token'])){
-                    $timestamp_ancien = time() - (15*60);
-                    if($_SESSION['token_time'] >= $timestamp_ancien){
-                $id = $_POST['ID_adherent'];
-                echo "$id";
-                $req1 = parent::$bdd -> prepare ('DELETE from info_inscription where ID_adherent= ? ');
-                $req1->execute(array($id));
-                $req = parent::$bdd -> prepare ('DELETE from adherent where ID_adherent= ? ');
-                $req->execute(array($id));
-                
-                var_dump($id);
-                echo "Suppresion effectué";  
-                    }}}  
-        }
 
         public function validerAdherents(){
             if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
@@ -100,13 +84,8 @@ class ModeleAdmin extends Connexion{
         }
 
         public function ajout_question_reponse(){
-            if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
-                if($_SESSION['token'] == htmlspecialchars($_POST['token'])){
-                    $timestamp_ancien = time() - (15*60);
-                    if($_SESSION['token_time'] >= $timestamp_ancien){
             $ajouterquestion_reponse = parent::$bdd -> prepare('INSERT INTO faq (question,reponse) VALUES (?,?)');
             $ajouterquestion_reponse->execute(array($_POST["question_faq"],$_POST["reponse_faq"]));
-                    }}}
         }
 
         public function supprimer_question_reponse(){
