@@ -8,30 +8,28 @@
 
 		public function __construct() {
 			$this->contenu = 
-			"<div id='menu'>
+			"<nav id='navbar'>
+				<div class='logo'>
+					<a href='index.php'>AÏKIDO BOBIGNY</a>
+				</div>
 				<ul>
-					<li><a href='index.php'>Acceuil</a></li>
-					<li><a href='index.php?module=presentation&action=affiche'>L'Aïkido</a></li>
-					<li><a href='index.php?module=enseignant&action=affiche'>Les Senseis</a></li>
-					<li><a href='index.php?module=tarif&action=affiche'>Tarifs</a></li>
-					<li><a href='index.php?module=blog&action=affiche'>Blog</a></li>
-					<li><a href='index.php?module=contact&action=affiche'>Contact</a></li>
-					<li><a href='index.php?module=csv&action=menu'>Générer un fichier CSV</a></li>
-					<li><a href='index.php?module=upload&action=form_upload'>Déposer un fichier</a></li>	
-					<li><a href='index.php?module=calendrier&action=calendar'>Calendrier</a><li>
-          <li><a href='index.php?module=commentaire&action=commentaire'>Commentaire</a><li>
-					<li><a href='index.php?module=faq&action=FAQ'>Posez une question</a></li>";
-					
+					<li><a href='index.php' class='menu-link'>Acceuil</a></li>
+					<li><a href='index.php?module=presentation&action=affiche' class='menu-link'>L'Aïkido</a></li>
+					<li><a href='index.php?module=enseignant&action=affiche' class='menu-link'>Les Senseis</a></li>
+					<li><a href='index.php?module=tarif&action=affiche' class='menu-link'>Tarifs</a></li>
+					<li><a href='index.php?module=blog&action=affiche' class='menu-link'>Blog</a></li>
+					<li><a href='index.php?module=contact&action=affiche' class='menu-link'>Contact</a></li>
+					<li><a href='index.php?module=commentaire&action=commentaire' class='menu-link'>Commentaire</a></li>";			
 		}
 
 		public function completecontenu(){
 			if(isset($_SESSION['connexion'])){
-				$this->contenu.="<li><a href='index.php?module=connexion&action=deconnexion'>Deconnexion</a></li>";
+				$this->contenu.="<li><a href='index.php?module=compte'><i class='fa-regular fa-user'></i></a></li>";
 			}else{
-				$this->contenu.="<li><a href='index.php?module=connexion&action=form_connexion'>Se connecter</a></li>
-                          <li><a href='index.php?module=inscription&action=form_inscription'>Inscription</a></li>";
+				$this->contenu.="<li><button class='menu-btn' id='log-btn' onclick=\"showForm()\">se connecter</button></li>
+				<li><a href='index.php?module=inscription' class='menu-btn' id='sign-btn'>adherer</a></li>";
 			}
-			$this->contenu.="</ul></div>";
+			$this->contenu.="</ul></nav>";
 		}
 
 		public function getContenu() {

@@ -161,25 +161,8 @@ class VueInscription extends VueGenerique
 			a faire : partie Cadre réservé au bureau de section
 		</div>
 		<input type="submit" name="submit" value="Envoyer" />
-	</form>
-	<script>
-		inputSaison = document.getElementsByName("saison")[0];
-		month = new Date().getMonth();
-		if (month >= 9) {
-			inputSaison.value = new Date().getFullYear() + "-" + (new Date().getFullYear() + 1);
-		} else {
-			inputSaison.value = (new Date().getFullYear() - 1) + "-" + new Date().getFullYear();
-		}
-	
-		inputDateSignature = document.getElementsByName("date_signature")[0];
-		inputDateSignature.value = new Date().toISOString().slice(0, 10);
-	
-		/* if (document.getElementById("si_autre_section_oui").checked) {
-			document.getElementsByName("autre_section")[0].readOnly = false;
-		} else {
-			document.getElementsByName("autre_section")[0].readOnly = true;
-		}  à faire en ajax pcq ça fonctionne pas sans actualiser la page */
-	
-	</script>';
+	</form>';
 	}
 }
+
+?>

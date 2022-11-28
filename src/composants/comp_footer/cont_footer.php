@@ -1,18 +1,17 @@
 <?php
 
-  include_once 'vue_menu.php';
-  include_once 'modele_menu.php';
+  include_once 'vue_footer.php';
+  include_once 'modele_footer.php';
 
-	class ContMenu {
+	class ContFooter {
 
         private $vue;
 
 		public function __construct() {
-            $this->vue = new VueMenu();
+            $this->vue = new VueFooter();
 		}
 
         public function exec() {
-            $this->vue->completecontenu();
             return $this->vue->getContenu();
         }
         

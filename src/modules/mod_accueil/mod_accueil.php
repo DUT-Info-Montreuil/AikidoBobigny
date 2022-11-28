@@ -1,14 +1,14 @@
 <?php
 
-    include_once 'cont_calendrier.php';
+    include_once 'cont_accueil.php';
 
-	class ModCalendrier {
+	class ModAccueil {
 
         private $vue;
 
 		public function __construct() {
-            $this->vue = new VueCalendrier();
-            $controleur = new ContCalendrier(new ModeleCalendrier(), $this->vue);
+            $this->vue = new VueAccueil();
+            $controleur = new ContAccueil(new ModeleAccueil(), $this->vue);
             $controleur->exec();
         }
 

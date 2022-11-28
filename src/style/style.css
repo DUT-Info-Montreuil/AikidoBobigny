@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,600;1,700&display=swap');
+
+*, *:after, *:before {
+	box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    display : table;
+}
+
+hr {
+    width: 50%;
+}
+
+button {
+    border: black;
+    text-decoration: none;
+    color: rgba(rgb(237, 237, 237), .95);
+    cursor: pointer;
+}
+
+p {
+    font-size: 15pt;
+    text-align: justify;
+}
+
+h1, h2 {
+    text-align: center;
+    font-variant: small-caps;
+}
+#quote {
+    text-align: center;
+}
+
+.content {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#intro-aikido #textAikidoPres {
+    display: inline-block;
+    width:45%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 5%;
+}
+#intro-aikido #videoAikidoPres {
+    display: inline-block;
+    width: 45%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5%;
+    height: 400px;
+}
+
+#intro-aikido {
+    display: flex;
+    height: 450px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+#intro p {
+    margin-left: 200px;
+    margin-right: 200px;
+}

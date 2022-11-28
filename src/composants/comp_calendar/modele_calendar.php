@@ -1,10 +1,7 @@
 <?php
 
-class ModeleCalendrier extends Connexion
+class ModeleCalendar extends Connexion
 {
-
-
-
 	public function __construct()
 	{
 	}
