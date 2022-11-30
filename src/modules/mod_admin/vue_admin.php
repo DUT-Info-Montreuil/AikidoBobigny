@@ -7,6 +7,7 @@ class VueAdmin extends VueGenerique{
     private $vue_faq;
     public function __construct(){
         parent::__construct();
+        
         $this->vue_faq = new VueFAQ();
     }   
 
@@ -58,9 +59,10 @@ class VueAdmin extends VueGenerique{
                 echo "
                 Question : ".htmlspecialchars($valeur['question'])."</br>
                 Reponse : ".htmlspecialchars($valeur['reponse'])."</br>
-                <button class='repondrequestion' targetID=$valeur[id_faq]> Répondre Question</button></br>
-                ".$this->vue_faq->reponse_faq();"</br>
+                <button class='repondrequestion' targetID=$valeur[id_faq]> Répondre Question</button>
+                ".$this->vue_faq->reponse_faq($valeur['id_faq'])."
                 <button class='corrigerquestion' targetID=$valeur[id_faq]> Corriger Question</button>
+                ".$this->vue_faq->modifier_question($valeur['id_faq'])."
                 <button class='supprimerquestion_reponse' targetID=$valeur[id_faq]> Supprimer Question/Reponse </button></br>
                 <input type='hidden' name='token' id='token' value='".$token."'/>"
                      ; 
@@ -78,6 +80,7 @@ class VueAdmin extends VueGenerique{
 
         public function gerercalendrier($tableau){
             echo"<button class='ajouter_evenement' > Ajouter un événement au calendrier </button></br>";
+            $this->ajoutevenement();
             foreach($tableau as $cle => $valeur){
                 echo "
                 Evenement : ".htmlspecialchars($valeur['evenement'])."<br>
@@ -113,6 +116,24 @@ class VueAdmin extends VueGenerique{
 
             </form>';
         }
+
+        public function ajoutevenement(){
+            $token = uniqid(rand(), true);       
+        $_SESSION['token'] = $token;
+        $_SESSION['token_time'] = time();
+            echo'<form action="http://sae/src/index.php?module=admin&action=calendrier" method="POST" style ="display:none" class="ajoutevenement">
+            <p>Intitule:</p> <textarea <input type="text" name="intitule" id="intitule"placeholder="Votre evenement..."/></textarea></br>
+            <p>Description:</p> <textarea <input type="textarea" name="description" id="description" placeholder="Description événement"/></textarea></br>
+            <p> Date début événement:</p> <input type="date" name="datedebut" id="datedebut"/>
+            <p> Date fin événement:</p> <input type="date" name="datefin" id="datefin"/>
+
+            <input type="submit" value="Poster l\'evenement" class="submit_evenement"/>
+            <input type="hidden" name="token" id="token" value="'.$token.'"/>
+
+            </form>';
+        }
+
+        
     
     }
 

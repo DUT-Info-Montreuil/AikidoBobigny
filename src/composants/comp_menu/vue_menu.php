@@ -21,8 +21,8 @@
 					<li><a href='index.php?module=inscription&action=form_inscription'>Inscription</a></li>	
 					<li><a href='index.php?module=calendrier&action=calendar'>Calendrier</a><li>
           			<li><a href='index.php?module=commentaire&action=commentaire'>Commentaire</a><li>
-					<li><a href='index.php?module=faq&action=FAQ'>Posez une question</a></li>
-					<li><a href='index.php?module=admin&action=admin'>Admin</a><li>";
+					<li><a href='index.php?module=faq&action=FAQ'>Posez une question</a></li>".
+					$this->completeadmin();
 					
 		}
 
@@ -35,6 +35,13 @@
 			}
 			$this->contenu.="</ul></div>";
 		}
+		
+		public function completeadmin(){
+			///if(isset($_SESSION['admin'])&& $_SESSION['admin']==1){
+				return "<li><a href='index.php?module=admin&action=admin'>Admin</a><li>";
+			///}
+		}
+		
 
 		public function getContenu() {
 			return $this->contenu;

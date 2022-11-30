@@ -4,10 +4,13 @@ class ModAdmin{
 
     private $controleur;
     public function __construct(){
-        $vue=new VueAdmin();
-        $modele=new ModeleAdmin();
-        $this->controleur = new ContAdmin($modele,$vue);
-        echo($this->controleur->exec());
+        ///if(isset($_SESSION['admin'])&& $_SESSION['admin']==1){
+            $vue=new VueAdmin();
+            $modele=new ModeleAdmin();
+            $this->controleur = new ContAdmin($modele,$vue);
+            echo($this->controleur->exec());
+        //}else{}
+      
     }
 
     public function afficheModule(){

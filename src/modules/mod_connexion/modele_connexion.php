@@ -15,6 +15,7 @@ class ModeleConnexion extends Connexion{
                     if(password_verify(htmlspecialchars($_POST['mdp']),$tab['mot_de_passe'])){
                         echo"connexion OK";
                         $_SESSION['connexion'] = $tab['ID_adherent'];
+                        $_SESSION['admin']=$tab['admin'];
                     }else{
                         echo "Erreur Lors de la connexion";
             }

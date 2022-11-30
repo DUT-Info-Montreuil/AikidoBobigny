@@ -21,5 +21,16 @@ Connexion::initConnexion();
 						exit();
 				}
             };
+
+    if($_POST["actionfaq"]==4){            
+        if ($_POST) {
+            $ajouter_reponse = Connexion::getConnexion() -> prepare('UPDATE evenement SET reponse= ?  where id_faq= ? ');
+            $ajouter_reponse->execute(array($_POST["reponse_faq1"],$_POST["id"]));				
+        } else {
+            header('HTTP/1.1 500 Looks like mysql error, could not insert record!');
+            exit();
+        }
+    };
+   
  
 ?>
