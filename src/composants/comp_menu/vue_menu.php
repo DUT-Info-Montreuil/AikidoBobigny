@@ -20,7 +20,7 @@
 					<li><a href='index.php?module=upload&action=form_upload'>Déposer un fichier</a></li>
 					<li><a href='index.php?module=inscription&action=form_inscription'>Inscription</a></li>	
 					<li><a href='index.php?module=calendrier&action=calendar'>Calendrier</a><li>
-          			<li><a href='index.php?module=commentaire&action=commentaire'>Commentaire</a><li>
+          			<li><a href='index.php?module=article&action=article'>Article</a><li>
 					<li><a href='index.php?module=faq&action=FAQ'>Posez une question</a></li>".
 					$this->completeadmin();
 					

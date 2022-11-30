@@ -9,8 +9,7 @@ class ModCommentaire{
         $controleur = new ContCommentaire(new ModeleCommentaire(),$this->vue);
         $controleur->exec();
     }
-
-    public function getAffichage(){
+    public function getAffichage() {
         return $this->vue->getAffichage();
     }
 }

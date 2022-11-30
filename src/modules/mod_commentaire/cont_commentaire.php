@@ -1,6 +1,7 @@
 <?php
-require_once("vue_commentaire.php");
-require_once("modele_commentaire.php");
+include_once("vue_commentaire.php");
+include_once("modele_commentaire.php");
+
 class ContCommentaire{
 
     private $modele;
@@ -18,11 +19,8 @@ class ContCommentaire{
 
     public function exec(){
         switch($this->action){
-            case ("ajout"):
+            case "ajout":
                 $this->modele->ajoutCommentaire();
-                break;
-            case ("commentaire"):
-                $this->vue->form_commentaire();
                 break;
 
         }
