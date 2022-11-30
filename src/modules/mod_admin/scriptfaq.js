@@ -32,11 +32,10 @@ $(function () {
         $(".submit_modifier_question").click(function() {
             
 			/* VALUES */
-		    var modifier_question = $("#modifier_question").val();
-            var id = $(this).attr("targetID");    
-            var actionfaq = 3;
- 
- 
+            var targetID = $(this).attr("targetID");  
+            var modifier_question = $("#modifier_question"+targetID).val();  
+            var actionfaq = 4;
+            console.log(targetID);
  
 			if(modifier_question=='' ) {
 			$('.success').fadeOut(200).hide();
@@ -47,7 +46,7 @@ $(function () {
 			$.ajax({
 			type: "POST",
 		    url: "./modules/mod_admin/adminfaq.php",
-		    data: {modifier_question,id,actionfaq},
+		    data: {modifier_question,targetID,actionfaq},
 		    	success: function(){
 					$('.success').fadeIn(200).show();
 		    		$('.error').fadeOut(200).hide();
@@ -63,32 +62,30 @@ $(function () {
             $(".submit_reponse_faq").click(function() {
             
                 /* VALUES */
-                var reponse_faq1 = $("#reponsefaq").val();
-                var id = $(this).attr("targetID");
-                var actionfaq = 4;
+                var targetID = $(this).attr("targetID");
+                var reponsefaq = $("#reponsefaq"+targetID).val();
+                var actionfaq = 3;
+                console.log(targetID);
      
      
-     
-                if(reponse_faq1=='') {
+                if(reponsefaq=='') {
                 $('.success').fadeOut(200).hide();
                 $('.error').fadeOut(200).show();
-                /* UNCOMMNENT TO SEND TO CONSOLE */
-                console.log ("SOMETHING HAPPENS"); 
+                alert("il faut remplir les champs"); 
                 } else {
                 $.ajax({
                 type: "POST",
                 url: "./modules/mod_admin/adminfaq.php",
-                data: {reponse_faq1,id,actionfaq},
+                data: {reponsefaq,targetID,actionfaq},
                     success: function(){
                         $('.success').fadeIn(200).show();
                         $('.error').fadeOut(200).hide();
-                        /* UNCOMMNENT TO SEND TO CONSOLE */
-                        /* console.log (dataString); console.log ("AJAX DONE"); */
+            
                        }
                 });
-                    }//EOC
+                    }
                return false;
-                }); //EOF
+                }); 
                 
 
 

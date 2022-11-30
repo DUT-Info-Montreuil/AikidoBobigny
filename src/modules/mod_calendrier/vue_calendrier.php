@@ -57,5 +57,7 @@ class VueCalendrier extends VueGenerique
 
 		echo $calendrier;
 	}
+
+	
 }
 ?>

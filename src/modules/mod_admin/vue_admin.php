@@ -87,10 +87,6 @@ class VueAdmin extends VueGenerique{
                 Description : ".htmlspecialchars($valeur['intitule'])."<br>
                 Date de début : ".htmlspecialchars($valeur['debut_evenement'])."<br>
                 Date de fin : ".htmlspecialchars($valeur['fin_evenement'])."<br>
-                <button class='modifier_evenement' targetID=$valeur[ID_evenement]> Modifier evenement</button>
-                <button class='modifier_intitule' targetID=$valeur[ID_evenement]> Modifier intule evenement</button>
-                <button class='modifier_debut' targetID=$valeur[ID_evenement]> Modifier debut_evenement </button>
-                <button class='modifier_fin' targetID=$valeur[ID_evenement]> Modifier fin_evenement </button>
                 <button class='suppevenement' targetID=$valeur[ID_evenement]> Supprimer evenement </button></br>
                      "; 
 
