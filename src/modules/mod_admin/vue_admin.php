@@ -1,14 +1,16 @@
 <?php
 require_once "./vue_generique.php";
 require_once "./modules/mod_faq/vue_faq.php";
-
+include_once('./modules/mod_articles/vue_article.php');
 class VueAdmin extends VueGenerique{
 
     private $vue_faq;
+    private $vue_article;
     public function __construct(){
         parent::__construct();
         
         $this->vue_faq = new VueFAQ();
+        $this->vue_article = new VueArticle();
     }   
 
         public function menu(){
@@ -16,6 +18,10 @@ class VueAdmin extends VueGenerique{
             echo "<a href='index.php?module=admin&action=faq'>Gerez votre FAQ </a><br>";
             echo "<a href='index.php?module=admin&action=articles'>Gerez vos articles </a><br>";
             echo "<a href='index.php?module=admin&action=calendrier'>Gerez votre calendrier/evenements </a><br>";
+        }
+
+        public function gerer_article(){
+                $this->vue_article->menu();
         }
         public function gerer_inscrip(array $tableau){    
         $token = uniqid(rand(), true);       

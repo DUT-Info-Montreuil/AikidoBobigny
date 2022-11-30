@@ -47,6 +47,9 @@ class ContAdmin{
             case("calendrier"):
                 $this->calendrier();
                 break;
+            case("articles"):
+                $this->vue->gerer_article();
+                break;
 
         }
     }

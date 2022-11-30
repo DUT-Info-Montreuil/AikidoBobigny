@@ -10,9 +10,9 @@ class VueArticle extends VueGenerique
     }
 
     public function menu(){
-       /// echo '<a href = "index.php?module=article&action=formArticle">Ajouter un article</a>', '<br/>';
-       /// echo '<a href = "index.php?module=article&action=formDelete">Supprimer un article</a>', '<br/>';
-        ///echo '<a href = "index.php?module=article&action=gererCommentaire">Gerer les commentaires</a>', '<br/>'; 
+       echo '<a href = "index.php?module=article&action=formArticle">Ajouter un article</a>', '<br/>';
+       echo '<a href = "index.php?module=article&action=formDelete">Supprimer un article</a>', '<br/>';
+       echo '<a href = "index.php?module=article&action=gererCommentaire">Gerer les commentaires</a>', '<br/>'; 
         
     }
 
