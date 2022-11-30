@@ -1,12 +1,13 @@
 <?php
 require_once "./vue_generique.php";
-
+require_once "./modules/mod_faq/vue_faq.php";
 
 class VueAdmin extends VueGenerique{
 
-
+    private $vue_faq;
     public function __construct(){
         parent::__construct();
+        $this->vue_faq = new VueFAQ();
     }   
 
         public function menu(){
@@ -55,9 +56,10 @@ class VueAdmin extends VueGenerique{
             $this->ajoutquestion_reponse();
             foreach($tableau as $cle => $valeur){
                 echo "
-                Question : ".htmlspecialchars($valeur['question'])."<br>
-                Reponse : ".htmlspecialchars($valeur['reponse'])."<br>
-                <button class='repondrequestion' targetID=$valeur[id_faq]> Répondre Question</button>
+                Question : ".htmlspecialchars($valeur['question'])."</br>
+                Reponse : ".htmlspecialchars($valeur['reponse'])."</br>
+                <button class='repondrequestion' targetID=$valeur[id_faq]> Répondre Question</button></br>
+                ".$this->vue_faq->reponse_faq();"</br>
                 <button class='corrigerquestion' targetID=$valeur[id_faq]> Corriger Question</button>
                 <button class='supprimerquestion_reponse' targetID=$valeur[id_faq]> Supprimer Question/Reponse </button></br>
                 <input type='hidden' name='token' id='token' value='".$token."'/>"
@@ -103,7 +105,7 @@ class VueAdmin extends VueGenerique{
             $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
-            echo'<form action="http://sae/src/index.php?module=admin&action=faq method="POST" style ="display:none" class="ajoutquestion_reponse">
+            echo'<form action="http://sae/src/index.php?module=admin&action=faq" method="POST" style ="display:none" class="ajoutquestion_reponse">
             <p>Quelle est votre question :</p> <textarea <input type="text" name="question_faq" id="question_faq"placeholder="Votre question..."/></textarea></br>
             <p>Quelle est votre reponse:</p> <textarea <input type="textarea" name="reponse_faq" id="reponse_faq" placeholder="Mettez votre reponse "/></textarea></br>
             <input type="submit" value="Poster la question/reponse" class="submit_question_reponse"/>

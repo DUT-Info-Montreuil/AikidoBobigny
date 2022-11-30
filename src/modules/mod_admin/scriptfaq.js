@@ -12,6 +12,18 @@ $(function () {
                 }
          })
 
+         $(".repondrequestion").click(
+            function(){
+               if(bolean == false){
+                   $(".ajoutquestion_reponse").css("display", "block");
+                   bolean=true;
+               }else{
+                   $(".ajoutquestion_reponse").css("display", "none");
+                   bolean=false;
+               }
+        })
+
+
          $(".submit_question_reponse").click(function() {
             
 			/* VALUES */

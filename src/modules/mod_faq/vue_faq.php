@@ -22,7 +22,7 @@ class VueFAQ extends VueGenerique{
         $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
-        echo'<form action="index.php?module=mod_admin&action=faq" method="POST">
+        echo'<form action="http://sae/src/index.php?module=admin&action=faq" method="POST" style ="display:none">
         <p>Reponse:</p> <textarea <input type="textarea" name="reponse" placeholder="Mettez votre reponse "/></textarea></br>
         <input type="submit" value="Poster la réponse" name="submit_reponse_faq"/>
         <input type="hidden" name="token" id="token" value="'.$token.'"/>
