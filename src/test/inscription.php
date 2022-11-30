@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="inscription.css">
+    <script src="https://kit.fontawesome.com/49a257572d.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <div>
+    <div id="formulaire-inscription">
         <h1>Formulaire d'adhésion</h1>
         <div id="multi-step-form-container">
             <!-- Form Steps / Progress Bar -->
@@ -43,6 +45,11 @@
                     </a>
                 </li>
             </ul>
+            <ul id="formLegend">
+                <li>: champ requis</li>
+                <li>: champ invalide</li>
+                <li>: champ valide</li>
+            </ul>
             <!-- Step Wise Form Content -->
             <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST" action="index.php?module=mod_inscription&action=ajout">
                 <!-- Step 1 Content -->
@@ -53,24 +60,37 @@
                         <div id="formInfosPerso">
                             <div>
                                 <label class="input-label" class="input-label" for="saison">Saison :</label>
-                                <input class="input-field" class="input-field" type="text" name="saison" value="" readonly />
+                                <input class="input-field" class="input-field" type="text" name="saison" value="" disabled />
                             </div>
                             <div>
                                 <label class="input-label" for="section">Section :</label>
-                                <input class="input-field" type="text" name="section" value="A&iuml;kido" readonly />
+                                <input class="input-field" type="text" name="section" value="A&iuml;kido" disabled />
                             </div>
                             <div>
-                                <label class="input-label" for="adherent">Adherent :</label>
-                                <select name="adherent" id="adherent">
-                                    <option value="ancien">Ancien</option>
-                                    <option value="nouveau">Nouveau</option>
-                                    <option value="membre">Membre</option>
-                                    <option value="dirigeant">Dirigeant</option>
-                                    <option value="encadrant">Encadrant</option>
-                                </select>
+                                <label class="input-label">Adhérent</label>
+                                <div class="input-radio">
+                                    <input type="radio" name="typeAdherent" class="typeAdherent" value="ancien" id="ancien" />
+                                    <label class="input-label" for="ancien">Ancien</label>
+                                </div>
+                                <div class="input-radio">
+                                    <input type="radio" name="typeAdherent" class="typeAdherent" value="nouveau" id="nouveau" checked />
+                                    <label class="input-label" for="nouveau">Nouveau</label>
+                                </div>
+                                <div class="input-radio">
+                                    <input type="radio" name="typeAdherent" class="typeAdherent" value="membre" id="membre" />
+                                    <label class="input-label" for="membre">Membre</label>
+                                </div>
+                                <div class="input-radio">
+                                    <input type="radio" name="typeAdherent" class="typeAdherent" value="dirigeant" id="dirigeant" />
+                                    <label class="input-label" for="dirigeant">Dirigeant</label>
+                                </div>
+                                <div class="input-radio">
+                                    <input type="radio" name="typeAdherent" class="typeAdherent" value="encadrant" id="encadrant" />
+                                    <label class="input-label" for="encadrant">Encadrant</label>
+                                </div>
                             </div>
                             <div>
-                                <label class="input-label" for="nom">Nom de l\'adherent :</label>
+                                <label class="input-label" for="nom">Nom de l'adherent :</label>
                                 <input class="input-field" type="text" name="nom" value="" required />
                             </div>
                             <div>
@@ -78,11 +98,15 @@
                                 <input class="input-field" type="text" name="prenom" value="" required />
                             </div>
                             <div>
-                                <label class="input-label" for="sexe">Sexe</label>
-                                <select name="sexe" id="sexe">
-                                    <option value="M">M</option>
-                                    <option value="F">F</option>
-                                </select>
+                                <label class="input-label">Sexe</label>
+                                <div class="input-radio">
+                                    <input type="radio" name="sexe" class="sexe" value="m" id="m" />
+                                    <label class="input-label" for="m">M</label>
+                                </div>
+                                <div class="input-radio">
+                                    <input type="radio" name="sexe" class="sexe" value="f" id="f" />
+                                    <label class="input-label" for="f">F</label>
+                                </div>
                             </div>
                             <div>
                                 <label class="input-label" for="date_naissance">N&eacute;(e) le :</label>
@@ -101,13 +125,13 @@
                                 <input class="input-field" type="text" name="profession" value="" required />
                             </div>
                             <div>
-                                <p>Autres sections :</p>
-                                <div>
-                                    <input class="input-radio" type="radio" name="si_autre_section" class="si_autre_section" value="oui" onclick="hasOtherSection();" />
+                                <label class="input-label">Autres sections :</label>
+                                <div class="input-radio">
+                                    <input type="radio" name="si_autre_section" class="si_autre_section" value="oui" onclick="hasOtherSection();" id="oui" />
                                     <label class="input-label" for="oui">Oui</label>
                                 </div>
-                                <div>
-                                    <input class="input-radio" type="radio" name="si_autre_section" class="si_autre_section" value="non" onclick="hasNoOtherSection();" checked />
+                                <div class="input-radio">
+                                    <input type="radio" name="si_autre_section" class="si_autre_section" value="non" onclick="hasNoOtherSection();" checked id="non" />
                                     <label class="input-label" for="non">Non</label>
                                 </div>
                             </div>
@@ -162,7 +186,7 @@
                         </div>
                     </div>
                     <div class="mt-3">
-                        <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
+                        <button class="button btn-navigate-form-step submit" type="button" step_number="2">Suivant<i class="fa-solid fa-arrow-right" style="float: right;"></i></button>
                     </div>
                 </section>
                 <!-- Step 2 Content, default hidden on page load. -->
@@ -170,11 +194,57 @@
                     <h2 class="font-normal">Pieces Justificatives</h2>
                     <!-- Step 2 input fields -->
                     <div class="mt-3">
-                        Step 2 input fields goes here..
+                        <div id="depotFichiers">
+                            <div class="wrap">
+                                <h3>Pièce d'identité :</h3>
+                                <div class="file">
+                                    <div class="file__input" id="file__input">
+                                        <input class="file__input--file" id="piece_identite" type="file" name="piece_identite" />
+                                        <label class="file__input--label" for="piece_identite" data-text-btn="Upload"> file:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrap">
+                                <h3>Attestation de santé :</h3>
+                                <div class="file">
+                                    <div class="file__input" id="file__input">
+                                        <input class="file__input--file" id="attestation_sante" type="file" name="attestation_sante" />
+                                        <label class="file__input--label" for="attestation_sante" data-text-btn="Upload">Add file:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrap">
+                                <h3>Droit à l'image :</h3>
+                                <div class="file">
+                                    <div class="file__input" id="file__input">
+                                        <input class="file__input--file" id="droit_image" type="file" name="droit_image" />
+                                        <label class="file__input--label" for="droit_image" data-text-btn="Upload">Add file:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrap">
+                                <h3>Certificat médical :</h3>
+                                <div class="file">
+                                    <div class="file__input" id="file__input">
+                                        <input class="file__input--file" id="certificat_medical" type="file" name="certificat_medical" />
+                                        <label class="file__input--label" for="certificat_medical" data-text-btn="Upload">Add file:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrap">
+                                <h3>Autorisation parentale :</h3>
+                                <div class="file">
+                                    <div class="file__input" id="file__input">
+                                        <input class="file__input--file" id="autorisation_parentale" type="file" name="autorisation_parentale" />
+                                        <label class="file__input--label" for="autorisation_parentale" data-text-btn="Upload">Add file:</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="mt-3">
-                        <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
-                        <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button>
+                        <button class="button btn-navigate-form-step submit" type="button" step_number="1"><i class="fa-solid fa-arrow-left" style="float: left;"></i>Precedent</button>
+                        <button class="button btn-navigate-form-step submit" type="button" step_number="3">Suivant<i class="fa-solid fa-arrow-right" style="float: right;"></i></button>
                     </div>
                 </section>
                 <!-- Step 3 Content, default hidden on page load. -->
@@ -337,11 +407,21 @@
 
         function hasOtherSection() {
             document.getElementById('autre_section').disabled = false;
+            document.getElementById('autre_section').required = true;
         }
 
         function hasNoOtherSection() {
             document.getElementById('autre_section').disabled = true;
+            document.getElementById('autre_section').required = false;
         }
+        $(document).ready(function() {
+            $('.file__input--file').on('change', function(event) {
+                var file = event.target.files[0];
+                var id = $(this).attr('id');
+                $label = $('label[for="' + id + '"]');
+                $label.text(file.name);
+            });
+        });
     </script>
 </body>
 
