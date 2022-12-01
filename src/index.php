@@ -1,33 +1,61 @@
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Akido Bobigny</title>
-  <!--<script src="https://cdn.tailwindcss.com"></script>-->
-</head>
-
-<body>
 <?php
+    session_start();
 
-include_once('mod_article/cont_article.php');
+    include_once './modules/mod_upload/mod_upload.php';
+    include_once './modules/mod_connexion/mod_connexion.php';
+    include_once './modules/mod_inscription/mod_inscription.php';
+    include_once './modules/mod_commentaire/mod_commentaire.php';
+    include_once './modules/mod_mail/mod_mail.php';
+    include_once './modules/mod_csv/mod_csv.php';
+    include_once './modules/mod_calendrier/mod_calendrier.php';
+    include_once './modules/mod_faq/mod_faq.php';
+    include_once './modules/mod_admin/mod_admin.php';
+    include_once './modules/mod_articles/mod_article.php';
+    include_once './composants/comp_menu/comp_menu.php';
 
-Connexion::initConnexion();
+    Connexion::initConnexion();
 
-echo '<ul><li><a href="index.php?module=article">Articles</a></li>';
-
-$module = isset($_GET['module'])?$_GET['module'] : "article";
-
-switch($module){
-    case "article":
-        require_once('mod_article/mod_article.php');
-        $m = new ModArticle();  
-        break;
-    case "mod_commentaire":
-        require_once('mod_commentaires/mod_commentaire.php');
-        $m = new ModCommentaire();
-        break;
-}
-
+    $module = isset($_GET["module"]) ? $_GET["module"] : "connexion";
+    switch ($module) {
+        case 'upload':
+            $page = new ModUpload();
+            $contenu = VueUpload::getAffichage();
+            break;
+        case "connexion": 
+            $page = new Modconnexion();
+            $contenu = VueConnexion::getAffichage();
+            break;
+        case "inscription": 
+            $mod_inscription = new ModInscription();
+            $contenu = VueInscription::getAffichage();
+            break;
+        case "article": 
+            $mod_commentaires = new ModArticle();
+            $contenu = VueArticle::getAffichage();
+            break;
+        case "calendrier":
+            $mod_calendrier = new ModCalendrier();
+            $contenu = VueCalendrier::getAffichage();
+            break;
+        case "faq": 
+            $mod_faq = new ModFAQ();
+            $contenu = VueFAQ::getAffichage();
+            break; 
+        case "mail": 
+            $mod_mail = new ModMail();
+            break; 
+        case "csv":
+            $mod_csv = new ModCSV();
+            $contenu = VueCSV::getAffichage();
+            break;
+        case "admin":
+            $mod_admin = new ModAdmin();
+            $contenu = VueAdmin::getAffichage();
+            break;
+        default:
+            break;
+    }
+    $menu = new CompMenu();
+    include_once './template.php';
+    
 ?>
-
-</body>
-</html>
