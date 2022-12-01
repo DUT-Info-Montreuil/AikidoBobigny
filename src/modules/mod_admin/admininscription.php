@@ -2,6 +2,7 @@
 
 session_start();
 require_once("../../connexion.php");
+include_once('./modules/mod_mail/vue_mail.php');
 Connexion::initConnexion();
             if($_POST["actionadherent"]==1){
 
