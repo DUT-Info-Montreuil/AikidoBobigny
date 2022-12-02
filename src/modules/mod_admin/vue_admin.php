@@ -2,13 +2,18 @@
 require_once "./vue_generique.php";
 require_once "./modules/mod_faq/vue_faq.php";
 
+include_once('./modules/mod_articles/vue_article.php');
 class VueAdmin extends VueGenerique{
 
     private $vue_faq;
+    private $vue_article;
     public function __construct(){
         parent::__construct();
         
         $this->vue_faq = new VueFAQ();
+
+        $this->vue_article = new VueArticle();
+
     }   
 
         public function menu(){
@@ -17,6 +22,10 @@ class VueAdmin extends VueGenerique{
             echo "<a href='index.php?module=admin&action=articles'>Gerez vos articles </a><br>";
             echo "<a href='index.php?module=admin&action=calendrier'>Gerez votre calendrier/evenements </a><br>";
         }
+
+        public function gerer_article(){
+                $this->vue_article->menu();
+  
         public function gerer_inscrip(array $tableau){    
         $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
@@ -28,10 +37,11 @@ class VueAdmin extends VueGenerique{
                 Nom : ".htmlspecialchars($valeur['nom'])."<br>
                 Prenom : ".htmlspecialchars($valeur['prenom'])."<br>
                 mail : ".htmlspecialchars($valeur['adresse_mail'])."<br>
-                <button  class='supprimeradherent' targetID=$valeur[ID_adherent] >Supprimer Adherent</button>
-                <button  class='validerinscription' targetID=$valeur[ID_adherent] >Valider inscription</button>
-                <button  class='validermail' targetID=$valeur[ID_adherent] >Valider mail</button>
-                <button  class='passeradmin' targetID=$valeur[ID_adherent] >Passez le compte admin</button>
+
+                <button  class='supprimeradherent' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' >Supprimer Adherent</button>
+                <button  class='validerinscription' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."'>Valider inscription</button>
+                <button  class='validermail' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."'>Valider mail</button>
+                <button  class='passeradmin' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."'>Passez le compte admin</button>
                 <br>
                 <input type ='text' class='ID_adherent' id='ID_adherent' value='".$valeur['ID_adherent']."' name = 'ID_adherent'/>
                 <input type='hidden' name='token' id='token' value='".$token."'/>
@@ -45,15 +55,16 @@ class VueAdmin extends VueGenerique{
                      <script src = 'https://code.jquery.com/jquery-3.6.1.min.js'
                           integrity='sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ='
                          crossorigin = 'anonymous'></script>
-                         <script src='modules/mod_admin/script.js'>
+                         <script src='modules/mod_admin/scriptinscription.js'>
                      </script>";
         }
 
         public function gerer_faq(array $tableau){
-            $token = uniqid(rand(), true);       
-        $_SESSION['token'] = $token;
-        $_SESSION['token_time'] = time();
-            echo"<button class='ajouter_question_reponse' > Ajouter une question et une réponse </button></br>";
+        $tokenfaq = uniqid(rand(), true);       
+        $_SESSION['token_faq'] = $tokenfaq;
+        $_SESSION['token_time_faq'] = time();
+            echo"<button class='ajouter_question_reponse' > Ajouter une question et une réponse </button></br>
+            <input type='hidden' name='token' token='token' value='".$tokenfaq."'/>";
             $this->ajoutquestion_reponse();
             foreach($tableau as $cle => $valeur){
                 echo "
@@ -64,7 +75,9 @@ class VueAdmin extends VueGenerique{
                 <button class='corrigerquestion' targetID=$valeur[id_faq]> Corriger Question</button>
                 ".$this->vue_faq->modifier_question($valeur['id_faq'])."
                 <button class='supprimerquestion_reponse' targetID=$valeur[id_faq]> Supprimer Question/Reponse </button></br>
-                <input type='hidden' name='token' id='token' value='".$token."'/>"
+
+                <input type='hidden' name='token' token='token' value='".$tokenfaq."'/>"
+
                      ; 
 
                         }
@@ -101,7 +114,9 @@ class VueAdmin extends VueGenerique{
         }
 
         public function ajoutquestion_reponse(){
-            $token = uniqid(rand(), true);       
+
+        $token = uniqid(rand(), true);       
+
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
             echo'<form action="http://sae/src/index.php?module=admin&action=faq" method="POST" style ="display:none" class="ajoutquestion_reponse">

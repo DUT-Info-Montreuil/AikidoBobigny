@@ -76,6 +76,7 @@ class VueArticle extends VueGenerique
         if($rechercheDetails){
             foreach(array($rechercheDetails) as $row){
                 echo '<img src = "data:image/jpg;base64,'. base64_encode($row['img_bin']) .'" width = "400px" height = "400px"/>'
+
                 .'</br>';
                 echo '</br>';
                 echo $row['titre'];
@@ -114,6 +115,7 @@ class VueArticle extends VueGenerique
         }
     }
 
+
     public function listeCommentaireSup($rechercheCom){
         if($rechercheCom){
             echo '</br>';
@@ -125,6 +127,7 @@ class VueArticle extends VueGenerique
                         <th>Adhérent</th>
                         <th>Commentaire</th>
                         <th>Date</th>
+
                         <th>Statut_commentaire</th>
                     </tr>';
             foreach($rechercheCom as $row){

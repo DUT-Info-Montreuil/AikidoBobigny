@@ -44,6 +44,7 @@ class ModeleArticle extends Connexion{
         return $sth->fetchAll();
     }
 
+
     /*
     public function articlesRecent(){
         $sql = ("SELECT titre,ID_article FROM article WHERE DATEDIFF(NOW(),date) <= 7");
