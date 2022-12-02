@@ -7,13 +7,21 @@ class VueFAQ extends VueGenerique{
     }   
     
 
+    public function affichequestionreponse($tableau){
+        foreach($tableau as $cle => $valeur){
+            echo "
+            Question : ".htmlspecialchars($valeur['question'])."</br>
+            Reponse : ".htmlspecialchars($valeur['reponse'])."</br>";
+        }
+    }
+
     public function form_faq(){
         $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
-        echo'<form action="index.php?module=mod_faq&action=question_faq" method="POST">
+        echo'<form action="http://sae/src/index.php?module=faq&action=question_faq" method="POST">
 	        <p>Quelle est votre question :</p> <textarea <input type="text" name="question" placeholder="Votre question..."/></textarea></br>
-            <input type="submit"/>
+            <input type="submit" value="Envoyer la question"/>
             <input type="hidden" name="token" id="token" value="'.$token.'"/>
             </form>';
     }

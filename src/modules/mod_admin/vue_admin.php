@@ -56,10 +56,11 @@ class VueAdmin extends VueGenerique{
         }
 
         public function gerer_faq(array $tableau){
-            $token = uniqid(rand(), true);       
+        $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
-            echo"<button class='ajouter_question_reponse' > Ajouter une question et une réponse </button></br>";
+            echo"<button class='ajouter_question_reponse' > Ajouter une question et une réponse </button></br>
+            <input type='hidden' name='token' id='token' value='".$token."'/>";
             $this->ajoutquestion_reponse();
             foreach($tableau as $cle => $valeur){
                 echo "

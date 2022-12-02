@@ -20,9 +20,11 @@ Connexion::initConnexion();
 						header('HTTP/1.1 500 Looks like mysql error, could not insert record!');
 						exit();
 				}
-            };
+            }
+        ;
 
-    if($_POST["actionfaq"]==3){            
+    if($_POST["actionfaq"]==3){  
+                
         if ($_POST) {
             $ajouter_reponse = Connexion::getConnexion() -> prepare('UPDATE faq SET reponse= ?  where id_faq= ? ');
             $ajouter_reponse->execute(array($_POST["reponsefaq"],$_POST["targetID"]));				
