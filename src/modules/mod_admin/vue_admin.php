@@ -1,6 +1,7 @@
 <?php
 require_once "./vue_generique.php";
 require_once "./modules/mod_faq/vue_faq.php";
+
 include_once('./modules/mod_articles/vue_article.php');
 class VueAdmin extends VueGenerique{
 
@@ -10,7 +11,9 @@ class VueAdmin extends VueGenerique{
         parent::__construct();
         
         $this->vue_faq = new VueFAQ();
+
         $this->vue_article = new VueArticle();
+
     }   
 
         public function menu(){
@@ -22,7 +25,7 @@ class VueAdmin extends VueGenerique{
 
         public function gerer_article(){
                 $this->vue_article->menu();
-        }
+  
         public function gerer_inscrip(array $tableau){    
         $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
@@ -34,6 +37,7 @@ class VueAdmin extends VueGenerique{
                 Nom : ".htmlspecialchars($valeur['nom'])."<br>
                 Prenom : ".htmlspecialchars($valeur['prenom'])."<br>
                 mail : ".htmlspecialchars($valeur['adresse_mail'])."<br>
+
                 <button  class='supprimeradherent' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' >Supprimer Adherent</button>
                 <button  class='validerinscription' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."'>Valider inscription</button>
                 <button  class='validermail' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."'>Valider mail</button>
@@ -71,7 +75,9 @@ class VueAdmin extends VueGenerique{
                 <button class='corrigerquestion' targetID=$valeur[id_faq]> Corriger Question</button>
                 ".$this->vue_faq->modifier_question($valeur['id_faq'])."
                 <button class='supprimerquestion_reponse' targetID=$valeur[id_faq]> Supprimer Question/Reponse </button></br>
+
                 <input type='hidden' name='token' token='token' value='".$tokenfaq."'/>"
+
                      ; 
 
                         }
@@ -108,7 +114,9 @@ class VueAdmin extends VueGenerique{
         }
 
         public function ajoutquestion_reponse(){
+
         $token = uniqid(rand(), true);       
+
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
             echo'<form action="http://sae/src/index.php?module=admin&action=faq" method="POST" style ="display:none" class="ajoutquestion_reponse">

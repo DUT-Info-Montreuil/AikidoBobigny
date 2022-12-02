@@ -7,6 +7,7 @@ $(function () {
          $.ajax({
              type : "POST",
              url : "./modules/mod_admin/admin.php",
+
              data: {targetID : id , actioncalendrier : actioncalendrier},
              success: function(){
             $('.success').fadeIn(200).show();
@@ -16,6 +17,7 @@ $(function () {
     });
         
     }); 
+
 
      var bolean = false;
           $(".ajouter_evenement").click(
@@ -45,6 +47,7 @@ $(function () {
 			$('.success').fadeOut(200).hide();
 		    $('.error').fadeOut(200).show();
 			alert("Il faut remplir tous les champs"); 
+
 			} else {
 			$.ajax({
 			type: "POST",

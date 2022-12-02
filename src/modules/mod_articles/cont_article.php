@@ -53,6 +53,10 @@ class ContArticle{
             case("deleteCommentaire"):
                 $this->supprimerCommentaire();
             break;
+            case("validationCommentaire"):
+                $this->validerCommentaire();
+            break;
+
 
         }
 
@@ -94,11 +98,17 @@ class ContArticle{
     }
 
     public function gestionCommentaire(){
-        $this->view->listeCommentaire($this->modelCom->voirCommentaire($_GET['id']));
+        $this->view->listeCommentaireSup($this->modelCom->voirGestionCommentaire($_GET['id']));
+        $this->view->listeCommentaireValid($this->modelCom->voirGestionCommentaire($_GET['id']));
+
     }
 
     public function supprimerCommentaire(){
         $this->modelCom->deleteCommentaire();
+    }
+
+    public function validerCommentaire(){
+        $this->modelCom->validationCommentaire();
     }
 
     public function afficheMod(){

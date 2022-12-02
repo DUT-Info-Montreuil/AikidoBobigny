@@ -15,10 +15,12 @@ class VueFAQ extends VueGenerique{
         }
     }
 
+
     public function form_faq(){
         $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
+
         echo'<form action="http://sae/src/index.php?module=faq&action=question_faq" method="POST">
 	        <p>Quelle est votre question :</p> <textarea <input type="text" name="question" placeholder="Votre question..."/></textarea></br>
             <input type="submit" value="Envoyer la question"/>

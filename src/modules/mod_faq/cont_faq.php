@@ -14,16 +14,19 @@ class ContFAQ{
         $this->id=isset($_GET['id'])?$_GET['id']:1;
     }
 
+
     public function faq(){
         $tab = $this->modele->getfaq();
         $this->vue->affichequestionreponse($tab);
         }
+
    
 
     public function exec(){
         switch($this->action){
             case ("FAQ"):
                 $this->faq();
+
                 $this->vue->form_faq();
                 break;
             case("question_faq"):

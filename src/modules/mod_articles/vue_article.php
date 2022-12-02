@@ -75,7 +75,8 @@ class VueArticle extends VueGenerique
     public function articleDetails($rechercheDetails,$rechercheCom){
         if($rechercheDetails){
             foreach(array($rechercheDetails) as $row){
-                echo '<img src = "data:image/jpg;base64,'. base64_encode($row['img_bin']) .'" width = "500px" height = "500px"/>'
+                echo '<img src = "data:image/jpg;base64,'. base64_encode($row['img_bin']) .'" width = "400px" height = "400px"/>'
+
                 .'</br>';
                 echo '</br>';
                 echo $row['titre'];
@@ -114,10 +115,11 @@ class VueArticle extends VueGenerique
         }
     }
 
-    public function listeCommentaire($rechercheCom){
+
+    public function listeCommentaireSup($rechercheCom){
         if($rechercheCom){
             echo '</br>';
-            echo "Commentaires de l'article : ";
+            echo "Formulaire commentaires pour supprimer : ";
             echo '</br>';
             echo '<form action ="index.php?module=article&action=deleteCommentaire" method ="POST">';
             echo '<table>';
@@ -125,30 +127,71 @@ class VueArticle extends VueGenerique
                         <th>Adhérent</th>
                         <th>Commentaire</th>
                         <th>Date</th>
+
+                        <th>Statut_commentaire</th>
                     </tr>';
             foreach($rechercheCom as $row){
                 $id = $row['ID_commentaires'];
                 $auteur = $row['login'];
                 $texte = $row['texte'];
                 $date = $row['date_com'];
+                $statut = $row['com_validation'];
                 echo '</br>';
                 echo "<tr>
-                            <td><input type= 'checkbox' name ='supprimer[]' value ='$id'></td>
+                            <td><input type= 'checkbox' name ='supprimer_valider[]' value ='$id'></td>
                             <td>$auteur</td>
                             <td>$texte</td>
                             <td>$date</td>
+                            <td>$statut</td>
                         </tr>";
             }
             echo '</table>';
-            echo '<input type = "submit" value = "delete">'; 
+            echo '<input type = "submit" value = "Supprimer">'; 
             echo '</form>';
             
+        }
+    }
 
+        public function listeCommentaireValid($rechercheCom){
+            if($rechercheCom){
+                echo '</br>';
+                echo "Formulaire commentaires pour valider : ";
+                echo '</br>';
+                echo '<form action ="index.php?module=article&action=validationCommentaire" method ="POST">';
+                echo '<table>';
+                echo '  <tr>
+                            <th>Adhérent</th>
+                            <th>Commentaire</th>
+                            <th>Date</th>
+                            <th>Statut_commentaire</th>
+                        </tr>';
+                foreach($rechercheCom as $row){
+                    $id = $row['ID_commentaires'];
+                    $auteur = $row['login'];
+                    $texte = $row['texte'];
+                    $date = $row['date_com'];
+                    $statut = $row['com_validation'];
+                    echo '</br>';
+                    echo "<tr>
+                                <td><input type= 'checkbox' name ='supprimer_valider[]' value ='$id'></td>
+                                <td>$auteur</td>
+                                <td>$texte</td>
+                                <td>$date</td>
+                                <td>$statut</td>
+                            </tr>";
+                }
+                echo '</table>';
+                echo '<input type = "submit" value = "Valider">'; 
+                echo '</form>';
+                
+            }
         }
 
 
+
+
     }
-}
+
 
 
 
