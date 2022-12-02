@@ -269,26 +269,44 @@
                                     <p>de l’Athletic Club de Bobigny.</p>
                                 </li>
                                 <li>
-                                    <p>Les dirigeants de la section à faire hospitaliser mon enfant en cas de besoin.</p>
-                                    <input class="input-field" type="radio" name="hospitalisation" id="hospitalisation_oui" value="oui" />
-                                    <label class="input-label" for="oui">Oui</label>
-                                    <input class="input-field" type="radio" name="hospitalisation" id="hospitalisation_non" value="non" checked />
-                                    <label class="input-label" for="non">Non</label>
+                                    <div>
+                                        <label class="input-label">Les dirigeants de la section à faire hospitaliser mon enfant en cas de besoin.</label>
+                                        <div class="input-radio">
+                                            <input type="radio" name="hospitalisation" class="hospitalisation" value="oui" id="hospitalisation_oui" />
+                                            <label class="input-label" for="oui">Oui</label>
+                                        </div>
+                                        <div class="input-radio">
+                                            <input type="radio" name="hospitalisation" class="hospitalisation" value="non" checked id="hospitalisation_non" />
+                                            <label class="input-label" for="non">Non</label>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li>
-                                    <p>Les dirigeants de la section à transporter mon enfant en voitures particulières.</p>
-                                    <input class="input-field" type="radio" name="transport" id="transport_oui" value="oui" />
-                                    <label class="input-label" for="oui">Oui</label>
-                                    <input class="input-field" type="radio" name="transport" id="transport_non" value="non" checked />
-                                    <label class="input-label" for="non">Non</label>
+                                    <div>
+                                        <label class="input-label">Les dirigeants de la section à transporter mon enfant en voitures particulières.</label>
+                                        <div class="input-radio">
+                                            <input type="radio" name="transport" class="transport" value="oui" id="transport_oui" />
+                                            <label class="input-label" for="oui">Oui</label>
+                                        </div>
+                                        <div class="input-radio">
+                                            <input type="radio" name="transport" class="transport" value="non" checked id="transport_non" />
+                                            <label class="input-label" for="non">Non</label>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li>
-                                    <p>L’A.C.BOBIGNY à prendre et à utiliser les photos et vidéos de mon enfant pour une diffusion sur
-                                        différents supports de communication, site internet du club...</p>
-                                    <input class="input-field" type="radio" name="photos" id="photos_oui" value="oui" />
-                                    <label class="input-label" for="oui">Oui</label>
-                                    <input class="input-field" type="radio" name="photos" id="photos_non" value="non" checked />
-                                    <label class="input-label" for="non">Non</label>
+                                    <div>
+                                        <label class="input-label">L’A.C.BOBIGNY à prendre et à utiliser les photos et vidéos de mon enfant pour une diffusion sur
+                                        différents supports de communication, site internet du club...</label>
+                                        <div class="input-radio">
+                                            <input type="radio" name="photos" class="photos" value="oui" id="photos_oui" />
+                                            <label class="input-label" for="oui">Oui</label>
+                                        </div>
+                                        <div class="input-radio">
+                                            <input type="radio" name="photos" class="photos" value="non" checked id="photos_non" />
+                                            <label class="input-label" for="non">Non</label>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
