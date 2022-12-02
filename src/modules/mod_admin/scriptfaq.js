@@ -31,7 +31,6 @@ $(function () {
 
         $(".submit_modifier_question").click(function() {
             
-			/* VALUES */
             var targetID = $(this).attr("targetID");  
             var modifier_question = $("#modifier_question"+targetID).val();  
             var actionfaq = 4;
@@ -40,7 +39,7 @@ $(function () {
 			if(modifier_question=='' ) {
 			$('.success').fadeOut(200).hide();
 		    $('.error').fadeOut(200).show();
-			/* UNCOMMNENT TO SEND TO CONSOLE */
+            alert("il faut remplir \'modifier question\'");
 			console.log ("SOMETHING HAPPENS"); 
 			} else {
 			$.ajax({
@@ -50,18 +49,17 @@ $(function () {
 		    	success: function(){
 					$('.success').fadeIn(200).show();
 		    		$('.error').fadeOut(200).hide();
-					/* UNCOMMNENT TO SEND TO CONSOLE */
-					/* console.log (dataString); console.log ("AJAX DONE"); */
+					alert("La question a bien été modifié");
 		   		}
 			});
-				}//EOC
+				}
 		   return false;
-			}); //EOF
+			});
 
 
             $(".submit_reponse_faq").click(function() {
             
-                /* VALUES */
+    
                 var targetID = $(this).attr("targetID");
                 var reponsefaq = $("#reponsefaq"+targetID).val();
                 var actionfaq = 3;
@@ -80,7 +78,7 @@ $(function () {
                     success: function(){
                         $('.success').fadeIn(200).show();
                         $('.error').fadeOut(200).hide();
-            
+                        alert("Votre reponse a été publié vous pouvez vérifiez dans le module FAQ")
                        }
                 });
                     }

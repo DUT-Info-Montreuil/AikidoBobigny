@@ -34,10 +34,10 @@ class VueAdmin extends VueGenerique{
                 Nom : ".htmlspecialchars($valeur['nom'])."<br>
                 Prenom : ".htmlspecialchars($valeur['prenom'])."<br>
                 mail : ".htmlspecialchars($valeur['adresse_mail'])."<br>
-                <button  class='supprimeradherent' targetID=$valeur[ID_adherent] >Supprimer Adherent</button>
-                <button  class='validerinscription' targetID=$valeur[ID_adherent] >Valider inscription</button>
-                <button  class='validermail' targetID=$valeur[ID_adherent] >Valider mail</button>
-                <button  class='passeradmin' targetID=$valeur[ID_adherent] >Passez le compte admin</button>
+                <button  class='supprimeradherent' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' >Supprimer Adherent</button>
+                <button  class='validerinscription' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."'>Valider inscription</button>
+                <button  class='validermail' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."'>Valider mail</button>
+                <button  class='passeradmin' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."'>Passez le compte admin</button>
                 <br>
                 <input type ='text' class='ID_adherent' id='ID_adherent' value='".$valeur['ID_adherent']."' name = 'ID_adherent'/>
                 <input type='hidden' name='token' id='token' value='".$token."'/>
@@ -51,7 +51,7 @@ class VueAdmin extends VueGenerique{
                      <script src = 'https://code.jquery.com/jquery-3.6.1.min.js'
                           integrity='sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ='
                          crossorigin = 'anonymous'></script>
-                         <script src='modules/mod_admin/script.js'>
+                         <script src='modules/mod_admin/scriptinscription.js'>
                      </script>";
         }
 
