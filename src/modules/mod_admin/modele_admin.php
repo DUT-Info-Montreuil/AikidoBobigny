@@ -26,6 +26,12 @@ class ModeleAdmin extends Connexion{
             return $tab->fetchAll();
         }
 
+        public function getArticles(){
+            $tab = parent::$bdd -> prepare('select * from article');
+            $tab->execute();
+            return $tab->fetchAll();
+        }
+
 
         public function validerAdherents(){
             if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){

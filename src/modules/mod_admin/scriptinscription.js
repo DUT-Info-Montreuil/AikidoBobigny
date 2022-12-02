@@ -13,7 +13,7 @@ $(function () {
                success: function(){
             $('.success').fadeIn(200).show();
             $('.error').fadeOut(200).hide();
-            alert("L'adhérent"+nom +" "+prenom+" a bien été modifié supprimé ");
+            alert("L'adhérent "+nom +" "+prenom+" a bien été  supprimé ");
            }
         })
     });

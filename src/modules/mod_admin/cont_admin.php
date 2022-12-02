@@ -30,6 +30,11 @@ class ContAdmin{
         $this->vue->gerercalendrier($tab);
     }
 
+    public function article(){
+        $tab = $this->modele->getArticles();
+        $this->vue->gerer_article($tab);
+    }
+
 
 
 
@@ -48,7 +53,7 @@ class ContAdmin{
                 $this->calendrier();
                 break;
             case("articles"):
-                $this->vue->gerer_article();
+                $this->article();
                 break;
 
         }

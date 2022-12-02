@@ -20,7 +20,7 @@ Connexion::initConnexion();
 						header('HTTP/1.1 500 Looks like mysql error, could not insert record!');
 						exit();
 				}
-
+            }
 
     if($_POST["actionfaq"]==3){  
 

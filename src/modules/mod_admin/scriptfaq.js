@@ -53,7 +53,7 @@ $(function () {
 		    	success: function(){
 					$('.success').fadeIn(200).show();
 		    		$('.error').fadeOut(200).hide();
-					alert("La question a bien été modifié");
+					alert("La question "+modifier_question+" a bien été modifié");
 		   		}
 			});
 				}
@@ -66,10 +66,9 @@ $(function () {
             
                 var targetID = $(this).attr("targetID");
                 var reponsefaq = $("#reponsefaq"+targetID).val();
+                var question= $(this).attr("questionrep");
                 var actionfaq = 3;
                 console.log(targetID);
-     
-     
                 if(reponsefaq=='') {
                 $('.success').fadeOut(200).hide();
                 $('.error').fadeOut(200).show();
@@ -83,7 +82,7 @@ $(function () {
                         $('.success').fadeIn(200).show();
                         $('.error').fadeOut(200).hide();
 
-                        alert("Votre reponse a été publié vous pouvez vérifiez dans le module FAQ")
+                        alert("Votre reponse a la question : "+question+" a été publié vous pouvez vérifiez dans le module FAQ")
 
                        }
                 });
@@ -128,6 +127,9 @@ $(function () {
          $(".supprimerquestion_reponse").click(
             function(){
                 var id = $(this).attr("targetID");
+                var questionsup = $(this).attr("questionsupp");
+                var reponsesupp = $(this).attr("reponsesupp");
+
                 var actionfaq = 1
             $.ajax({
                 type : "POST",
@@ -136,7 +138,7 @@ $(function () {
                 success: function(){
                     $('.success').fadeIn(200).show();
                     $('.error').fadeOut(200).hide();
-                    alert("question et reponse supprimé de la faq")
+                    alert("la question : " +questionsup +" et la reponse :"+reponsesupp+" ont été supprimées de la faq")
                 }
             });
                 

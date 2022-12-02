@@ -23,10 +23,18 @@ class VueAdmin extends VueGenerique{
             echo "<a href='index.php?module=admin&action=calendrier'>Gerez votre calendrier/evenements </a><br>";
         }
 
-        public function gerer_article(){
+        public function gerer_article($tableau){
+
                 $this->vue_article->menu();
-  
-        public function gerer_inscrip(array $tableau){    
+                foreach($tableau as $cle => $valeur){
+                    echo "
+                    Titre : ".htmlspecialchars($valeur['titre'])."<br>
+                    Date : ".htmlspecialchars($valeur['date'])."<br>
+                   
+                    ";
+                }
+        }
+        public function gerer_inscrip(array $tableau){ 
         $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
@@ -70,11 +78,11 @@ class VueAdmin extends VueGenerique{
                 echo "
                 Question : ".htmlspecialchars($valeur['question'])."</br>
                 Reponse : ".htmlspecialchars($valeur['reponse'])."</br>
-                <button class='repondrequestion' targetID=$valeur[id_faq]> Répondre Question</button>
+                <button class='repondrequestion' targetID=$valeur[id_faq] questionrep='".htmlspecialchars($valeur['question'])."'> Répondre Question</button>
                 ".$this->vue_faq->reponse_faq($valeur['id_faq'])."
-                <button class='corrigerquestion' targetID=$valeur[id_faq]> Corriger Question</button>
+                <button class='corrigerquestion' targetID=$valeur[id_faq] corrigequestion='".htmlspecialchars($valeur['question'])."'> Corriger Question</button>
                 ".$this->vue_faq->modifier_question($valeur['id_faq'])."
-                <button class='supprimerquestion_reponse' targetID=$valeur[id_faq]> Supprimer Question/Reponse </button></br>
+                <button class='supprimerquestion_reponse' targetID=$valeur[id_faq] reponsesupp='".htmlspecialchars($valeur['reponse'])."' questionsupp='".htmlspecialchars($valeur['question'])."'> Supprimer Question/Reponse </button></br>
 
                 <input type='hidden' name='token' token='token' value='".$tokenfaq."'/>"
 
@@ -147,5 +155,6 @@ class VueAdmin extends VueGenerique{
         
     
     }
+
 
 ?>
