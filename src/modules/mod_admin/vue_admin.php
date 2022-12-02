@@ -56,11 +56,11 @@ class VueAdmin extends VueGenerique{
         }
 
         public function gerer_faq(array $tableau){
-        $token = uniqid(rand(), true);       
-        $_SESSION['token'] = $token;
-        $_SESSION['token_time'] = time();
+        $tokenfaq = uniqid(rand(), true);       
+        $_SESSION['token_faq'] = $tokenfaq;
+        $_SESSION['token_time_faq'] = time();
             echo"<button class='ajouter_question_reponse' > Ajouter une question et une réponse </button></br>
-            <input type='hidden' name='token' id='token' value='".$token."'/>";
+            <input type='hidden' name='token' token='token' value='".$tokenfaq."'/>";
             $this->ajoutquestion_reponse();
             foreach($tableau as $cle => $valeur){
                 echo "
@@ -71,7 +71,7 @@ class VueAdmin extends VueGenerique{
                 <button class='corrigerquestion' targetID=$valeur[id_faq]> Corriger Question</button>
                 ".$this->vue_faq->modifier_question($valeur['id_faq'])."
                 <button class='supprimerquestion_reponse' targetID=$valeur[id_faq]> Supprimer Question/Reponse </button></br>
-                <input type='hidden' name='token' id='token' value='".$token."'/>"
+                <input type='hidden' name='token' token='token' value='".$tokenfaq."'/>"
                      ; 
 
                         }
@@ -108,7 +108,7 @@ class VueAdmin extends VueGenerique{
         }
 
         public function ajoutquestion_reponse(){
-            $token = uniqid(rand(), true);       
+        $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
             echo'<form action="http://sae/src/index.php?module=admin&action=faq" method="POST" style ="display:none" class="ajoutquestion_reponse">

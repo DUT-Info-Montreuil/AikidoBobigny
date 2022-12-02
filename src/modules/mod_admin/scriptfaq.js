@@ -33,6 +33,7 @@ $(function () {
             
             var targetID = $(this).attr("targetID");  
             var modifier_question = $("#modifier_question"+targetID).val();  
+            
             var actionfaq = 4;
             console.log(targetID);
  
@@ -45,7 +46,7 @@ $(function () {
 			$.ajax({
 			type: "POST",
 		    url: "./modules/mod_admin/adminfaq.php",
-		    data: {modifier_question,targetID,actionfaq},
+		    data: {modifier_question,targetID,actionfaq,token},
 		    	success: function(){
 					$('.success').fadeIn(200).show();
 		    		$('.error').fadeOut(200).hide();
@@ -92,7 +93,7 @@ $(function () {
 			/* VALUES */
 		    var question_faq = $("#question_faq").val();
 			var reponse_faq = $("#reponse_faq").val();
-			
+			var token = $("#token").val();
             var actionfaq = 2;
  
  
@@ -106,17 +107,15 @@ $(function () {
 			$.ajax({
 			type: "POST",
 		    url: "./modules/mod_admin/adminfaq.php",
-		    data: {question_faq,reponse_faq,actionfaq},
-		    	success: function(){
-					$('.success').fadeIn(200).show();
-		    		$('.error').fadeOut(200).hide();
-					/* UNCOMMNENT TO SEND TO CONSOLE */
-					/* console.log (dataString); console.log ("AJAX DONE"); */
-		   		}
-			});
-				}//EOC
-		   return false;
-			}); //EOF
+		    data: {question_faq,reponse_faq,actionfaq,token},
+            success: function(){
+                $('.success').fadeIn(200).show();
+                $('.error').fadeOut(200).hide();
+                alert("question et reponse ajouté a la faq")
+            }
+        });
+            }
+        }); 
  
 
 
@@ -128,11 +127,14 @@ $(function () {
             $.ajax({
                 type : "POST",
                 url : "./modules/mod_admin/adminfaq.php",
-                data: {targetID : id , actionfaq : actionfaq}
-            }).then(function(id){
-                $("#"+id).remove();
-            })
-            }
-         )
+                data: {targetID : id , actionfaq : actionfaq},
+                success: function(){
+                    $('.success').fadeIn(200).show();
+                    $('.error').fadeOut(200).hide();
+                    alert("question et reponse supprimé de la faq")
+                }
+            });
+                
+            }); 
  
  }); 

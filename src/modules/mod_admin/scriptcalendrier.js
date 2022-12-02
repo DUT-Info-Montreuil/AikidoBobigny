@@ -7,11 +7,15 @@ $(function () {
          $.ajax({
              type : "POST",
              url : "./modules/mod_admin/admin.php",
-             data: {targetID : id , actioncalendrier : actioncalendrier}
-         }).then(function(id){
-             $("#"+id).remove();
-         })
-     })
+             data: {targetID : id , actioncalendrier : actioncalendrier},
+             success: function(){
+            $('.success').fadeIn(200).show();
+            $('.error').fadeOut(200).hide();
+            alert("evenement supprimé calendrier")
+        }
+    });
+        
+    }); 
 
      var bolean = false;
           $(".ajouter_evenement").click(
