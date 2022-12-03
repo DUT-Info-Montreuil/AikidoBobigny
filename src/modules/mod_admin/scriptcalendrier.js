@@ -7,11 +7,17 @@ $(function () {
          $.ajax({
              type : "POST",
              url : "./modules/mod_admin/admin.php",
-             data: {targetID : id , actioncalendrier : actioncalendrier}
-         }).then(function(id){
-             $("#"+id).remove();
-         })
-     })
+
+             data: {targetID : id , actioncalendrier : actioncalendrier},
+             success: function(){
+            $('.success').fadeIn(200).show();
+            $('.error').fadeOut(200).hide();
+            alert("evenement supprimé calendrier")
+        }
+    });
+        
+    }); 
+
 
      var bolean = false;
           $(".ajouter_evenement").click(
@@ -40,8 +46,8 @@ $(function () {
 			if(intitule=='' || description=='' || datedebut=='' || datefin=='') {
 			$('.success').fadeOut(200).hide();
 		    $('.error').fadeOut(200).show();
-			/* UNCOMMNENT TO SEND TO CONSOLE */
-			console.log ("SOMETHING HAPPENS"); 
+			alert("Il faut remplir tous les champs"); 
+
 			} else {
 			$.ajax({
 			type: "POST",
@@ -50,12 +56,11 @@ $(function () {
 		    	success: function(){
 					$('.success').fadeIn(200).show();
 		    		$('.error').fadeOut(200).hide();
-					/* UNCOMMNENT TO SEND TO CONSOLE */
-					/* console.log (dataString); console.log ("AJAX DONE"); */
+					alert("evenement ajouté au calendrier")
 		   		}
 			});
-				}//EOC
+				}
 		   return false;
-			}); //EOF
+			}); 
           
     });

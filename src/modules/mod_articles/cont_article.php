@@ -57,6 +57,7 @@ class ContArticle{
                 $this->validerCommentaire();
             break;
 
+
         }
 
     }
@@ -99,6 +100,7 @@ class ContArticle{
     public function gestionCommentaire(){
         $this->view->listeCommentaireSup($this->modelCom->voirGestionCommentaire($_GET['id']));
         $this->view->listeCommentaireValid($this->modelCom->voirGestionCommentaire($_GET['id']));
+
     }
 
     public function supprimerCommentaire(){

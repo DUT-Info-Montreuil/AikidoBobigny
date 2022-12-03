@@ -31,37 +31,39 @@ $(function () {
 
         $(".submit_modifier_question").click(function() {
             
-			/* VALUES */
+
             var targetID = $(this).attr("targetID");  
             var modifier_question = $("#modifier_question"+targetID).val();  
+            
+
             var actionfaq = 4;
             console.log(targetID);
  
 			if(modifier_question=='' ) {
 			$('.success').fadeOut(200).hide();
 		    $('.error').fadeOut(200).show();
-			/* UNCOMMNENT TO SEND TO CONSOLE */
+
+            alert("il faut remplir \'modifier question\'");
 			console.log ("SOMETHING HAPPENS"); 
 			} else {
 			$.ajax({
 			type: "POST",
 		    url: "./modules/mod_admin/adminfaq.php",
-		    data: {modifier_question,targetID,actionfaq},
+		    data: {modifier_question,targetID,actionfaq,token},
 		    	success: function(){
 					$('.success').fadeIn(200).show();
 		    		$('.error').fadeOut(200).hide();
-					/* UNCOMMNENT TO SEND TO CONSOLE */
-					/* console.log (dataString); console.log ("AJAX DONE"); */
+					alert("La question a bien été modifié");
 		   		}
 			});
-				}//EOC
+				}
 		   return false;
-			}); //EOF
+			});
+
 
 
             $(".submit_reponse_faq").click(function() {
             
-                /* VALUES */
                 var targetID = $(this).attr("targetID");
                 var reponsefaq = $("#reponsefaq"+targetID).val();
                 var actionfaq = 3;
@@ -80,7 +82,9 @@ $(function () {
                     success: function(){
                         $('.success').fadeIn(200).show();
                         $('.error').fadeOut(200).hide();
-            
+
+                        alert("Votre reponse a été publié vous pouvez vérifiez dans le module FAQ")
+
                        }
                 });
                     }
@@ -94,7 +98,6 @@ $(function () {
 			/* VALUES */
 		    var question_faq = $("#question_faq").val();
 			var reponse_faq = $("#reponse_faq").val();
-			
             var actionfaq = 2;
  
  
@@ -109,16 +112,15 @@ $(function () {
 			type: "POST",
 		    url: "./modules/mod_admin/adminfaq.php",
 		    data: {question_faq,reponse_faq,actionfaq},
-		    	success: function(){
-					$('.success').fadeIn(200).show();
-		    		$('.error').fadeOut(200).hide();
-					/* UNCOMMNENT TO SEND TO CONSOLE */
-					/* console.log (dataString); console.log ("AJAX DONE"); */
-		   		}
-			});
-				}//EOC
-		   return false;
-			}); //EOF
+            success: function(){
+                $('.success').fadeIn(200).show();
+                $('.error').fadeOut(200).hide();
+                alert("question et reponse ajouté a la faq")
+            }
+        });
+            }
+        }); 
+
  
 
 
@@ -130,11 +132,14 @@ $(function () {
             $.ajax({
                 type : "POST",
                 url : "./modules/mod_admin/adminfaq.php",
-                data: {targetID : id , actionfaq : actionfaq}
-            }).then(function(id){
-                $("#"+id).remove();
-            })
-            }
-         )
+                data: {targetID : id , actionfaq : actionfaq},
+                success: function(){
+                    $('.success').fadeIn(200).show();
+                    $('.error').fadeOut(200).hide();
+                    alert("question et reponse supprimé de la faq")
+                }
+            });
+                
+            }); 
  
  }); 
