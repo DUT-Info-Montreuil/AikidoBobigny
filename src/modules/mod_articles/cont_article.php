@@ -20,9 +20,8 @@ class ContArticle{
         }
     }
 
-    public function exec(){
-        ///$this->view->menu();
-        
+    public function execadmin(){
+       ///if admin ==1
         switch($this->action){
             case("formArticle"):
                 $this->form_ajout();
@@ -30,21 +29,11 @@ class ContArticle{
             case("insertArticle"):
                 $this->ajout();
             break;
-            case("article"):
-                $this->form_recherche();
-                $this->model->dernierArticle();
-            break;
-            case("articleRecherche"):
-                $this->faireRecherche();
-            break;
             case("formDelete"):
                 $this->form_delete_article();
             break;
             case("deleteArticle"):
                 $this->delete();
-            break;
-            case("articleDetails"):
-                $this->rechercheDetails();
             break;
             case("gererCommentaire"):
                 $this->gestionCommentaireRecherche();
@@ -58,10 +47,25 @@ class ContArticle{
             case("validationCommentaire"):
                 $this->validerCommentaire();
             break;
-
-
         }
+        
 
+    }
+
+    public function exec(){
+        
+        switch($this->action){
+            case("article"):
+                $this->form_recherche();
+                $this->model->dernierArticle();
+            break;
+            case("articleRecherche"):
+                $this->faireRecherche();
+            break;
+            case("articleDetails"):
+                $this->rechercheDetails();
+            break;
+        }
     }
 
 
