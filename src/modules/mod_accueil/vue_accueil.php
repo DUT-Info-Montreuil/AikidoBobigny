@@ -20,7 +20,7 @@ class VueAccueil extends VueGenerique
 				<div id="textAikidoPres">
 					<h2>Qu\'est ce que l\'Aïkido ?</h1>
 					<p>L’Aïkido est une discipline universelle qui peut être pratiquée à tout âge. Sur les tatamis, tous/toutes les pratiquant-e-s sont égaux/égales et portent la même tenue. Seule l’expérience accumulée au fil des années les distingue. Cette discipline repose sur le placement, le déplacement, l’engagement des hanches tout en souplesse et en disponibilité. L’Aïkido est une discipline martiale adaptée à tous les publics...</p>
-					<a href="">Plus d\'infos</a>
+					<a href="index.php?module=aikido">Plus d\'infos</a>
 					<h2>Téléchargez le livret débutant fédéral la FFAAA <a href="http://www.aikido-idf-ffaaa.fr/media/2019/02/aikido-ffaaa-guide-debutant.pdf" target="_blank">ici !</a></h2>
 				</div>
 				<iframe src="https://www.youtube.com/embed/9zCCKM9nMos" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="videoAikidoPres"></iframe>

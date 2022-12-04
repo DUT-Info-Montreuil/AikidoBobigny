@@ -24,24 +24,21 @@ class ContInscription{
 
     public function inscription () {
         $this->modele->inscription();
-        $this->vuemail->message_Verif_Mail();
+        /* $this->vuemail->message_Verif_Mail(); */
     }
 
 
     public function exec(){
         switch($this->action){
-            case ("inscription"):
+            case ("submit"):
                 $this->inscription();
-
+                header("Location: index.php");
                 break;
             case ("form_inscription"):
                 $this->form_inscription();
                 break;
         }
     
-    }
-    public function afficheMod(){
-        return $this->vue->getAffichage();
     }
 }
 

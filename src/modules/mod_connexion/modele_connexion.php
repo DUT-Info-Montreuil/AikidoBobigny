@@ -16,14 +16,10 @@ class ModeleConnexion extends Connexion
                     $log->execute(array(htmlspecialchars(($_POST['login']))));
                     $tab = $log->fetch();
                     if (password_verify(htmlspecialchars($_POST['mdp']), $tab['mot_de_passe'])) {
-                        echo "connexion OK";
                         $_SESSION['connexion'] = $tab['ID_adherent'];
+                        echo "<script>alertLogin();</script>";
                     } else {
-                        echo "<script>Swal.fire({
-                            icon: 'error',
-                            title: 'Erreur',
-                            text: 'Identifiant ou mot de passe incorrect !'
-                          })</script>";
+                        echo "<script>alertLoginError();</script>";
                     }
                 }
             }

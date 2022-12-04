@@ -1,4 +1,4 @@
-input {
+#loginForm input {
 	appearance: none;
 	border-radius: 0;
 }
@@ -23,25 +23,25 @@ input {
 	padding: 2rem 1rem 0;
 }
 
-.login-input {
+#loginForm .login-input {
 	display: flex;
 	flex-direction: column-reverse;
 	position: relative;
 	padding-top: 1.5rem;
 }
 
-.login-input+.login-input {
+#loginForm .login-input+.login-input {
 	margin-top: 1.5rem;
 }
 
-.input-label {
+#loginForm .input-label {
 	color: #8597a3;
 	position: absolute;
 	top: 1.5rem;
 	transition: .25s ease;
 }
 
-.input-field {
+#loginForm .input-field {
 	border: 0;
 	z-index: 1;
 	background-color: transparent;
@@ -51,14 +51,14 @@ input {
 	padding: 0.25rem 0;
 }
 
-.input-field:focus,
-.input-field:valid {
+#loginForm .input-field:focus,
+#loginForm .input-field:valid {
 	outline: 0;
 	border-bottom-color: #6658d3;
 }
 
-.input-field:focus+.input-label,
-.input-field:valid+.input-label {
+#loginForm .input-field:focus+.input-label,
+#loginForm .input-field:valid+.input-label {
 	color: #6658d3;
 	transform: translateY(-1.5rem);
 }

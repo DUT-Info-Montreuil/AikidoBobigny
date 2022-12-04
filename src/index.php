@@ -9,6 +9,9 @@
     include_once './modules/mod_csv/mod_csv.php';
     include_once './modules/mod_faq/mod_faq.php';
     include_once './modules/mod_accueil/mod_accueil.php';
+    include_once './modules/mod_aikido/mod_aikido.php';
+    include_once './modules/mod_senseis/mod_senseis.php';
+    include_once './modules/mod_article/mod_article.php';
 
     include_once './composants/comp_menu/comp_menu.php';
     include_once './composants/comp_slider/comp_slider.php';
@@ -23,23 +26,32 @@
         case 'accueil':
             $page = new ModAccueil();
             break;
+        case 'aikido':
+            $page = new ModAikido();
+            break;
+        case 'senseis':
+            $page = new ModSenseis();
+            break;
+        case 'article':
+            $page = new ModArticle();
+            break;
         case 'upload':
             $page = new ModUpload();
             break;
-        case "connexion": 
+        case "connexion":
             $page = new ModAccueil();
             new ModConnexion();
             break;
-        case "inscription": 
+        case "inscription":
             $page = new ModInscription();
             break;
-        case "commentaire": 
+        case "commentaire":
             $page = new ModCommentaire();
             break;
-        case "faq": 
+        case "faq":
             $page = new ModFAQ();
             break; 
-        case "mail": 
+        case "mail":
             $page = new ModMail();
             break; 
         case "csv":

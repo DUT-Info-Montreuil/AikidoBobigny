@@ -75,3 +75,14 @@ h1, h2 {
     margin-left: 200px;
     margin-right: 200px;
 }
+
+.aikidoPres, .senseisPres{
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.senseisPres table{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 100px;
+}

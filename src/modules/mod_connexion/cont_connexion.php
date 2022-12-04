@@ -17,9 +17,11 @@ class ContConnexion
         switch ($this->action) {
             case ("connexion"):
                 $this->modele->connexion();
+                /* header("Location:" . $_SERVER['HTTP_REFERER']); */
                 break;
             case ("deconnexion"):
                 $this->modele->deconnexion();
+                header("Location:" . $_SERVER['HTTP_REFERER']);
                 break;
         }
     }

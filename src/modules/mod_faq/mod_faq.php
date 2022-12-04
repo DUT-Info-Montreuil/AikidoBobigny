@@ -14,3 +14,4 @@ class ModFAQ{
         return $this->vue->getAffichage();
     }
 }
+?>

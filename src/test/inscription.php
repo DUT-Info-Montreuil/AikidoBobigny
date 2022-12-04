@@ -44,6 +44,15 @@
                         <div class="label text-muted">Finalisation de l'adhésion</div>
                     </a>
                 </li>
+                <!-- Step 4 -->
+                <li class="form-stepper-unfinished text-center form-stepper-list" step="4">
+                    <a class="mx-2">
+                        <span class="form-stepper-circle text-muted">
+                            <span>4</span>
+                        </span>
+                        <div class="label text-muted">Choix des identifiants</div>
+                    </a>
+                </li>
             </ul>
             <ul id="formLegend">
                 <li>: champ requis</li>
@@ -252,162 +261,154 @@
                     <h2 class="font-normal">Finalisation de l'adhésion</h2>
                     <!-- Step 3 input fields -->
                     <div class="mt-3">
-                        <div>
+                        <div id="finInscription">
                             <p>Autorisation parentale :</p>
-                            <p>Je soussign&eacute;(e)</p>
-                            <input class="input-field" type="text" name="nom_resp_legal" placeholder="Nom du responsable légal" />
-                            <select name="titre_resp_legal" id="titre_resp_legal">
-                                <option value="pere">P&egrave;re</option>
-                                <option value="mere">M&egrave;re</option>
-                                <option value="tuteur">Tuteur l&eacute;gal</option>
-                            </select>
-                            <p>,autorise :</p>
+                            <div>
+                                <p>Je soussign&eacute;(e) </p>
+                                <input class="input-field" type="text" name="nom_resp_legal" placeholder="Nom du responsable légal" required />
+                                <select name="titre_resp_legal" id="titre_resp_legal">
+                                    <option value="pere">P&egrave;re</option>
+                                    <option value="mere">M&egrave;re</option>
+                                    <option value="tuteur">Tuteur l&eacute;gal</option>
+                                </select>
+                                <p>, autorise :
+                                </p>
+                            </div>
                             <ul>
                                 <li>
-                                    <p>mon enfant à s’inscrire à la section</p>
-                                    <input class="input-field" type="text" name="section" value="A&iuml;kido" readonly />
-                                    <p>de l’Athletic Club de Bobigny.</p>
+                                    <div>
+                                        <p>mon enfant à s’inscrire à la section Aikido de l’Athletic Club de Bobigny.</p>
+                                        <div class="input-radio">
+                                            <input type="radio" name="inscription" class="inscription" value="oui" id="inscription_oui" />
+                                            <label class="input-label" for="inscription_oui">Oui</label>
+                                        </div>
+                                        <div class="input-radio">
+                                            <input type="radio" name="inscription" class="inscription" value="non" checked id="inscription_non" />
+                                            <label class="input-label" for="inscription_non">Non</label>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li>
                                     <div>
-                                        <label class="input-label">Les dirigeants de la section à faire hospitaliser mon enfant en cas de besoin.</label>
+                                        <p>Les dirigeants de la section à faire hospitaliser mon enfant en cas de besoin.</p>
                                         <div class="input-radio">
                                             <input type="radio" name="hospitalisation" class="hospitalisation" value="oui" id="hospitalisation_oui" />
-                                            <label class="input-label" for="oui">Oui</label>
+                                            <label class="input-label" for="hospitalisation_oui">Oui</label>
                                         </div>
                                         <div class="input-radio">
                                             <input type="radio" name="hospitalisation" class="hospitalisation" value="non" checked id="hospitalisation_non" />
-                                            <label class="input-label" for="non">Non</label>
+                                            <label class="input-label" for="hospitalisation_non">Non</label>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
                                     <div>
-                                        <label class="input-label">Les dirigeants de la section à transporter mon enfant en voitures particulières.</label>
+                                        <p>Les dirigeants de la section à transporter mon enfant en voitures particulières.</p>
                                         <div class="input-radio">
                                             <input type="radio" name="transport" class="transport" value="oui" id="transport_oui" />
-                                            <label class="input-label" for="oui">Oui</label>
+                                            <label class="input-label" for="transport_oui">Oui</label>
                                         </div>
                                         <div class="input-radio">
                                             <input type="radio" name="transport" class="transport" value="non" checked id="transport_non" />
-                                            <label class="input-label" for="non">Non</label>
+                                            <label class="input-label" for="transport_non">Non</label>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
                                     <div>
-                                        <label class="input-label">L’A.C.BOBIGNY à prendre et à utiliser les photos et vidéos de mon enfant pour une diffusion sur
-                                        différents supports de communication, site internet du club...</label>
+                                        <p>L’A.C.BOBIGNY à prendre et à utiliser les photos et vidéos de mon enfant pour une diffusion sur
+                                            différents supports de communication.</p>
                                         <div class="input-radio">
                                             <input type="radio" name="photos" class="photos" value="oui" id="photos_oui" />
-                                            <label class="input-label" for="oui">Oui</label>
+                                            <label class="input-label" for="photos_oui">Oui</label>
                                         </div>
                                         <div class="input-radio">
                                             <input type="radio" name="photos" class="photos" value="non" checked id="photos_non" />
-                                            <label class="input-label" for="non">Non</label>
+                                            <label class="input-label" for="photos_non">Non</label>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
-                        </div>
-                        <div>
-                            <input class="input-field" type="checkbox" name="reglement" id="reglement_check">
-                            <label class="input-label" for="reglement_check">J’ai bien pris connaissance des règles principales au règlement intérieur (voir <a href="">ici</a>).</label>
-                        </div>
-                        <div>
-                            <p>Fait &agrave; Bobigny le :</p>
-                            <input class="input-field" type="date" name="date_signature" value="" readonly />
-                            <p>Signature (pr&eacute;c&eacute;d&eacute;e de la mention "lu et approuv&eacute;"</p>
-                            <table>
-                                <tr>
-                                    <td>l\'adh&eacute;rent</td>
-                                    <td>le responsable l&eacute;gal</td>
-                                </tr>
-                                <tr>
-                                    <td><input class="input-field" type="file" name="signature_adherent" value="" /></td>
-                                    <td><input class="input-field" type="file" name="signature_resp_legal" value="" /></td>
-                                </tr>
-                            </table>
+                            <div class="toggle-pill-color">
+                                <p>J’ai bien pris connaissance des règles principales au règlement intérieur (voir <a href="">ici</a>).</p>
+                                <input type="checkbox" id="reglement_check" name="reglement_check">
+                                <label for="reglement_check"></label>
+                            </div>
+
+                            <div style="display: block;">
+                                <p>Fait &agrave; Bobigny le :
+                                    <?php
+                                    $date = date('d/m/Y');
+                                    echo $date;
+                                    ?></p>
+                            </div>
                         </div>
                     </div>
                     <div class="mt-3">
-                        <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
-                        <button class="button submit-btn" type="submit">Save</button>
+                        <button class="button btn-navigate-form-step submit" type="button" step_number="2"><i class="fa-solid fa-arrow-left" style="float: left;"></i>Precedent</button>
+                        <button class="button btn-navigate-form-step submit" type="button" step_number="4">Suivant<i class="fa-solid fa-arrow-right" style="float: right;"></i></button>
+                    </div>
+                </section>
+                 <!-- Step 2 Content, default hidden on page load. -->
+                 <section id="step-4" class="form-step d-none">
+                    <h2 class="font-normal">Choix des identifiants</h2>
+                    <!-- Step 2 input fields -->
+                    <div class="mt-3">
+                        <div id="choixIdentifiants">
+                            <div>
+                                <label class="input-label" for="identifiant">Choisissez un identifiant de connexion :</label>
+                                <input class="input-field" type="text" name="identifiant" placeholder="Identifiant" required />
+                            </div>
+                            <div>
+                                <label class="input-label" for="mdp">Choisissez un mot de passe :</label>
+                                <input class="input-field" type="password" name="mdp" placeholder="Mot de passe" required />
+                            </div>
+                            <div>
+                                <label class="input-label" for="mdp2">Confirmez le mot de passe :</label>
+                                <input class="input-field" type="password" name="mdp2" placeholder="Mot de passe" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button class="button btn-navigate-form-step submit" type="button" step_number="3"><i class="fa-solid fa-arrow-left" style="float: left;"></i>Precedent</button>
+                        <button class="button submit-btn submit" type="submit">Envoyer<i class="fa-solid fa-paper-plane" style="float: right;"></i></button>
                     </div>
                 </section>
             </form>
         </div>
     </div>
     <script>
-        /**
-         * Define a function to navigate betweens form steps.
-         * It accepts one parameter. That is - step number.
-         */
         const navigateToFormStep = (stepNumber) => {
-            /**
-             * Hide all form steps.
-             */
+
             document.querySelectorAll(".form-step").forEach((formStepElement) => {
                 formStepElement.classList.add("d-none");
             });
-            /**
-             * Mark all form steps as unfinished.
-             */
+
             document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
                 formStepHeader.classList.add("form-stepper-unfinished");
                 formStepHeader.classList.remove("form-stepper-active", "form-stepper-completed");
             });
-            /**
-             * Show the current form step (as passed to the function).
-             */
+
             document.querySelector("#step-" + stepNumber).classList.remove("d-none");
-            /**
-             * Select the form step circle (progress bar).
-             */
+
             const formStepCircle = document.querySelector('li[step="' + stepNumber + '"]');
-            /**
-             * Mark the current form step as active.
-             */
+
             formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
             formStepCircle.classList.add("form-stepper-active");
-            /**
-             * Loop through each form step circles.
-             * This loop will continue up to the current step number.
-             * Example: If the current step is 3,
-             * then the loop will perform operations for step 1 and 2.
-             */
+
             for (let index = 0; index < stepNumber; index++) {
-                /**
-                 * Select the form step circle (progress bar).
-                 */
                 const formStepCircle = document.querySelector('li[step="' + index + '"]');
-                /**
-                 * Check if the element exist. If yes, then proceed.
-                 */
                 if (formStepCircle) {
-                    /**
-                     * Mark the form step as completed.
-                     */
                     formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-active");
                     formStepCircle.classList.add("form-stepper-completed");
                 }
             }
         };
-        /**
-         * Select all form navigation buttons, and loop through them.
-         */
+
         document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn) => {
-            /**
-             * Add a click event listener to the button.
-             */
+
             formNavigationBtn.addEventListener("click", () => {
-                /**
-                 * Get the value of the step.
-                 */
                 const stepNumber = parseInt(formNavigationBtn.getAttribute("step_number"));
-                /**
-                 * Call the function to navigate to the target form step.
-                 */
                 navigateToFormStep(stepNumber);
             });
         });
@@ -419,9 +420,6 @@
         } else {
             inputSaison.value = (new Date().getFullYear() - 1) + "-" + new Date().getFullYear();
         }
-
-        inputDateSignature = document.getElementsByName("date_signature")[0];
-        inputDateSignature.value = new Date().toISOString().slice(0, 10);
 
         function hasOtherSection() {
             document.getElementById('autre_section').disabled = false;

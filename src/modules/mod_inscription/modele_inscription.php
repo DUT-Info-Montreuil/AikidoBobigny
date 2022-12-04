@@ -1,5 +1,5 @@
 <?php
-require_once("cont_inscription.php");
+
 class ModeleInscription extends Connexion
 {
 							
@@ -11,9 +11,16 @@ class ModeleInscription extends Connexion
 			if ($_SESSION['token'] == $_POST['token']) {
 				$timestamp_ancien = time() - (15 * 60);
 				if ($_SESSION['token_time'] >= $timestamp_ancien) {
-					$ajouterville = self::$bdd->prepare('INSERT INTO ville (code_postal,ville) VALUES (?,?)');
-					$ajouterville->execute(array($_POST["code_postal"], $_POST["ville"]));
-					$id_ville = self::$bdd->lastInsertId();
+					$requete = self::$bdd->prepare("SELECT * FROM ville WHERE code_postal = :code_postal");
+					$requete->execute(array(':code_postal' => $_POST['code_postal']));
+					$donnees = $requete->fetch();
+					if ($donnees) {
+						$id_ville = $donnees['ID_ville'];
+					} else {
+						$requete = self::$bdd->prepare("INSERT INTO ville (code_postal, ville) VALUES (:code_postal, :ville)");
+						$requete->execute(array(':code_postal' => $_POST['code_postal'], ':ville' => $_POST['ville']));
+						$id_ville = self::$bdd->lastInsertId();
+					}
 				}
 			}
 		}
@@ -26,11 +33,12 @@ class ModeleInscription extends Connexion
 			if ($_SESSION['token'] == $_POST['token']) {
 				$timestamp_ancien = time() - (15 * 60);
 				if ($_SESSION['token_time'] >= $timestamp_ancien) {
-					$ajouteradhe = self::$bdd->prepare('INSERT INTO adherent (sexe,nom,prenom,date_de_naissance,adresse_mail,numero_de_telephone,numero_de_licence,login,mot_de_passe,adresse,ID_ville) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
-					$ajouteradhe->execute(array($_POST['sexe'], $_POST['nom'], $_POST['prenom'], $_POST['date_de_naissance'], $_POST['adresse_mail'], $_POST['numero_de_telephone'], $_POST['numero_de_licence'], $_POST['login'], password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT), $_POST['adresse'], $this->ajout_ville()));
-					$_SESSION['mail'] = $_POST['adresse_mail'];
+					$ajouteradhe = self::$bdd->prepare('INSERT INTO adherent (sexe,nom,prenom,date_de_naissance,adresse_mail,numero_de_telephone,login,mot_de_passe,adresse,ID_ville) VALUES (?,?,?,?,?,?,?,?,?,?)');
+					$ajouteradhe->execute(array($_POST['sexe'], $_POST['nom'], $_POST['prenom'], $_POST['date_naissance'], $_POST['email'], $_POST['tel_port'], $_POST['identifiant'], password_hash($_POST['mdp'], PASSWORD_DEFAULT), $_POST['adresse'], $this->ajout_ville()));
+					$_SESSION['mail'] = $_POST['email'];
 					$id_adherent = self::$bdd->lastInsertId();
 					$_SESSION ['idadh']= $id_adherent;
+/* 					var_dump($ajouteradhe->errorInfo()); */
 				}
 			}
 		}
@@ -43,10 +51,11 @@ class ModeleInscription extends Connexion
 			if ($_SESSION['token'] == $_POST['token']) {
 				$timestamp_ancien = time() - (15 * 60);
 				if ($_SESSION['token_time'] >= $timestamp_ancien) {
-					$ajouter = parent::$bdd->prepare('INSERT INTO info_inscription (reinscription,profession,nationalite,saison,club,ID_Adherent) VALUES (?,?,?,?,?,?)');
-					$ajouter->execute(array($_POST["reinscription"], $_POST["profession"], $_POST["nationalite"], $_POST["saison"], $_POST["club"], $this->ajout_adherent_inscription()));
+					$ajouter = parent::$bdd->prepare('INSERT INTO info_inscription (profession,nationalite,saison,ID_Adherent) VALUES (?,?,?,?)');
+					$ajouter->execute(array( $_POST["profession"], $_POST["nationalite"], $_POST["saison"], $this->ajout_adherent_inscription()));
 				}
 			}
 		}
+		
 	}
 }

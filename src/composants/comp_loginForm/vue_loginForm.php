@@ -7,6 +7,10 @@ class VueLoginForm
 
 	public function __construct()
 	{
+	}
+
+	public function getContenu()
+	{
 		$token = uniqid(rand(), true);
 		$_SESSION['token'] = $token;
 		$_SESSION['token_time'] = time(); 
@@ -26,14 +30,8 @@ class VueLoginForm
 			</div>
 			<input type="hidden" name="token" id="token" value="' . $token . '" />
 		</form>
-		<div class="card-info">
-			<p><a href="#">Mot de passe oublié</a></p>
-		</div>
+		<div class="card-info"></div>
 	</div>';
-	}
-
-	public function getContenu()
-	{
 		return $this->contenu;
 	}
 }
