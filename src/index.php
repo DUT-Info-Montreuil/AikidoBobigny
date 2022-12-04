@@ -30,8 +30,12 @@
             $contenu = VueInscription::getAffichage();
             break;
         case "article": 
-            $mod_commentaires = new ModArticle();
+            $mod_article = new ModArticle();
             $contenu = VueArticle::getAffichage();
+            break;
+        case "commentaires":
+            $mod_commentaires = new ModCommentaire();
+            $contenu = VueCommentaire::getAffichage();
             break;
         case "calendrier":
             $mod_calendrier = new ModCalendrier();

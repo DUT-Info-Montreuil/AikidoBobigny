@@ -12,14 +12,14 @@ class ModeleCommentaire extends Connexion{
         public function ajoutCommentaire(){
             if(isset($_POST['submit_commentaire'])){
                 if(isset($_POST['commentaire']) AND !empty($_POST['commentaire'])){
-                    $sql = ("INSERT INTO commentaires(texte,ID_Adherent,ID_article,com_validation) VALUES(?,?,?,?)");
-                    $ajoutercommentaire = parent::$bdd->prepare($sql);
+                    $ajoutercommentaire = parent::$bdd -> prepare('INSERT INTO commentaires (texte,ID_Adherent,ID_article,com_validation) VALUES (?,?,?,?)');
                     //$id_commentaire = parent::$bdd->lastInsertId();
-                    $ajoutercommentaire->execute(array($_POST["commentaire"],2,$_POST["id_article"],0));
-                    echo 'Votre commentaire a été posté, un administrateur va le vérifier !';
+                    $ajoutercommentaire->execute(array($_POST["commentaire"],/*$id_commentaire*/2,$_POST["id_article"],0));
+                    echo'</br>';
+                    echo 'Votre commentaire a bien été posté, un administrateur va le vérifier !';
                 }else {
                     echo'</br>';
-                    echo "Tous les champs doivent être completé";
+                    echo"Tous les champs doivent être completé";
                 }
             }
         }
