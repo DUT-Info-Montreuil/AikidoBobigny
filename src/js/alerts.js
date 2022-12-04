@@ -30,7 +30,7 @@ function alertLogin() {
         text: 'Vous êtes connecté',
         footer: 'Vous allez être redirigé'
     })
-    setTimeout(function () { window.location.href = 'index.php'; }, 2000);
+    setTimeout(function () { history.back(); }, 2000);
 }
 
 function alertLoginError() {
@@ -40,5 +40,5 @@ function alertLoginError() {
         text: 'Identifiant ou mot de passe incorrect',
         footer: 'Veuillez réessayer'
     })
-    setTimeout(function () { window.location.href = 'index.php'; }, 2000);
+    setTimeout(function () { history.back(); }, 2000);
 }

@@ -21,8 +21,14 @@ class ModeleConnexion extends Connexion
                     } else {
                         echo "<script>alertLoginError();</script>";
                     }
+                } else {
+                    echo "<script>alertLoginError();</script>";
                 }
+            } else {
+                echo "<script>alertLoginError();</script>";
             }
+        } else {
+            echo "<script>alertLoginError();</script>";
         }
     }
 

@@ -15,13 +15,14 @@
 		<script src="https://kit.fontawesome.com/49a257572d.js" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.14/dist/sweetalert2.all.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 		<script src="js/alerts.js"></script>
 		<title>AIKIDO BOBIGNY</title>
 	</head>
 
 	<body>
 		<?php
-			
 			if (isset($module) && $module != "inscription") {
 				$menu->affiche();
 				echo '<div class="content">';
@@ -39,6 +40,7 @@
 				echo '</div>';
 				$login->affiche();
 			}
+			
 			$footer->affiche();
 		?>
 		<script src="js/slider.js"></script>

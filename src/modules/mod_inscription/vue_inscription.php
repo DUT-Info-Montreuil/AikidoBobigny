@@ -60,7 +60,7 @@ class VueInscription extends VueGenerique
 				<li>: champ invalide</li>
 				<li>: champ valide</li>
 			</ul>
-			<form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST" action="index.php?module=inscription&action=submit">
+			<form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST" action="modules/mod_inscription/modele_inscription.php">
 
 				<section id="step-1" class="form-step">
 					<h2 class="font-normal">Informations Personnelles</h2>
@@ -68,15 +68,15 @@ class VueInscription extends VueGenerique
 					<div class="mt-3">
 						<div id="formInfosPerso">
 							<div>
-								<label class="input-label" class="input-label" for="saison">Saison :</label>
+								<label class="input-label" class="input-label" for="saison">Saison *:</label>
 								<input class="input-field" class="input-field" type="text" name="saison" value="" readonly />
 							</div>
 							<div>
-								<label class="input-label" for="section">Section :</label>
+								<label class="input-label" for="section">Section *:</label>
 								<input class="input-field" type="text" name="section" value="A&iuml;kido" readonly />
 							</div>
 							<div>
-								<label class="input-label">Adhérent</label>
+								<label class="input-label">Adhérent*</label>
 								<div class="input-radio">
 									<input type="radio" name="typeAdherent" class="typeAdherent" value="ancien" id="ancien" />
 									<label class="input-label" for="ancien">Ancien</label>
@@ -99,15 +99,15 @@ class VueInscription extends VueGenerique
 								</div>
 							</div>
 							<div>
-								<label class="input-label" for="nom">Nom de l\'adherent :</label>
+								<label class="input-label" for="nom">Nom de l\'adherent *:</label>
 								<input class="input-field" type="text" name="nom" value="" required />
 							</div>
 							<div>
-								<label class="input-label" for="prenom">Pr&eacute;nom :</label>
+								<label class="input-label" for="prenom">Pr&eacute;nom *:</label>
 								<input class="input-field" type="text" name="prenom" value="" required />
 							</div>
 							<div>
-								<label class="input-label">Sexe</label>
+								<label class="input-label">Sexe*</label>
 								<div class="input-radio">
 									<input type="radio" name="sexe" class="sexe" value="m" id="m" checked/>
 									<label class="input-label" for="m">M</label>
@@ -118,38 +118,38 @@ class VueInscription extends VueGenerique
 								</div>
 							</div>
 							<div>
-								<label class="input-label" for="date_naissance">N&eacute;(e) le :</label>
+								<label class="input-label" for="date_naissance">N&eacute;(e) le *:</label>
 								<input class="input-field" type="date" name="date_naissance" value="" required />
 							</div>
 							<div>
-								<label class="input-label" for="lieu_naissance">Lieu de naissance :</label>
+								<label class="input-label" for="lieu_naissance">Lieu de naissance *:</label>
 								<input class="input-field" type="text" name="lieu_naissance" value="" required />
 							</div>
 							<div>
-								<label class="input-label" for="nationalite">Nationalit&eacute; :</label>
+								<label class="input-label" for="nationalite">Nationalit&eacute; *:</label>
 								<input class="input-field" type="text" name="nationalite" value="" required />
 							</div>
 							<div>
-								<label class="input-label" for="profession">Profession :</label>
+								<label class="input-label" for="profession">Profession *:</label>
 								<input class="input-field" type="text" name="profession" value="" required />
 							</div>
 							<div>
-								<label class="input-label">Autres sections :</label>
+								<label class="input-label">Autres sections *:</label>
 								<div class="input-radio">
-									<input type="radio" name="si_autre_section" class="si_autre_section" value="oui" onclick="hasOtherSection();" id="oui" />
+									<input type="radio" name="si_autre_section" class="si_autre_section" value="oui" id="oui" />
 									<label class="input-label" for="oui">Oui</label>
 								</div>
 								<div class="input-radio">
-									<input type="radio" name="si_autre_section" class="si_autre_section" value="non" onclick="hasNoOtherSection();" checked id="non" />
+									<input type="radio" name="si_autre_section" class="si_autre_section" value="non" checked id="non" />
 									<label class="input-label" for="non">Non</label>
 								</div>
 							</div>
 							<div>
 								<label class="input-label" for="autre_section">Si oui, laquelle :</label>
-								<input class="input-field" type="text" name="autre_section" value="" id="autre_section" readonly />
+								<input class="input-field" type="text" name="autre_section" value="" id="autre_section"/>
 							</div>
 							<div>
-								<label class="input-label" for="adresse">Adresse :</label>
+								<label class="input-label" for="adresse">Adresse *:</label>
 								<input class="input-field" type="text" name="adresse" value="" required />
 							</div>
 							<div>
@@ -157,15 +157,15 @@ class VueInscription extends VueGenerique
 								<input class="input-field" type="text" name="no_appt" value="" />
 							</div>
 							<div>
-								<label class="input-label" for="code_postal">Code postal :</label>
+								<label class="input-label" for="code_postal">Code postal *:</label>
 								<input class="input-field" type="text" name="code_postal" value="" required />
 							</div>
 							<div>
-								<label class="input-label" for="ville">Ville :</label>
+								<label class="input-label" for="ville">Ville *:</label>
 								<input class="input-field" type="text" name="ville" value="" required />
 							</div>
 							<div>
-								<label class="input-label" for="email">E-mail :</label>
+								<label class="input-label" for="email">E-mail *:</label>
 								<input class="input-field" type="email" name="email" value="" required />
 							</div>
 							<div>
@@ -173,7 +173,7 @@ class VueInscription extends VueGenerique
 								<input class="input-field" type="tel" name="tel_dom" value="" />
 							</div>
 							<div>
-								<label class="input-label" for="tel_port">T&eacute;l. Port. :</label>
+								<label class="input-label" for="tel_port">T&eacute;l. Port. *:</label>
 								<input class="input-field" type="tel" name="tel_port" value="" required />
 							</div>
 							<div>
@@ -182,14 +182,14 @@ class VueInscription extends VueGenerique
 							</div>
 							<div>
 								<label class="input-label" for="num_secu">Num&eacute;ro de s&eacute;curit&eacute; sociale :</label>
-								<input class="input-field" type="text" name="num_secu" value="" required />
+								<input class="input-field" type="text" name="num_secu" value="" />
 							</div>
 							<div>
 								<label class="input-label" for="allergies">Allergies &eacute;ventuelles :</label>
 								<input class="input-field" type="text" name="allergies" value="" />
 							</div>
 							<div>
-								<label class="input-label" for="contact_urgence">Personne &agrave; contacter en cas d\'urgence (Nom et tel):</label>
+								<label class="input-label" for="contact_urgence">Personne &agrave; contacter en cas d\'urgence (Nom et tel) *:</label>
 								<input class="input-field" type="text" name="contact_urgence" value="" required />
 							</div>
 						</div>
@@ -209,7 +209,7 @@ class VueInscription extends VueGenerique
 								<div class="file">
 									<div class="file__input" id="file__input">
 										<input class="file__input--file" id="piece_identite" type="file" name="piece_identite" />
-										<label class="file__input--label" for="piece_identite" data-text-btn="Upload"> file:</label>
+										<label class="file__input--label" for="piece_identite" data-text-btn="Upload">Add file:</label>
 									</div>
 								</div>
 							</div>
@@ -262,10 +262,10 @@ class VueInscription extends VueGenerique
 	
 					<div class="mt-3">
 						<div id="finInscription">
-							<p>Autorisation parentale :</p>
-							<div>
+							<p class="autParent">Autorisation parentale :</p>
+							<div class="autParent">
 								<p>Je soussign&eacute;(e) </p>
-								<input class="input-field" type="text" name="nom_resp_legal" placeholder="Nom du responsable légal" required />
+								<input class="input-field" type="text" name="nom_resp_legal" placeholder="Nom du responsable légal*" />
 								<select name="titre_resp_legal" id="titre_resp_legal">
 									<option value="pere">P&egrave;re</option>
 									<option value="mere">M&egrave;re</option>
@@ -274,7 +274,7 @@ class VueInscription extends VueGenerique
 								<p>, autorise :
 								</p>
 							</div>
-							<ul>
+							<ul class="autParent">
 								<li>
 									<div>
 										<p>mon enfant à s’inscrire à la section Aikido de l’Athletic Club de Bobigny.</p>
@@ -330,7 +330,7 @@ class VueInscription extends VueGenerique
 								</li>
 							</ul>
 							<div class="toggle-pill-color">
-								<p>J’ai bien pris connaissance des règles principales au règlement intérieur (voir <a href="">ici</a>).</p>
+								<p>J’ai bien pris connaissance des règles principales au règlement intérieur (voir <a href="fichiers/reglement.pdf" target="_blank">ici</a>).</p>
 								<input type="checkbox" id="reglement_check" name="reglement_check">
 								<label for="reglement_check"></label>
 							</div>
@@ -352,15 +352,15 @@ class VueInscription extends VueGenerique
 					<div class="mt-3">
 						<div id="choixIdentifiants">
 							<div>
-								<label class="input-label" for="identifiant">Choisissez un identifiant de connexion :</label>
+								<label class="input-label" for="identifiant">Choisissez un identifiant de connexion *:</label>
 								<input class="input-field" type="text" name="identifiant" placeholder="Identifiant" required />
 							</div>
 							<div>
-								<label class="input-label" for="mdp">Choisissez un mot de passe :</label>
+								<label class="input-label" for="mdp">Choisissez un mot de passe *:</label>
 								<input class="input-field" type="password" name="mdp" placeholder="Mot de passe" required />
 							</div>
 							<div>
-								<label class="input-label" for="mdp2">Confirmez le mot de passe :</label>
+								<label class="input-label" for="mdp2">Confirmez le mot de passe *:</label>
 								<input class="input-field" type="password" name="mdp2" placeholder="Mot de passe" required />
 							</div>
 						</div>
