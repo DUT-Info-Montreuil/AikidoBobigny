@@ -44,7 +44,7 @@ $(function () {
 		    $('.error').fadeOut(200).show();
 
             alert("il faut remplir \'modifier question\'");
-			console.log ("SOMETHING HAPPENS"); 
+			
 			} else {
 			$.ajax({
 			type: "POST",
@@ -104,8 +104,7 @@ $(function () {
 			if(question_faq=='' || reponse_faq=='') {
 			$('.success').fadeOut(200).hide();
 		    $('.error').fadeOut(200).show();
-			/* UNCOMMNENT TO SEND TO CONSOLE */
-			console.log ("SOMETHING HAPPENS"); 
+			alert("Il faut remplir tous les champs ");
 			} else {
 			$.ajax({
 			type: "POST",
