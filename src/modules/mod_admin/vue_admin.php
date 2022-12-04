@@ -25,6 +25,7 @@ class VueAdmin extends VueGenerique{
 
         public function gerer_article(){
                 $this->vue_article->menu();
+        }
   
         public function gerer_inscrip(array $tableau){    
         $token = uniqid(rand(), true);       

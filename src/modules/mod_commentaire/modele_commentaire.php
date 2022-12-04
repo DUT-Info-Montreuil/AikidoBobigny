@@ -12,11 +12,10 @@ class ModeleCommentaire extends Connexion{
         public function ajoutCommentaire(){
             if(isset($_POST['submit_commentaire'])){
                 if(isset($_POST['commentaire']) AND !empty($_POST['commentaire'])){
-
-                    $ajoutercommentaire = parent::$bdd -> prepare('INSERT INTO commentaires (texte,ID_Adherent,ID_article) VALUES (?,?,?)');
+                    $ajoutercommentaire = parent::$bdd->prepare('INSERT INTO commentaires(texte,ID_Adherent,ID_article) VALUES(?,?,?)');
                     //$id_commentaire = parent::$bdd->lastInsertId();
-                    $ajoutercommentaire->execute(array($_POST["commentaire"],/*$id_commentaire*/2,$_POST["id_article"]));
-
+                    $ajoutercommentaire->execute(array($_POST['commentaire'],/*$id_commentaire*/2,$_POST['id_article']));
+                    echo 'Votre commentaire a été posté, un administrateur va le vérifier !';
                 }else {
                     echo'</br>';
                     echo"Tous les champs doivent être completé";
@@ -42,10 +41,9 @@ class ModeleCommentaire extends Connexion{
         }
 
         public function deleteCommentaire(){
-
             if(isset($_POST['supprimer_valider'])){
-                foreach($_POST['supprimer_valider'] as $articleVerif){
-                    $sql =("DELETE FROM commentaires WHERE ID_commentaires = $articleVerif");
+                foreach($_POST['supprimer_valider'] as $comVerif){
+                    $sql =("DELETE FROM commentaires WHERE ID_commentaires = $comVerif");
                     $sth = parent::$bdd->prepare($sql);
                     $sth->execute();        
                 }
@@ -56,14 +54,12 @@ class ModeleCommentaire extends Connexion{
 
         public function validationCommentaire(){
             if(isset($_POST['supprimer_valider'])){
-                foreach($_POST['supprimer_valider'] as $articleVerif){
-                    $sql = ("UPDATE commentaires SET com_validation = '1' WHERE ID_commentaires = $articleVerif ");
-
+                foreach($_POST['supprimer_valider'] as $comVerif){
+                    $sql = ("UPDATE commentaires SET com_validation = '1' WHERE ID_commentaires = $comVerif ");
                     $sth = parent::$bdd->prepare($sql);
                     $sth->execute();
                 }
             }
-
             echo '</br>';
             echo 'Commentaire(s) validés !';
 

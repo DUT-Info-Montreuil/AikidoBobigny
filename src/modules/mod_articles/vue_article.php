@@ -10,10 +10,9 @@ class VueArticle extends VueGenerique
     }
 
     public function menu(){
-       echo '<a href = "index.php?module=article&action=formArticle">Ajouter un article</a>', '<br/>';
-       echo '<a href = "index.php?module=article&action=formDelete">Supprimer un article</a>', '<br/>';
-       echo '<a href = "index.php?module=article&action=gererCommentaire">Gerer les commentaires</a>', '<br/>'; 
-        
+       //echo '<a href = "index.php?module=article&action=formArticle">Ajouter un article</a>', '<br/>';
+       //echo '<a href = "index.php?module=article&action=formDelete">Supprimer un article</a>', '<br/>';
+       //echo '<a href = "index.php?module=article&action=gererCommentaire">Gerer les commentaires</a>', '<br/>';     
     }
 
     public function formArticle(){
@@ -33,17 +32,36 @@ class VueArticle extends VueGenerique
         echo'<br/>';
     }
 
-    public function formDelete(){
-        echo'</br>';
-        echo'<form action="index.php?module=article&action=deleteArticle" method="POST">
-        <label for="titre">Titre article dont vous voulez supprimer</label>
-        <input type ="text" name = "titrevoulu">
-        <input type = "submit" value ="Supprimer">
-        ';
-        echo'<br/>';
+    public function formDelete($rechercheArticle){
+        if($rechercheArticle){
+            echo '</br>';
+            echo "Pour supprimer des articles : ";
+            echo '<form action ="index.php?module=article&action=deleteArticle" method ="POST">';
+            echo '<table>';
+            echo '  <tr>
+                        <th>Titre</th>
+                        <th>Date</th>
+                    </tr>';
+            foreach($rechercheArticle as $row){
+                $id = $row['ID_article'];
+                $titre = $row['titre'];
+                $date = $row['date'];
+                echo '</br>';
+                echo "<tr>
+                            <td><input type= 'checkbox' name ='articleSup[]' value ='$id'></td>
+                            <td>$titre</td>
+                            <td>$date</td>
+                        </tr>";
+            }
+            echo '</table>';
+            echo '<input type = "submit" value = "Supprimer">'; 
+            echo '</form>';
+            
+        }
+
     }
 
-    public function rechercherArticle(){
+    public function rechercherArticle($recherche){
         echo'</br>';
         echo'<form action="index.php?module=article&action=articleRecherche" method="POST">
             <label for="date"> Sélectionner une date :</label>
@@ -52,6 +70,21 @@ class VueArticle extends VueGenerique
             </form>
             ';
         echo'</br>';
+        echo 'Articles les plus récents : ';
+        echo '</br>';
+        if($recherche){
+            foreach($recherche as $row){ 
+                $id = $row['ID_article'];
+                $titre = $row['titre'];
+                echo '</br>';
+                echo "<a href=index.php?module=article&action=articleDetails&id=$id>$titre</a>";
+                echo '</br>';
+            }
+        }
+        else{
+            echo 'Aucun article publié récemment';
+        }
+
     }
 
     public function afficherRecherche($recherche){
@@ -119,7 +152,7 @@ class VueArticle extends VueGenerique
     public function listeCommentaireSup($rechercheCom){
         if($rechercheCom){
             echo '</br>';
-            echo "Formulaire commentaires pour supprimer : ";
+            echo "Pour supprimer des commentaires : ";
             echo '</br>';
             echo '<form action ="index.php?module=article&action=deleteCommentaire" method ="POST">';
             echo '<table>';
@@ -150,12 +183,16 @@ class VueArticle extends VueGenerique
             echo '</form>';
             
         }
+        else{
+            echo '</br>';
+            echo 'Aucun commentaire a été posté sur cet article';
+        }
     }
 
         public function listeCommentaireValid($rechercheCom){
             if($rechercheCom){
                 echo '</br>';
-                echo "Formulaire commentaires pour valider : ";
+                echo "Pour valider des commentaires : ";
                 echo '</br>';
                 echo '<form action ="index.php?module=article&action=validationCommentaire" method ="POST">';
                 echo '<table>';

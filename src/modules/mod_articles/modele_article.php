@@ -12,6 +12,7 @@ class ModeleArticle extends Connexion{
         $sth = parent::$bdd->prepare($sql);
         $sth->execute(array($_POST['dateArticle'],$_POST['titreArticle'],$_POST['texteArticle'],$_FILES['image']['name'],
         $_FILES['image']['size'],$_FILES['image']['type'],file_get_contents($_FILES['image']['tmp_name'])));
+        echo 'Votre article a été posté !';
     }
 
     public function articleRecherche(){
@@ -31,11 +32,18 @@ class ModeleArticle extends Connexion{
     }
 
     public function deleteArticle(){
-        $titreVoulu = $_POST['titrevoulu'];
-        $sql=("DELETE FROM article WHERE titre = '$titreVoulu'");
-        $sth = parent::$bdd->prepare($sql);
-        $sth->execute();
+        if(isset($_POST['articleSup'])){
+            foreach($_POST['articleSup'] as $articleVerif){
+                $sql =("DELETE FROM article WHERE ID_article = $articleVerif");
+                $sth = parent::$bdd->prepare($sql);
+                $sth->execute();        
+            }
+        }
+        echo'</br>';
+        echo 'Article(s) effacés avec succès !';
     }
+
+    
 
     public function articleRechercheCommentaire(){
         $sql =("SELECT titre,ID_article FROM article");
@@ -44,16 +52,23 @@ class ModeleArticle extends Connexion{
         return $sth->fetchAll();
     }
 
+    public function articleGestionRecherche(){
+        $sql =("SELECT titre,ID_article,date FROM article");
+        $sth = parent::$bdd->prepare($sql);
+        $sth->execute();
+        return $sth->fetchAll();
+    }
 
-    /*
+
+    
     public function articlesRecent(){
-        $sql = ("SELECT titre,ID_article FROM article WHERE DATEDIFF(NOW(),date) <= 7");
+        $sql = ("SELECT titre,ID_article FROM article WHERE date = (SELECT MAX(date) FROM article)");
         $sth = parent::$bdd->prepare($sql);
         $sth->execute();
         return $sth->fetchAll();
 
     }
-    */
+    
 
 }
 

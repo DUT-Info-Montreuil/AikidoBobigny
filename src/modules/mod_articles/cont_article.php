@@ -76,14 +76,12 @@ class ContArticle{
     }
 
     public function form_delete_article(){
-        $this->view->formDelete();
+        $this->view->formDelete($this->model->articleGestionRecherche());
     }
 
     public function form_recherche(){
-        $this->view->rechercherArticle();
+        $this->view->rechercherArticle($this->model->articlesRecent());
     }
-
-
 
     public function faireRecherche(){
         $this->view->afficherRecherche($this->model->articleRecherche());
