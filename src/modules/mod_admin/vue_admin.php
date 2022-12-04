@@ -38,7 +38,6 @@ class VueAdmin extends VueGenerique{
         $token = uniqid(rand(), true);       
         $_SESSION['token'] = $token;
         $_SESSION['token_time'] = time();
-           
             foreach($tableau as $cle => $valeur){
                 echo "
                 <div id=$valeur[ID_adherent]>

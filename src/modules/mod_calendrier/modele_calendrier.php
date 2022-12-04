@@ -16,11 +16,11 @@ class ModeleCalendrier extends Connexion
 		$requete->execute();
 		while ($row = $requete->fetch(PDO::FETCH_ASSOC)) {
 			$e = array();
-			$e['id'] = $row['ID_evenement'];
-			$e['title'] = $row['intitule'];
-			$e['start'] = $row['debut_evenement'];
-			$e['end'] = $row['fin_evenement'];
-			$e['description'] = $row['evenement'];
+			$e['id'] = htmlspecialchars($row['ID_evenement']);
+			$e['title'] = htmlspecialchars($row['intitule']);
+			$e['start'] = htmlspecialchars($row['debut_evenement']);
+			$e['end'] = htmlspecialchars($row['fin_evenement']);
+			$e['description'] = htmlspecialchars($row['evenement']);
 			$e['url'] = null;
 			$e['allDay'] = null;
 			$e['className'] = null;
@@ -53,36 +53,6 @@ class ModeleCalendrier extends Connexion
 		return $timeInfos;
 	}
 
-	public function addEvent($title, $start, $end, $description)
-	{
-		$requete = self::$bdd->prepare("INSERT INTO evenement (intitule, debut_evenement, fin_evenement, evenement) VALUES (:title, :start, :end, :description)");
-		$requete->execute(array(
-			'title' => $title,
-			'start' => $start,
-			'end' => $end,
-			'description' => $description
-		));
-	}
-
-	public function updateEvent($id, $title, $start, $end, $description)
-	{
-		$requete = self::$bdd->prepare("UPDATE evenement SET intitule = :title, debut_evenement = :start, fin_evenement = :end, evenement = :description WHERE ID_evenement = :id");
-		$requete->execute(array(
-			'title' => $title,
-			'start' => $start,
-			'end' => $end,
-			'description' => $description,
-			'id' => $id
-		));
-	}
-
-	public function deleteEvent($id)
-	{
-		$requete = self::$bdd->prepare("DELETE FROM evenement WHERE ID_evenement = :id");
-		$requete->execute(array(
-			'id' => $id
-		));
-	}
 }
 
 ?>
