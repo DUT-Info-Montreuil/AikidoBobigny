@@ -8,6 +8,9 @@ class ModArticle{
         $this->vue= new VueArticle();
         $controleurArticle = new ContArticle();
         $controleurArticle->exec();
+        /*if admin==1
+        $controleurArtcile->execadmin();
+        */
     }
 
     public function getAffichage() {
