@@ -21,7 +21,8 @@ class ContArticle{
     }
 
     public function exec(){
-        $this->view->menu();
+        ///$this->view->menu();
+        
         switch($this->action){
             case("formArticle"):
                 $this->form_ajout();
@@ -31,6 +32,7 @@ class ContArticle{
             break;
             case("article"):
                 $this->form_recherche();
+                $this->model->dernierArticle();
             break;
             case("articleRecherche"):
                 $this->faireRecherche();

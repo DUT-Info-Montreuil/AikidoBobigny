@@ -45,15 +45,21 @@ class ModeleArticle extends Connexion{
     }
 
 
-    /*
-    public function articlesRecent(){
-        $sql = ("SELECT titre,ID_article FROM article WHERE DATEDIFF(NOW(),date) <= 7");
+    
+    public function dernierArticle(){
+        $sql = ("SELECT * FROM article ORDER BY ID_article DESC LIMIT 0,1");
         $sth = parent::$bdd->prepare($sql);
         $sth->execute();
-        return $sth->fetchAll();
-
+        while($row = $sth->fetch()){
+            echo"Voici le dernier artcile publié le : ".$row['date']."</br>";
+            echo $row['titre'];
+            echo"<br>";
+            echo $row ['texte'];
+            echo"<br>";
+            echo '<img src = "data:image/jpg;base64,'. base64_encode($row['img_bin']) .'" width = "400px" height = "400px"/>';
+        }
     }
-    */
+    
 
 }
 

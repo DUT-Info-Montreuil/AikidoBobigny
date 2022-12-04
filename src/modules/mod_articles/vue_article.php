@@ -12,7 +12,7 @@ class VueArticle extends VueGenerique
     public function menu(){
        echo '<a href = "index.php?module=article&action=formArticle">Ajouter un article</a>', '<br/>';
        echo '<a href = "index.php?module=article&action=formDelete">Supprimer un article</a>', '<br/>';
-       echo '<a href = "index.php?module=article&action=gererCommentaire">Gerer les commentaires</a>', '<br/>'; 
+       echo '<a href = "index.php?module=article&action=gererCommentaire">Liste des artciles pour gérer les commentaires </a>', '<br/>'; 
         
     }
 
@@ -46,7 +46,7 @@ class VueArticle extends VueGenerique
     public function rechercherArticle(){
         echo'</br>';
         echo'<form action="index.php?module=article&action=articleRecherche" method="POST">
-            <label for="date"> Sélectionner une date :</label>
+            <label for="date"> Sélectionner une date pour rechercher un article :</label>
             <input type="date" name="datevoulu">
             <input type="submit" value="Rechercher">
             </form>
