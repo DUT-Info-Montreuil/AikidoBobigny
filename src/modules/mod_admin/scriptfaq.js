@@ -34,8 +34,6 @@ $(function () {
 
             var targetID = $(this).attr("targetID");  
             var modifier_question = $("#modifier_question"+targetID).val();  
-            
-
             var actionfaq = 4;
             console.log(targetID);
  
@@ -49,7 +47,7 @@ $(function () {
 			$.ajax({
 			type: "POST",
 		    url: "./modules/mod_admin/adminfaq.php",
-		    data: {modifier_question,targetID,actionfaq,token},
+		    data: {modifier_question,targetID,actionfaq},
 		    	success: function(){
 					$('.success').fadeIn(200).show();
 		    		$('.error').fadeOut(200).hide();

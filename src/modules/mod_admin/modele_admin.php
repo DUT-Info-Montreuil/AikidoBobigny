@@ -31,18 +31,6 @@ class ModeleAdmin extends Connexion{
             $tab->execute();
             return $tab->fetchAll();
         }
-
-
-        public function validerAdherents(){
-            if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
-                if($_SESSION['token'] == ($_POST['token'])){
-                    $timestamp_ancien = time() - (15*60);
-                    if($_SESSION['token_time'] >= $timestamp_ancien){
-            $id = $_POST['ID_adherent'];
-            $req = parent::$bdd -> prepare ('UPDATE adherent SET inscripverif = 1 where ID_adherent = :id');
-            $req->execute(array(':id'=>$id));
-                    }}}
-        }
     
     }
 

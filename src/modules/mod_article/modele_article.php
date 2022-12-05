@@ -45,15 +45,28 @@ class ModeleArticle extends Connexion{
 	        if($_SESSION['token'] == ($_POST['token'])){
 		        $timestamp_ancien = time() - (15*60);
 		        if($_SESSION['token_time'] >= $timestamp_ancien){
-        $titreVoulu = $_POST['titrevoulu'];
-        $sql=("DELETE FROM article WHERE titre = '$titreVoulu'");
-        $sth = parent::$bdd->prepare($sql);
-        $sth->execute();
+                    if(isset($_POST['articleSup'])){
+                        foreach($_POST['articleSup'] as $articleVerif){
+                            $sql =("DELETE FROM article WHERE ID_article = $articleVerif");
+                            $sth = parent::$bdd->prepare($sql);
+                            $sth->execute();        
+                        }
+                    echo'</br>';
+                    echo 'Article(s) effacés avec succès !';
+                    }
+                
                 }}};
     }
 
     public function articleRechercheCommentaire(){
         $sql =("SELECT titre,ID_article FROM article");
+        $sth = parent::$bdd->prepare($sql);
+        $sth->execute();
+        return $sth->fetchAll();
+    }
+
+    public function articleGestionRecherche(){
+        $sql =("SELECT titre,ID_article,date FROM article");
         $sth = parent::$bdd->prepare($sql);
         $sth->execute();
         return $sth->fetchAll();

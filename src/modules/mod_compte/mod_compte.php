@@ -7,6 +7,7 @@ class ModCompte{
     public function __construct(){
         $this->vue= new VueCompte();
         $controleurCompte = new ContCompte();
+        $controleurCompte->exec();
         
     }
 
@@ -14,6 +15,4 @@ class ModCompte{
         return $this->vue->getAffichage();
     }
 }
-
-
 ?>

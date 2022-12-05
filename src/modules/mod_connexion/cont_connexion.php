@@ -20,7 +20,7 @@ class ContConnexion
                 break;
             case ("deconnexion"):
                 $this->modele->deconnexion();
-                header("Location:" . $_SERVER['HTTP_REFERER']);
+                header("Location: index.php" );
                 break;
         }
     }

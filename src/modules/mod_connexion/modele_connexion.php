@@ -18,6 +18,7 @@ class ModeleConnexion extends Connexion
                     $tab = $log->fetch();
                     if (password_verify(htmlspecialchars($_POST['mdp']), $tab['mot_de_passe'])) {
                         $_SESSION['idadh'] = $tab['ID_adherent'];
+                        $_SESSION['admin'] = $tab['admin'];
                         echo "<script>alertLogin();</script>";
                     } else {
                         echo "<script>alertLoginError();</script>";

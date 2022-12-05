@@ -21,7 +21,7 @@ class ContArticle{
     }
 
     public function execadmin(){
-       ///if admin ==1
+       
         switch($this->action){
             case("formArticle"):
                 $this->form_ajout();
@@ -47,6 +47,7 @@ class ContArticle{
             case("validationCommentaire"):
                 $this->validerCommentaire();
             break;
+            
         }
         
 
@@ -82,14 +83,12 @@ class ContArticle{
     }
 
     public function form_delete_article(){
-        $this->view->formDelete();
+        $this->view->formDelete($this->model->articleGestionRecherche());
     }
 
     public function form_recherche(){
-        $this->view->rechercherArticle();
+        $this->view->rechercherArticle($this->model->articlesRecent());
     }
-
-
 
     public function faireRecherche(){
         $this->view->afficherRecherche($this->model->articleRecherche());
