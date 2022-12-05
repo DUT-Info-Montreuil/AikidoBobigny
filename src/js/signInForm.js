@@ -194,6 +194,13 @@ $("form#userAccountSetupForm").submit(function (e) {
 						icon: 'error',
 						confirmButtonText: 'Ok'
 					});
+				}else if(data == "mailerror") {
+					Swal.fire({
+						title: 'Erreur !',
+						text: "Nous n'avons pas réussi a vous envoyer un mail de vérification",
+						icon: 'error',
+						confirmButtonText: 'Ok'
+					});	
 				} else {
 					Swal.fire({
 						title: 'Erreur !',

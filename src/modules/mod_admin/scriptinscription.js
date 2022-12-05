@@ -108,7 +108,7 @@ $(function () {
                     var prenom = $(this).attr("prenom");
                     var validinscrip = $(this).attr("validinscrip");
                     var actionadherent = 5;
-                    if(validinscrip==0) {
+                    if(validinscrip==NULL) {
                         $('.success').fadeOut(200).hide();
                         $('.error').fadeOut(200).show();
             
@@ -135,7 +135,7 @@ $(function () {
                     var prenom = $(this).attr("prenom");
                     var validmail = $(this).attr("validmail"); 
                     var actionadherent = 6;                    
-                            if(validmail==0) {
+                            if(validmail==NULL) {
                                 $('.success').fadeOut(200).hide();
                                 $('.error').fadeOut(200).show();
                     

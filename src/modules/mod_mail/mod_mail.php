@@ -10,7 +10,5 @@ class ModMail{
         $controleur->exec();
     }
 
-    public function getAffichage() {
-        return $this->vue->getAffichage();
-    }
+    
 }

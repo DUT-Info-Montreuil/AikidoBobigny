@@ -27,9 +27,7 @@ class ContMail{
         }
     
     }
-    public function afficheMod(){
-        return $this->vue->getAffichage();
-    }
+    
 }
 
 ?>

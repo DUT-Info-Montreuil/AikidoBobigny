@@ -1,8 +1,10 @@
 <?php
 session_start();
 require_once("../../connexion.php");
+include_once("../mod_mail/vue_mail.php");
 Connexion::initConnexion();
 $bdd = Connexion::getConnexion();
+$mail = new VueMail();
 $reponse = "";
 
 if (isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])) {
@@ -71,7 +73,14 @@ if (isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST[
 								$i++;
 							}
 						}
-						$reponse = 'ok';
+						$reponsemail= $mail->message_Verif_Mail();
+						if($reponsemail=="ok"){
+							$reponse = 'ok';
+						}else{
+							$reponse = 'mailerror';
+						}
+						
+
 					}
 				}
 			}

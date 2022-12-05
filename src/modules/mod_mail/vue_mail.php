@@ -1,9 +1,9 @@
 <?php
-require_once "./vue_generique.php";
-class VueMail extends VueGenerique{
+
+class VueMail {
 
 	public function __construct(){
-		parent::__construct();
+		
 	}   
 
 	public function message_Verif_Mail(){
@@ -23,9 +23,10 @@ class VueMail extends VueGenerique{
         ';	
 
         if (mail($email,$sujet, $message, $header)){
-            echo 'Un mail viens de vous être envoyer. Il faut cliquer sur le lien que vous avez recu pour valider votre mail';
+            return 'ok';           // return 'Un mail viens de vous être envoyer. Il faut cliquer sur le lien que vous avez recu pour valider votre mail';
+
         }else {
-            echo "Le mail de vérification n'a pas pu être envoyé ";
+            return "Erreur ";
         }
 	}    
 
