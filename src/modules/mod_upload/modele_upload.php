@@ -33,7 +33,6 @@
                             $requete = self::$bdd->prepare('INSERT INTO pieces_justificatives (ID_adherent, ID_type, nom_piece) VALUES (?, ?, ?)');
                             $requete->execute(array($_SESSION['ID_adherent'], $i, $nom_fichier));
 							var_dump($requete->errorInfo());
-
 							echo 'Le fichier ' . $fichier['name'] . ' a bien été envoyé.<br>';// on affiche un message de succès
 						} else {
 							echo 'Le fichier ' . $fichier['name'] . ' n\'a pas été envoyé car son extension n\'est pas autorisée.<br>';// on affiche un message d'erreur

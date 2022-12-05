@@ -12,7 +12,6 @@
 
 
         }
-
         public static function getConnexion(){
                 return self::$bdd;
         }
