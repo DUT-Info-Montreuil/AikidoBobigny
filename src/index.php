@@ -9,6 +9,8 @@
     include_once './modules/mod_csv/mod_csv.php';
     include_once './modules/mod_calendrier/mod_calendrier.php';
     include_once './modules/mod_faq/mod_faq.php';
+    include_once './modules/mod_admin/mod_admin.php';
+    include_once './modules/mod_articles/mod_article.php';
     include_once './composants/comp_menu/comp_menu.php';
 
     Connexion::initConnexion();
@@ -27,9 +29,9 @@
             $mod_inscription = new ModInscription();
             $contenu = VueInscription::getAffichage();
             break;
-        case "commentaire": 
-            $mod_commentaires = new ModCommentaire();
-            $contenu = VueCommentaire::getAffichage();
+        case "article": 
+            $mod_commentaires = new ModArticle();
+            $contenu = VueArticle::getAffichage();
             break;
         case "calendrier":
             $mod_calendrier = new ModCalendrier();
@@ -45,6 +47,10 @@
         case "csv":
             $mod_csv = new ModCSV();
             $contenu = VueCSV::getAffichage();
+            break;
+        case "admin":
+            $mod_admin = new ModAdmin();
+            $contenu = VueAdmin::getAffichage();
             break;
         default:
             break;

@@ -9,6 +9,7 @@ class VueCSV extends VueGenerique {
 	}
 
 	public function afficherGenererCSV() {
+		
 		echo '<h1> Génération du fichier CSV </h1>';
 		echo '<p> <a href="index.php?module=csv&action=generate"> Générer un nouveau fichier CSV </a> </p>';
 		if (file_exists("fichiers/csv_adherents/adherents.xlsx")) {

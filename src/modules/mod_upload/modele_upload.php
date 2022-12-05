@@ -5,7 +5,11 @@
 
 		public function __construct() {}
 
-    function upload() {
+        function upload() {
+			if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
+				if($_SESSION['token'] == ($_POST['token'])){
+					$timestamp_ancien = time() - (15*60);
+					if($_SESSION['token_time'] >= $timestamp_ancien){
 			if (isset($_FILES['piece_identite']) && isset($_FILES['attestation_sante']) && isset($_FILES['droit_image']) && isset($_FILES['certificat_medical']) && isset($_FILES['autorisation_parentale'])) {
 				$fichier1 = $_FILES['piece_identite'];
 				$fichier2 = $_FILES['attestation_sante'];
@@ -41,7 +45,9 @@
 			} else {
                 echo "il manque des fichiers";
             }
+		}}};
         }
+	
         
     }
 

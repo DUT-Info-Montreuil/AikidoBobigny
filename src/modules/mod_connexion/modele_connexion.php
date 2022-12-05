@@ -6,7 +6,7 @@ class ModeleConnexion extends Connexion{
 
         public function connexion(){
         if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
-	        if($_SESSION['token'] == htmlspecialchars($_POST['token'])){
+	        if($_SESSION['token'] == ($_POST['token'])){
 		        $timestamp_ancien = time() - (15*60);
 		        if($_SESSION['token_time'] >= $timestamp_ancien){
                     $log= parent::$bdd -> prepare('SELECT * FROM adherent where login=?');
@@ -15,6 +15,7 @@ class ModeleConnexion extends Connexion{
                     if(password_verify(htmlspecialchars($_POST['mdp']),$tab['mot_de_passe'])){
                         echo"connexion OK";
                         $_SESSION['connexion'] = $tab['ID_adherent'];
+                        $_SESSION['admin']=$tab['admin'];
                     }else{
                         echo "Erreur Lors de la connexion";
             }
