@@ -13,7 +13,7 @@ $(function () {
                success: function(){
             $('.success').fadeIn(200).show();
             $('.error').fadeOut(200).hide();
-            alert("L'adhérent "+nom +" "+prenom+" a bien été  supprimé ");
+            alert("L'adhérent "+nom +" "+prenom+" a bien été supprimé, raffraichissez la page ");
            }
         })
     });
@@ -39,7 +39,7 @@ $(function () {
                 success: function(){
                     $('.success').fadeIn(200).show();
                     $('.error').fadeOut(200).hide();
-                    alert("Le mail de "+nom +" "+prenom+" a été validé");
+                    alert("Le mail de "+nom +" "+prenom+" a été validé, raffraichissez la page");
                    }
                 })
             }
@@ -66,7 +66,7 @@ $(function () {
                 success: function(){
                     $('.success').fadeIn(200).show();
                     $('.error').fadeOut(200).hide();
-                    alert("L'inscription de "+nom +" "+prenom+" a été validé");
+                    alert("L'inscription de "+nom +" "+prenom+" a été validé, raffraichissez la page");
                    }
                 })
             }
@@ -93,7 +93,7 @@ $(function () {
                 success: function(){
                     $('.successs').fadeIn(200).show();
                     $('.error').fadeOut(200).hide();
-                    alert("Le passage en tant d'admin a été effectué pour "+nom +" "+prenom);
+                    alert("Le passage en tant d'admin a été effectué pour "+nom +" "+prenom+", raffraichissez la page");
                    }
                 
                 })
@@ -106,9 +106,9 @@ $(function () {
                     var id = $(this).attr("targetID");
                     var nom = $(this).attr("nom");
                     var prenom = $(this).attr("prenom");
-                    var validinscrip = $(this).attr("validinscrip");
+                    var validinscrip = $(this).attr("devalidinscrip");
                     var actionadherent = 5;
-                    if(validinscrip==NULL) {
+                    if(validinscrip!=1) {
                         $('.success').fadeOut(200).hide();
                         $('.error').fadeOut(200).show();
             
@@ -122,7 +122,7 @@ $(function () {
                         success: function(){
                             $('.success').fadeIn(200).show();
                             $('.error').fadeOut(200).hide();
-                            alert("L'inscription de "+nom +" "+prenom+" a bien été dévalidé");
+                            alert("L'inscription de "+nom +" "+prenom+" a bien été dévalidé, raffraichissez la page");
                            }
                         })
                     }
@@ -133,9 +133,9 @@ $(function () {
                     var id = $(this).attr("targetID");
                     var nom = $(this).attr("nom");
                     var prenom = $(this).attr("prenom");
-                    var validmail = $(this).attr("validmail"); 
+                    var validmail = $(this).attr("devalidmail"); 
                     var actionadherent = 6;                    
-                            if(validmail==NULL) {
+                            if(validmail!=1) {
                                 $('.success').fadeOut(200).hide();
                                 $('.error').fadeOut(200).show();
                     
@@ -149,7 +149,7 @@ $(function () {
                                 success: function(){
                                     $('.success').fadeIn(200).show();
                                     $('.error').fadeOut(200).hide();
-                                    alert("Le mail de "+nom +" "+prenom+" a bien été dévalidé");
+                                    alert("Le mail de "+nom +" "+prenom+" a bien été dévalidé, raffraichissez la page");
                                    }
                                 })
                             }

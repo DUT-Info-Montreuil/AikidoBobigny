@@ -87,7 +87,7 @@ class ContArticle{
     }
 
     public function form_recherche(){
-        $this->view->rechercherArticle($this->model->articlesRecent());
+        $this->view->rechercherArticle($this->model->dernierArticle());
     }
 
     public function faireRecherche(){
