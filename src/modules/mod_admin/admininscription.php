@@ -35,5 +35,20 @@ Connexion::initConnexion();
                 }
             };
 
+            if($_POST["actionadherent"]==5){
+                if (isset($_POST["targetID"])) {
+                    $req = Connexion::getConnexion()->prepare('UPDATE adherent SET inscripverif = 0 where ID_adherent = ?');
+                    $req->execute(array($_POST['targetID']));
+                }
+            };
+
+
+            if($_POST["actionadherent"]==6){
+                if (isset($_POST["targetID"])) {
+                    $req = Connexion::getConnexion()->prepare('UPDATE adherent SET mailverif = 0 where ID_adherent = ?');
+                    $req->execute(array($_POST['targetID']));
+                }
+            };
+
                 
 ?>
