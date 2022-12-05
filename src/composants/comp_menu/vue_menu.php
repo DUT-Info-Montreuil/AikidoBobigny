@@ -17,7 +17,7 @@
 					<li><a href='index.php?module=aikido' class='menu-link'>L'Aïkido</a></li>
 					<li><a href='index.php?module=senseis' class='menu-link'>Les Senseis</a></li>
 					<li><a href='index.php?module=article' class='menu-link'>Blog</a></li>
-					<li><a href='index.php?module=contact' class='menu-link'>FAQ</a></li>";			
+					<li><a href='index.php?module=faq' class='menu-link'>FAQ</a></li>";			
 		}
 
 		public function completecontenu(){

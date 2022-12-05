@@ -1,6 +1,7 @@
 <?php
     session_start();
 
+    require_once 'connexion.php';
 
     include_once './modules/mod_connexion/mod_connexion.php';
     include_once './modules/mod_inscription/mod_inscription.php';
