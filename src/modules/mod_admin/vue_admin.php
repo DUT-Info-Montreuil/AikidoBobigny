@@ -18,12 +18,15 @@ class VueAdmin extends VueGenerique{
 
     }   
 
-        public function menu(){
-            echo "<a href='index.php?module=admin&action=inscription'>Gerez vos inscription </a><br>";
-            echo "<a href='index.php?module=admin&action=faq'>Gerez votre FAQ </a><br>";
-            echo "<a href='index.php?module=admin&action=article'>Gerez vos articles </a><br>";
-            echo "<a href='index.php?module=admin&action=calendrier'>Gerez votre calendrier/evenements </a><br>";
-            echo "<a href='index.php?module=admin&action=menu'>Générer fichier Csv</a><br>";
+        public function menu() {
+            $vue = "<div class='menu_admin'>
+                    <a href='index.php?module=admin&action=inscription' class='lienAdmin'>Gerez vos inscription </a><br><br>
+                    <a href='index.php?module=admin&action=faq' class='lienAdmin'>Gerez votre FAQ </a><br><br>
+                    <a href='index.php?module=admin&action=article' class='lienAdmin'>Gerez vos articles </a><br><br>
+                    <a href='index.php?module=admin&action=calendrier' class='lienAdmin'>Gerez votre calendrier/evenements </a><br><br>
+                    <a href='index.php?module=admin&action=menu' class='lienAdmin'>Générer fichier Csv</a><br><br>
+                    </div>";
+            echo $vue;
         }
 
         public function csv(){

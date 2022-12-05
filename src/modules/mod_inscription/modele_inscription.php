@@ -8,40 +8,40 @@ $mail = new VueMail();
 $reponse = "";
 
 if (isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])) {
-	if ($_SESSION['token'] == $_POST['token']) {
+	if ($_SESSION['token'] == htmlspecialchars($_POST['token'])) {
 		$timestamp_ancien = time() - (15 * 60);
 		if ($_SESSION['token_time'] >= $timestamp_ancien) {
 			if (isset($_POST['sexe']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['date_naissance']) && isset($_POST['email']) && isset($_POST['tel_port']) && isset($_POST['identifiant']) && isset($_POST['mdp']) && isset($_POST['adresse']) && isset($_POST['code_postal']) && isset($_POST['ville'])) {
-				
+
 				$verifLogin = $bdd->prepare('SELECT * FROM adherent WHERE login = ?');
-				$verifLogin->execute(array($_POST['identifiant']));
+				$verifLogin->execute(array(htmlspecialchars($_POST['identifiant'])));
 				$donnees = $verifLogin->fetch();
 				if ($donnees) {
 					$reponse = "loginUsed";
 				} else {
 					$verifNomMail = $bdd->prepare('SELECT * FROM adherent WHERE adresse_mail = ? AND nom = ? AND prenom = ?');
-					$verifNomMail->execute(array($_POST['email'], $_POST['nom'], $_POST['prenom']));
+					$verifNomMail->execute(array(htmlspecialchars($_POST['email']), htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['prenom'])));
 					$donnees = $verifNomMail->fetch();
 					if ($donnees) {
 						$reponse = "alreadyRegistered";
 					} else {
 						$requete = $bdd->prepare("SELECT * FROM ville WHERE code_postal = :code_postal");
-						$requete->execute(array(':code_postal' => $_POST['code_postal']));
+						$requete->execute(array(':code_postal' => htmlspecialchars($_POST['code_postal'])));
 						$donnees = $requete->fetch();
 						if ($donnees) {
 							$id_ville = $donnees['ID_ville'];
 						} else {
 							$requete = $bdd->prepare("INSERT INTO ville (code_postal, ville) VALUES (:code_postal, :ville)");
-							$requete->execute(array(':code_postal' => $_POST['code_postal'], ':ville' => $_POST['ville']));
+							$requete->execute(array(':code_postal' => htmlspecialchars($_POST['code_postal']), ':ville' => htmlspecialchars($_POST['ville'])));
 							$id_ville = $bdd->lastInsertId();
 						}
 						$ajouteradhe = $bdd->prepare('INSERT INTO adherent (sexe,nom,prenom,date_de_naissance,adresse_mail,numero_de_telephone,login,mot_de_passe,adresse,ID_ville) VALUES (?,?,?,?,?,?,?,?,?,?)');
-						$ajouteradhe->execute(array($_POST['sexe'], $_POST['nom'], $_POST['prenom'], $_POST['date_naissance'], $_POST['email'], $_POST['tel_port'], $_POST['identifiant'], password_hash($_POST['mdp'], PASSWORD_DEFAULT), $_POST['adresse'], $id_ville));
+						$ajouteradhe->execute(array(htmlspecialchars($_POST['sexe']), htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['prenom']), htmlspecialchars($_POST['date_naissance']), htmlspecialchars($_POST['email']), htmlspecialchars($_POST['tel_port']), htmlspecialchars($_POST['identifiant']), password_hash(htmlspecialchars($_POST['mdp']), PASSWORD_DEFAULT), htmlspecialchars($_POST['adresse']), $id_ville));
 						$id_adherent = $bdd->lastInsertId();
-						$_SESSION['mail'] = $_POST['email'];
+						$_SESSION['mail'] = htmlspecialchars($_POST['email']);
 						$_SESSION['idadh'] = $id_adherent;
 						$ajouter = $bdd->prepare('INSERT INTO info_inscription (profession,nationalite,saison,ID_Adherent) VALUES (?,?,?,?)');
-						$ajouter->execute(array($_POST["profession"], $_POST["nationalite"], $_POST["saison"], $id_adherent));
+						$ajouter->execute(array(htmlspecialchars($_POST["profession"]), htmlspecialchars($_POST["nationalite"]), htmlspecialchars($_POST["saison"]), $id_adherent));
 
 						if (isset($_FILES['piece_identite']) && isset($_FILES['attestation_sante']) && isset($_FILES['droit_image']) && isset($_FILES['certificat_medical']) && isset($_FILES['autorisation_parentale'])) {
 							$fichier1 = $_FILES['piece_identite'];
@@ -73,14 +73,12 @@ if (isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST[
 								$i++;
 							}
 						}
-						$reponsemail= $mail->message_Verif_Mail();
-						if($reponsemail=="ok"){
+						$reponsemail = $mail->message_Verif_Mail();
+						if ($reponsemail == "ok") {
 							$reponse = 'ok';
-						}else{
+						} else {
 							$reponse = 'mailerror';
 						}
-						
-
 					}
 				}
 			}
@@ -88,3 +86,5 @@ if (isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST[
 	}
 }
 echo $reponse;
+
+?>

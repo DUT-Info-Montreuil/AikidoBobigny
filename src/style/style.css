@@ -86,3 +86,46 @@ h1, h2 {
     transform: translateX(-50%);
     margin-bottom: 100px;
 }
+
+.infosPersosCompte {
+    margin-top: 100px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.lienAdmin {
+    color: #444;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    position: relative;
+    margin-right: 20px;
+}
+  
+.lienAdmin:hover {
+    color: #DFA497;
+}
+  
+.lienAdmin::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background-color: #444;
+    position: absolute;
+    top: 22px;
+    width: 0%;
+    transition: all ease-in-out 250ms;
+}
+  
+.lienAdmin:hover::before {
+    width: 100%;
+}
+
+.menu_admin {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 100px;
+}
+
+.menu_admin .lienAdmin {
+}

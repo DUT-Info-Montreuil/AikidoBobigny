@@ -15,7 +15,7 @@ class VueLoginForm
 		$_SESSION['token'] = $token;
 		$_SESSION['token_time'] = time(); 
 		$this->contenu = '<div id="loginForm" style="display: none;">
-		<i class="fa-solid fa-xmark fa-2x" id="cross" onclick="hideForm()"></i>
+		<i class="fa-solid fa-xmark fa-2x" id="cross"></i>
 		<form action="index.php?module=connexion&action=connexion" method="POST" id="card-form">
 			<div class="login-input">
 				<input type="text" class="input-field" name="login" maxlength="50" required />

@@ -33,13 +33,15 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
 	});
 });
 
-inputSaison = document.getElementsByName("saison")[0];
-month = new Date().getMonth();
-if (month >= 9) {
-	inputSaison.value = new Date().getFullYear() + "-" + (new Date().getFullYear() + 1);
-} else {
-	inputSaison.value = (new Date().getFullYear() - 1) + "-" + new Date().getFullYear();
-}
+$(document).ready(function() {
+	var inputSaison = $('input[name="saison"]');
+	var month = new Date().getMonth();
+	if (month >= 9) {
+		inputSaison.val(new Date().getFullYear() + "-" + (new Date().getFullYear() + 1));
+	} else {
+		inputSaison.val((new Date().getFullYear() - 1) + "-" + new Date().getFullYear());
+	}
+});
 
 $(document).ready(function () {
 	$("#autre_section").attr("readonly", true);

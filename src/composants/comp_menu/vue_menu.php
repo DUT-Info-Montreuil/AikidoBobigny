@@ -24,7 +24,7 @@
 			if(isset($_SESSION['idadh'])){
 				$this->contenu.="<li> <a href='index.php?module=compte' id='decoBtn'><i class='fa-regular fa-user' style='float: right;'></i></a></li>";
 			}else{
-				$this->contenu.="<li><button class='menu-btn' id='log-btn' onclick=\"showForm()\">se connecter</button></li>
+				$this->contenu.="<li><button class='menu-btn' id='log-btn' >se connecter</button></li>
 				<li><a href='index.php?module=inscription' class='menu-btn' id='sign-btn'>adherer</a></li>";
 			}
 			$this->contenu.="</ul></nav>";
