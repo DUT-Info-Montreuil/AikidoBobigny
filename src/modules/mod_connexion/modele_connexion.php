@@ -17,7 +17,8 @@ class ModeleConnexion extends Connexion
                     $log->execute(array(htmlspecialchars(($_POST['login']))));
                     $tab = $log->fetch();
                     if (password_verify(htmlspecialchars($_POST['mdp']), $tab['mot_de_passe'])) {
-                        $_SESSION['connexion'] = $tab['ID_adherent'];
+                        $_SESSION['idadh'] = $tab['ID_adherent'];
+                        $_SESSION['admin'] = $tab['admin'];
                         echo "<script>alertLogin();</script>";
                     } else {
                         echo "<script>alertLoginError();</script>";
@@ -37,7 +38,7 @@ class ModeleConnexion extends Connexion
 
     public function deconnexion()
     {
-        unset($_SESSION['connexion']);
+        unset($_SESSION['idadh']);
         echo "Deconnexion réussi";
     }
 }

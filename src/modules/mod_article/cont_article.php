@@ -21,7 +21,7 @@ class ContArticle{
     }
 
     public function execadmin(){
-       ///if admin ==1
+       
         switch($this->action){
             case("formArticle"):
                 $this->form_ajout();
@@ -47,6 +47,7 @@ class ContArticle{
             case("validationCommentaire"):
                 $this->validerCommentaire();
             break;
+            
         }
         
 

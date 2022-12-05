@@ -13,7 +13,7 @@
     include_once './modules/mod_aikido/mod_aikido.php';
     include_once './modules/mod_senseis/mod_senseis.php';
     include_once './modules/mod_article/mod_article.php';
-
+    include_once './modules/mod_compte/mod_compte.php';
     include_once './composants/comp_menu/comp_menu.php';
     include_once './composants/comp_slider/comp_slider.php';
     include_once './composants/comp_calendar/comp_calendar.php';
@@ -36,8 +36,8 @@
         case 'article':
             $page = new ModArticle();
             break;
-        case 'upload':
-            $page = new ModUpload();
+        case 'compte':
+            $page = new ModCompte();
             break;
         case "connexion":
             $page = new ModAccueil();

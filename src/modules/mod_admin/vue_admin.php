@@ -3,15 +3,17 @@ require_once "./vue_generique.php";
 require_once "./modules/mod_faq/vue_faq.php";
 
 include_once('./modules/mod_article/vue_article.php');
+include_once('./modules/mod_csv/vue_csv.php');
 class VueAdmin extends VueGenerique{
 
     private $vue_faq;
     private $vue_article;
+    private $vue_csv;
     public function __construct(){
         parent::__construct();
         
         $this->vue_faq = new VueFAQ();
-
+        $this->vue_csv = new VueCSV();
         $this->vue_article = new VueArticle();
 
     }   
@@ -21,8 +23,12 @@ class VueAdmin extends VueGenerique{
             echo "<a href='index.php?module=admin&action=faq'>Gerez votre FAQ </a><br>";
             echo "<a href='index.php?module=admin&action=articles'>Gerez vos articles </a><br>";
             echo "<a href='index.php?module=admin&action=calendrier'>Gerez votre calendrier/evenements </a><br>";
+            echo "<a href='index.php?module=admin&action=menu'>Générer fichier Csv</a><br>";
         }
 
+        public function csv(){
+                $this->vue_csv->afficherGenererCSV();
+        }
         public function gerer_article($tableau){
 
                 $this->vue_article->menu();
@@ -69,11 +75,11 @@ class VueAdmin extends VueGenerique{
         }
 
         public function gerer_faq(array $tableau){
-        $tokenfaq = uniqid(rand(), true);       
+       /* $tokenfaq = uniqid(rand(), true);       
         $_SESSION['token_faq'] = $tokenfaq;
         $_SESSION['token_time_faq'] = time();
-            echo"<button class='ajouter_question_reponse' > Ajouter une question et une réponse </button></br>
-            <input type='hidden' name='token' token='token' value='".$tokenfaq."'/>";
+        */
+            echo"<button class='ajouter_question_reponse' > Ajouter une question et une réponse </button></br>";
             $this->ajoutquestion_reponse();
             foreach($tableau as $cle => $valeur){
                 echo "
@@ -85,7 +91,7 @@ class VueAdmin extends VueGenerique{
                 ".$this->vue_faq->modifier_question($valeur['id_faq'])."
                 <button class='supprimerquestion_reponse' targetID=$valeur[id_faq] reponsesupp='".htmlspecialchars($valeur['reponse'])."' questionsupp='".htmlspecialchars($valeur['question'])."'> Supprimer Question/Reponse </button></br>
 
-                <input type='hidden' name='token' token='token' value='".$tokenfaq."'/>"
+                </>"
 
                      ; 
 

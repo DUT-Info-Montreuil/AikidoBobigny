@@ -35,6 +35,8 @@ class ContAdmin{
         $this->vue->gerer_article($tab);
     }
 
+    
+
 
 
 
@@ -54,6 +56,9 @@ class ContAdmin{
                 break;
             case("articles"):
                 $this->article();
+                break;
+            case("menu"):
+                $this->vue->csv();
                 break;
 
         }
