@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    include_once './modules/mod_upload/mod_upload.php';
+
     include_once './modules/mod_connexion/mod_connexion.php';
     include_once './modules/mod_inscription/mod_inscription.php';
     include_once './modules/mod_commentaire/mod_commentaire.php';
