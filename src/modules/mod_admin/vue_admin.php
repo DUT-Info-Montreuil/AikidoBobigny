@@ -41,9 +41,6 @@ class VueAdmin extends VueGenerique{
                 }
         }
         public function gerer_inscrip(array $tableau){ 
-            $token = uniqid(rand(), true);
-            $_SESSION['token'] = $token;
-            $_SESSION['token_time'] = time();
             foreach($tableau as $cle => $valeur){
                 echo "
                 <div id=$valeur[ID_adherent]>
@@ -58,7 +55,6 @@ class VueAdmin extends VueGenerique{
                 <button  class='enlevermail' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' devalidmail='".htmlspecialchars($valeur['mailverif'])."'>Enlever validation mail</button>
                 <button  class='passeradmin' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' admin='".htmlspecialchars($valeur['admin'])."'>Passez le compte admin</button>
                 <br>
-                <input type='hidden' name='token' id='token' value='" . $token . "'/>
                 </div>
                 "
                      ; 
@@ -74,11 +70,9 @@ class VueAdmin extends VueGenerique{
         }
 
         public function gerer_faq(array $tableau){
-            $token = uniqid(rand(), true);
-            $_SESSION['token'] = $token;
-            $_SESSION['token_time'] = time();
+           
             echo"<button class='ajouter_question_reponse' > Ajouter une question et une réponse </button></br>
-            <input type='hidden' name='token' id='token' value='" . $token . "'/>";
+            ";
             $this->ajoutquestion_reponse();
             foreach($tableau as $cle => $valeur){
                 echo "
@@ -89,7 +83,6 @@ class VueAdmin extends VueGenerique{
                 <button class='corrigerquestion' targetID=$valeur[id_faq] corrigequestion='".htmlspecialchars($valeur['question'])."'> Corriger Question</button>
                 ".$this->vue_faq->modifier_question($valeur['id_faq'])."
                 <button class='supprimerquestion_reponse' targetID=$valeur[id_faq] reponsesupp='".htmlspecialchars($valeur['reponse'])."' questionsupp='".htmlspecialchars($valeur['question'])."'> Supprimer Question/Reponse </button></br>
-                <input type='hidden' name='token' id='token' value='" . $token . "'/>
                 </>"
 
                      ; 
