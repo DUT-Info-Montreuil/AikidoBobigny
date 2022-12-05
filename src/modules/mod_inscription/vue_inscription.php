@@ -1,5 +1,6 @@
 <?php
 require_once "./vue_generique.php";
+
 class VueInscription extends VueGenerique
 {
 
