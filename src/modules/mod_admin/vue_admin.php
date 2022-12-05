@@ -101,10 +101,10 @@ class VueAdmin extends VueGenerique{
             
         }
 
-        public function gerercalendrier($tableau){
+        public function gerercalendrier($tableau, $lieux){
             echo"<button class='ajouter_evenement' > Ajouter un événement au calendrier </button></br>
            ";
-            $this->ajoutevenement();
+            $this->ajoutevenement($lieux);
             foreach($tableau as $cle => $valeur){
                 echo "
                 Evenement : ".htmlspecialchars($valeur['evenement'])."<br>
@@ -125,33 +125,29 @@ class VueAdmin extends VueGenerique{
         }
 
         public function ajoutquestion_reponse(){
-            $token = uniqid(rand(), true);
-            $_SESSION['token'] = $token;
-            $_SESSION['token_time'] = time();
-            echo'<form action="http://sae/src/index.php?module=admin&action=faq" method="POST" style ="display:none" class="ajoutquestion_reponse">
+            echo'<form action="index.php?module=admin&action=faq" method="POST" style ="display:none" class="ajoutquestion_reponse">
             <p>Quelle est votre question :</p> <textarea <input type="text" name="question_faq" id="question_faq"placeholder="Votre question..."/></textarea></br>
             <p>Quelle est votre reponse:</p> <textarea <input type="textarea" name="reponse_faq" id="reponse_faq" placeholder="Mettez votre reponse "/></textarea></br>
             <input type="submit" value="Poster la question/reponse" class="submit_question_reponse"/>
-            <input type="hidden" name="token" id="token" value="' . $token . '"/>
 
             </form>';
         }
 
-        public function ajoutevenement(){
-            $token = uniqid(rand(), true);
-            $_SESSION['token'] = $token;
-            $_SESSION['token_time'] = time();
-            echo'<form action="http://sae/src/index.php?module=admin&action=calendrier" method="POST" style ="display:none" class="ajoutevenement">
+
+        public function ajoutevenement($lieux){
+            $formEvent = '<form action="index.php?module=admin&action=calendrier" method="POST" style ="display:none" class="ajoutevenement">
             <p>Intitule:</p> <textarea <input type="text" name="intitule" id="intitule"placeholder="Votre evenement..."/></textarea></br>
             <p>Description:</p> <textarea <input type="textarea" name="description" id="description" placeholder="Description événement"/></textarea></br>
             <p> Date début événement:</p> <input type="date" name="datedebut" id="datedebut"/>
             <p> Date fin événement:</p> <input type="date" name="datefin" id="datefin"/>
-
+            <select name="lieu" id="lieu">';
+            foreach($lieux as $cle => $valeur){
+                $formEvent .= '<option value="'.$valeur['ID_lieu'].'">'.$valeur['nom'].'</option>';
+            }
+            $formEvent .= '</select>
             <input type="submit" value="Poster l\'evenement" class="submit_evenement"/>
-            <input type="hidden" name="token" id="token" value="' . $token . '"/>
-          
-
             </form>';
+            echo $formEvent;
         }
 
         

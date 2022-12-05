@@ -31,6 +31,12 @@ class ModeleAdmin extends Connexion{
             $tab->execute();
             return $tab->fetchAll();
         }
+
+        public function getlieux(){
+            $tab = parent::$bdd -> prepare('select * from lieu');
+            $tab->execute();
+            return $tab->fetchAll();
+        }
     
     }
 

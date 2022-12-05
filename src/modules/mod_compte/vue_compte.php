@@ -26,7 +26,9 @@ class VueCompte extends VueGenerique
 		if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1){
 			$infos .= "<a href='index.php?module=admin&action=admin' class='lienAdmin'>ADMINISTRATION</a>";
 		}
-		$infos .= "</div>";
+		$infos .= "
+		<button onclick=\"alertDeconnexion();\" id='decoBtn'>Se deconnecter</button>
+		</div>";
 		echo $infos;
 	}
 }

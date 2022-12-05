@@ -6,7 +6,7 @@ $(function () {
              var actioncalendrier = 1;
          $.ajax({
              type : "POST",
-             url : "./modules/mod_admin/admin.php",
+             url : "./modules/mod_admin/admincalendrier.php",
 
              data: {targetID : id , actioncalendrier : actioncalendrier},
              success: function(){

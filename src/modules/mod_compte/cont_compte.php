@@ -21,7 +21,6 @@ class ContCompte
 
 	public function affichage()
 	{
-		$_SESSION['admin'] = 1;
 		$tab = $this->modele->getadherents();
 		$this->vue->affichageprincipal($tab);
 	}

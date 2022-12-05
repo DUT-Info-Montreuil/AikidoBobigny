@@ -73,12 +73,13 @@ if (isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST[
 								$i++;
 							}
 						}
-						$reponsemail = $mail->message_Verif_Mail();
+						/* $reponsemail = $mail->message_Verif_Mail();
 						if ($reponsemail == "ok") {
 							$reponse = 'ok';
 						} else {
 							$reponse = 'mailerror';
-						}
+						} */
+						$reponse = 'ok';
 					}
 				}
 			}

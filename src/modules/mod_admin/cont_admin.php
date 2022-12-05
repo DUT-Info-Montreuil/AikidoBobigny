@@ -27,17 +27,14 @@ class ContAdmin{
 
     public function calendrier(){
         $tab = $this->modele->getcalendrier();
-        $this->vue->gerercalendrier($tab);
+        $lieux = $this->modele->getlieux();
+        $this->vue->gerercalendrier($tab,$lieux);
     }
 
     public function article(){
         $tab = $this->modele->getArticles();
         $this->vue->gerer_article($tab);
     }
-
-    
-
-
 
 
     public function exec(){
