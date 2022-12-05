@@ -9,7 +9,6 @@
     include_once './modules/mod_csv/mod_csv.php';
     include_once './modules/mod_faq/mod_faq.php';
     include_once './modules/mod_admin/mod_admin.php';
-    include_once './modules/mod_articles/mod_article.php';
     include_once './modules/mod_accueil/mod_accueil.php';
     include_once './modules/mod_aikido/mod_aikido.php';
     include_once './modules/mod_senseis/mod_senseis.php';

@@ -2,7 +2,7 @@
 require_once "./vue_generique.php";
 require_once "./modules/mod_faq/vue_faq.php";
 
-include_once('./modules/mod_articles/vue_article.php');
+include_once('./modules/mod_article/vue_article.php');
 class VueAdmin extends VueGenerique{
 
     private $vue_faq;
