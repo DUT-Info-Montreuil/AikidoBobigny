@@ -51,7 +51,7 @@ $(function () {
 		    	success: function(){
 					$('.success').fadeIn(200).show();
 		    		$('.error').fadeOut(200).hide();
-					alert("La question "+modifier_question+" a bien été modifié");
+					alert("La question "+modifier_question+" a bien été modifié, raffraichissez la page");
 		   		}
 			});
 				}
@@ -80,7 +80,7 @@ $(function () {
                         $('.success').fadeIn(200).show();
                         $('.error').fadeOut(200).hide();
 
-                        alert("Votre reponse a la question : "+question+" a été publié vous pouvez vérifiez dans le module FAQ")
+                        alert("Votre reponse a la question : "+question+" a été publié vous pouvez vérifiez dans le module FAQ ou raffraichissez la page")
 
                        }
                 });
@@ -111,7 +111,7 @@ $(function () {
             success: function(){
                 $('.success').fadeIn(200).show();
                 $('.error').fadeOut(200).hide();
-                alert("question et reponse ajouté a la faq")
+                alert("question et reponse ajouté a la faq, raffraichissez la page")
             }
         });
             }
@@ -135,7 +135,7 @@ $(function () {
                 success: function(){
                     $('.success').fadeIn(200).show();
                     $('.error').fadeOut(200).hide();
-                    alert("la question : " +questionsup +" et la reponse :"+reponsesupp+" ont été supprimées de la faq")
+                    alert("la question : " +questionsup +" et la reponse :"+reponsesupp+" ont été supprimées de la faq, raffraichissez la page")
                 }
             });
                 

@@ -12,7 +12,7 @@ $(function () {
              success: function(){
             $('.success').fadeIn(200).show();
             $('.error').fadeOut(200).hide();
-            alert("evenement supprimé calendrier")
+            alert("evenement supprimé calendrier, raffraichissez la page")
         }
     });
         
@@ -56,7 +56,7 @@ $(function () {
 		    	success: function(){
 					$('.success').fadeIn(200).show();
 		    		$('.error').fadeOut(200).hide();
-					alert("evenement ajouté au calendrier")
+					alert("evenement ajouté au calendrier, raffraichissez la page")
 		   		}
 			});
 				}
