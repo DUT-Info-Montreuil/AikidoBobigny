@@ -12,7 +12,7 @@ class ContFAQ
     {
         $this->modele = $modele;
         $this->vue = $vue;
-        $this->action = isset($_GET['action']) ? $_GET['action'] : "default";
+        $this->action = isset($_GET['action']) ? $_GET['action'] : "FAQ";
         $this->id = isset($_GET['id']) ? $_GET['id'] : 1;
     }
 
@@ -22,7 +22,9 @@ class ContFAQ
     {
         $tab = $this->modele->getfaq();
         $this->vue->affichequestionreponse($tab);
-        $this->vue->form_faq();
+        if (isset($_SESSION['idadh'])) {
+            $this->vue->form_faq();
+        }
     }
 
 
