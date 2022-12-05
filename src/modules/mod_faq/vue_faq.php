@@ -41,12 +41,12 @@ class VueFAQ extends VueGenerique{
 
     public function modifier_question($id){
         $token = uniqid(rand(), true);       
-        $_SESSION['token'] = $token;
+        $_SESSION['token_modifier_question'] = $token;
         $_SESSION['token_time'] = time();
         echo'<form action="http://sae/src/index.php?module=admin&action=faq" method="POST" style ="display:none" class="corrigerquestion" id="corriger'.$id.'">
         <p>Modifier question:</p> <textarea <input type="textarea" id ="modifier_question'.$id.'" name="modifier_question" placeholder="Modifier la question "/></textarea></br>
         <input type="submit" value="Poster la question" name="submit_modifier_question" class="submit_modifier_question" targetID="'.$id.'"/>
-        <input type="hidden" name="token" id="token" value="'.$token.'"/>
+        <input type="hidden" name="token_modifier_question" id="token" value="'.$token.'"/>
         </form>';
     }
     

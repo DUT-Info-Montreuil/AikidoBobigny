@@ -9,10 +9,11 @@ Connexion::initConnexion();
             $req1 = Connexion::getConnexion()->prepare('DELETE from evenement where ID_evenement= ?');
             $req1->execute(array($_POST['targetID']));
         }
+    
     }
 
     if($_POST["actioncalendrier"]==2){
-
+       
         if($_POST)
             {
         $ajouter_evenement = Connexion::getConnexion() -> prepare('INSERT INTO evenement (debut_evenement,fin_evenement,intitule,evenement,ID_gymnase) VALUES (?,?,?,?,?)');
@@ -22,5 +23,7 @@ Connexion::initConnexion();
                 exit();
         }
      };
+
+
 
 ?>
