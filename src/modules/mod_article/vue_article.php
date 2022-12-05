@@ -18,7 +18,7 @@ class VueArticle extends VueGenerique
 
     public function formArticle(){
         echo'</br>';
-        echo'<form action="index.php?module=article&action=insertArticle" method="POST" enctype="multipart/form-data">
+        echo'<form action="http://sae/src/index.php?module=article&action=insertArticle" method="POST" enctype="multipart/form-data">
             <label for="date">Date Article</label>
             <input type = "date" name ="dateArticle">
             <label for = "titre">Titre article</label>
@@ -37,7 +37,7 @@ class VueArticle extends VueGenerique
         if($rechercheArticle){
             echo '</br>';
             echo "Pour supprimer des articles : ";
-            echo '<form action ="index.php?module=article&action=deleteArticle" method ="POST">';
+            echo '<form action ="http://sae/src/index.php?module=article&action=deleteArticle" method ="POST">';
             echo '<table>';
             echo '  <tr>
                         <th>Titre</th>
@@ -64,7 +64,7 @@ class VueArticle extends VueGenerique
 
     public function rechercherArticle($recherche){
         echo'</br>';
-        echo'<form action="index.php?module=article&action=articleRecherche" method="POST">
+        echo'<form action="http://sae/src/index.php?module=article&action=articleRecherche" method="POST">
             <label for="date"> Sélectionner une date :</label>
             <input type="date" name="datevoulu">
             <input type="submit" value="Rechercher">
@@ -78,7 +78,7 @@ class VueArticle extends VueGenerique
                 $id = $row['ID_article'];
                 $titre = $row['titre'];
                 echo '</br>';
-                echo "<a href=index.php?module=article&action=articleDetails&id=$id>$titre</a>";
+                echo "<a href=http://sae/src/index.php?module=article&action=articleDetails&id=$id>$titre</a>";
                 echo '</br>';
             }
         }
@@ -94,7 +94,7 @@ class VueArticle extends VueGenerique
                 $titre = $row['titre'];
                 $id = $row['ID_article'];
                 echo '</br>';
-                echo "<a href=index.php?module=article&action=articleDetails&id=$id>$titre</a>";
+                echo "<a href=http://sae/src/index.php?module=article&action=articleDetails&id=$id>$titre</a>";
                 echo '</br>';
             }
         }   
@@ -143,7 +143,7 @@ class VueArticle extends VueGenerique
                 $titre = $row['titre'];
                 $id = $row['ID_article'];
                 echo '</br>';
-                echo "<a href=index.php?module=article&action=listeCommentaire&id=$id>$titre</a>";
+                echo "<a href=http://sae/src/index.php?module=article&action=listeCommentaire&id=$id>$titre</a>";
                 echo '</br>';
             }
         }
@@ -155,7 +155,7 @@ class VueArticle extends VueGenerique
             echo '</br>';
             echo "Pour supprimer des commentaires : ";
             echo '</br>';
-            echo '<form action ="index.php?module=article&action=deleteCommentaire" method ="POST">';
+            echo '<form action ="http://sae/src/index.php?module=article&action=deleteCommentaire" method ="POST">';
             echo '<table>';
             echo '  <tr>
                         <th>Adhérent</th>
@@ -195,7 +195,7 @@ class VueArticle extends VueGenerique
                 echo '</br>';
                 echo "Pour valider des commentaires : ";
                 echo '</br>';
-                echo '<form action ="index.php?module=article&action=validationCommentaire" method ="POST">';
+                echo '<form action ="http://sae/src/index.php?module=article&action=validationCommentaire" method ="POST">';
                 echo '<table>';
                 echo '  <tr>
                             <th>Adhérent</th>

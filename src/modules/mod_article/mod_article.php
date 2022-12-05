@@ -10,8 +10,7 @@ class ModArticle{
         $this->controleurArticle = new ContArticle();
         $this->controleurArticle->exec();
         if(isset($_SESSION['admin'])&& $_SESSION['admin']==1){
-            $this->controleurArticle->execadmin();
-            
+            $this->controleurArticle->execadmin();  
         }
     }
 

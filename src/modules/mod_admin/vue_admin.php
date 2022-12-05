@@ -21,7 +21,7 @@ class VueAdmin extends VueGenerique{
         public function menu(){
             echo "<a href='index.php?module=admin&action=inscription'>Gerez vos inscription </a><br>";
             echo "<a href='index.php?module=admin&action=faq'>Gerez votre FAQ </a><br>";
-            echo "<a href='index.php?module=admin&action=articles'>Gerez vos articles </a><br>";
+            echo "<a href='index.php?module=admin&action=article'>Gerez vos articles </a><br>";
             echo "<a href='index.php?module=admin&action=calendrier'>Gerez votre calendrier/evenements </a><br>";
             echo "<a href='index.php?module=admin&action=menu'>Générer fichier Csv</a><br>";
         }
@@ -41,9 +41,7 @@ class VueAdmin extends VueGenerique{
                 }
         }
         public function gerer_inscrip(array $tableau){ 
-        $token = uniqid(rand(), true);       
-        $_SESSION['token'] = $token;
-        $_SESSION['token_time'] = time();
+       
             foreach($tableau as $cle => $valeur){
                 echo "
                 <div id=$valeur[ID_adherent]>
@@ -59,7 +57,7 @@ class VueAdmin extends VueGenerique{
                 <button  class='passeradmin' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' admin='".htmlspecialchars($valeur['admin'])."'>Passez le compte admin</button>
                 <br>
                 <input type ='text' class='ID_adherent' id='ID_adherent' value='".$valeur['ID_adherent']."' name = 'ID_adherent'/>
-                <input type='hidden' name='token' id='token' value='".$token."'/>
+               
                 </div>
                 "
                      ; 
@@ -75,10 +73,7 @@ class VueAdmin extends VueGenerique{
         }
 
         public function gerer_faq(array $tableau){
-       /* $tokenfaq = uniqid(rand(), true);       
-        $_SESSION['token_faq'] = $tokenfaq;
-        $_SESSION['token_time_faq'] = time();
-        */
+       
             echo"<button class='ajouter_question_reponse' > Ajouter une question et une réponse </button></br>";
             $this->ajoutquestion_reponse();
             foreach($tableau as $cle => $valeur){
@@ -130,23 +125,17 @@ class VueAdmin extends VueGenerique{
 
         public function ajoutquestion_reponse(){
 
-        $token = uniqid(rand(), true);       
-
-        $_SESSION['token'] = $token;
-        $_SESSION['token_time'] = time();
             echo'<form action="http://sae/src/index.php?module=admin&action=faq" method="POST" style ="display:none" class="ajoutquestion_reponse">
             <p>Quelle est votre question :</p> <textarea <input type="text" name="question_faq" id="question_faq"placeholder="Votre question..."/></textarea></br>
             <p>Quelle est votre reponse:</p> <textarea <input type="textarea" name="reponse_faq" id="reponse_faq" placeholder="Mettez votre reponse "/></textarea></br>
             <input type="submit" value="Poster la question/reponse" class="submit_question_reponse"/>
-            <input type="hidden" name="token" id="token" value="'.$token.'"/>
+            
 
             </form>';
         }
 
         public function ajoutevenement(){
-            $token = uniqid(rand(), true);       
-        $_SESSION['token'] = $token;
-        $_SESSION['token_time'] = time();
+        
             echo'<form action="http://sae/src/index.php?module=admin&action=calendrier" method="POST" style ="display:none" class="ajoutevenement">
             <p>Intitule:</p> <textarea <input type="text" name="intitule" id="intitule"placeholder="Votre evenement..."/></textarea></br>
             <p>Description:</p> <textarea <input type="textarea" name="description" id="description" placeholder="Description événement"/></textarea></br>
@@ -154,7 +143,7 @@ class VueAdmin extends VueGenerique{
             <p> Date fin événement:</p> <input type="date" name="datefin" id="datefin"/>
 
             <input type="submit" value="Poster l\'evenement" class="submit_evenement"/>
-            <input type="hidden" name="token" id="token" value="'.$token.'"/>
+          
 
             </form>';
         }

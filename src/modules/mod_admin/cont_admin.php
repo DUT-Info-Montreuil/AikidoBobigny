@@ -54,7 +54,7 @@ class ContAdmin{
             case("calendrier"):
                 $this->calendrier();
                 break;
-            case("articles"):
+            case("article"):
                 $this->article();
                 break;
             case("menu"):
