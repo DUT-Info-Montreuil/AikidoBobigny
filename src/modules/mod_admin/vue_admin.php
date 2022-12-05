@@ -46,9 +46,9 @@ class VueAdmin extends VueGenerique{
                 mail : ".htmlspecialchars($valeur['adresse_mail'])."<br>
 
                 <button  class='supprimeradherent' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' >Supprimer Adherent</button>
-                <button  class='validerinscription' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."'>Valider inscription</button>
-                <button  class='validermail' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."'>Valider mail</button>
-                <button  class='passeradmin' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."'>Passez le compte admin</button>
+                <button  class='validerinscription' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' validinscrip='".htmlspecialchars($valeur['inscripverif'])."'>Valider inscription</button>
+                <button  class='validermail' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' validmail='".htmlspecialchars($valeur['mailverif'])."'>Valider mail</button>
+                <button  class='passeradmin' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' admin='".htmlspecialchars($valeur['admin'])."'>Passez le compte admin</button>
                 <br>
                 <input type ='text' class='ID_adherent' id='ID_adherent' value='".$valeur['ID_adherent']."' name = 'ID_adherent'/>
                 <input type='hidden' name='token' id='token' value='".$token."'/>

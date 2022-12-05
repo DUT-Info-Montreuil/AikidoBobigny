@@ -18,10 +18,6 @@ class ContMail{
         $this->modele->envoie_Verif_Mail();
     }
 
-    
-
-
-
     public function exec(){
         switch($this->action){
             case ("verifmail"):
