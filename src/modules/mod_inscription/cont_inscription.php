@@ -1,7 +1,6 @@
 <?php
 require_once("vue_inscription.php");
 require_once("modules/mod_mail/vue_mail.php");
-require_once("modele_inscription.php");
 class ContInscription{
 
     private $modele;
@@ -10,8 +9,7 @@ class ContInscription{
     private $action;
     private $id;
 
-    public function __construct(ModeleInscription $modele,VueInscription $vue){
-        $this->modele=$modele;
+    public function __construct(VueInscription $vue){
         $this->vue=$vue;
         $this->vuemail = new VueMail();
         $this->action=isset($_GET['action'])?$_GET['action']:"form_inscription";
@@ -22,25 +20,13 @@ class ContInscription{
         $this->vue->form_inscription();
     }
 
-    public function inscription () {
-        $this->modele->inscription();
-    }
-
-
     public function exec(){
         switch($this->action){
-            case ("inscription"):
-                $this->inscription();
-
-                break;
             case ("form_inscription"):
                 $this->form_inscription();
                 break;
         }
     
-    }
-    public function afficheMod(){
-        return $this->vue->getAffichage();
     }
 }
 

@@ -16,6 +16,10 @@
                 return self::$bdd;
         }
 
+        public static function getConnexion() {
+            return self::$bdd;
+        }
+
 	}
 
 ?>

@@ -1,14 +1,14 @@
 <?php
 
-    include_once 'cont_calendrier.php';
+    include_once 'cont_aikido.php';
 
-	class ModCalendrier {
+	class ModAikido {
 
         private $vue;
 
 		public function __construct() {
-            $this->vue = new VueCalendrier();
-            $controleur = new ContCalendrier(new ModeleCalendrier(), $this->vue);
+            $this->vue = new VueAikido();
+            $controleur = new ContAikido(new ModeleAikido(), $this->vue);
             $controleur->exec();
         }
 
