@@ -44,7 +44,6 @@ class VueAdmin extends VueGenerique{
                 }
         }
         public function gerer_inscrip(array $tableau){ 
-       
             foreach($tableau as $cle => $valeur){
                 echo "
                 <div id=$valeur[ID_adherent]>
@@ -59,7 +58,6 @@ class VueAdmin extends VueGenerique{
                 <button  class='enlevermail' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' devalidmail='".htmlspecialchars($valeur['mailverif'])."'>Enlever validation mail</button>
                 <button  class='passeradmin' targetID=$valeur[ID_adherent] nom='".htmlspecialchars($valeur['nom'])."' prenom='".htmlspecialchars($valeur['prenom'])."' admin='".htmlspecialchars($valeur['admin'])."'>Passez le compte admin</button>
                 <br>
-                
                 </div>
                 "
                      ; 
@@ -75,8 +73,9 @@ class VueAdmin extends VueGenerique{
         }
 
         public function gerer_faq(array $tableau){
-       
-            echo"<button class='ajouter_question_reponse' > Ajouter une question et une réponse </button></br>";
+           
+            echo"<button class='ajouter_question_reponse' > Ajouter une question et une réponse </button></br>
+            ";
             $this->ajoutquestion_reponse();
             foreach($tableau as $cle => $valeur){
                 echo "
@@ -87,7 +86,6 @@ class VueAdmin extends VueGenerique{
                 <button class='corrigerquestion' targetID=$valeur[id_faq] corrigequestion='".htmlspecialchars($valeur['question'])."'> Corriger Question</button>
                 ".$this->vue_faq->modifier_question($valeur['id_faq'])."
                 <button class='supprimerquestion_reponse' targetID=$valeur[id_faq] reponsesupp='".htmlspecialchars($valeur['reponse'])."' questionsupp='".htmlspecialchars($valeur['question'])."'> Supprimer Question/Reponse </button></br>
-
                 </>"
 
                      ; 
@@ -104,7 +102,8 @@ class VueAdmin extends VueGenerique{
         }
 
         public function gerercalendrier($tableau){
-            echo"<button class='ajouter_evenement' > Ajouter un événement au calendrier </button></br>";
+            echo"<button class='ajouter_evenement' > Ajouter un événement au calendrier </button></br>
+           ";
             $this->ajoutevenement();
             foreach($tableau as $cle => $valeur){
                 echo "
@@ -126,18 +125,22 @@ class VueAdmin extends VueGenerique{
         }
 
         public function ajoutquestion_reponse(){
-
+            $token = uniqid(rand(), true);
+            $_SESSION['token'] = $token;
+            $_SESSION['token_time'] = time();
             echo'<form action="http://sae/src/index.php?module=admin&action=faq" method="POST" style ="display:none" class="ajoutquestion_reponse">
             <p>Quelle est votre question :</p> <textarea <input type="text" name="question_faq" id="question_faq"placeholder="Votre question..."/></textarea></br>
             <p>Quelle est votre reponse:</p> <textarea <input type="textarea" name="reponse_faq" id="reponse_faq" placeholder="Mettez votre reponse "/></textarea></br>
             <input type="submit" value="Poster la question/reponse" class="submit_question_reponse"/>
-            
+            <input type="hidden" name="token" id="token" value="' . $token . '"/>
 
             </form>';
         }
 
         public function ajoutevenement(){
-        
+            $token = uniqid(rand(), true);
+            $_SESSION['token'] = $token;
+            $_SESSION['token_time'] = time();
             echo'<form action="http://sae/src/index.php?module=admin&action=calendrier" method="POST" style ="display:none" class="ajoutevenement">
             <p>Intitule:</p> <textarea <input type="text" name="intitule" id="intitule"placeholder="Votre evenement..."/></textarea></br>
             <p>Description:</p> <textarea <input type="textarea" name="description" id="description" placeholder="Description événement"/></textarea></br>
@@ -145,6 +148,7 @@ class VueAdmin extends VueGenerique{
             <p> Date fin événement:</p> <input type="date" name="datefin" id="datefin"/>
 
             <input type="submit" value="Poster l\'evenement" class="submit_evenement"/>
+            <input type="hidden" name="token" id="token" value="' . $token . '"/>
           
 
             </form>';

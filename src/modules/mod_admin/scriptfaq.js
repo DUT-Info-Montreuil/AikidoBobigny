@@ -80,7 +80,7 @@ $(function () {
                         $('.success').fadeIn(200).show();
                         $('.error').fadeOut(200).hide();
 
-                        alert("Votre reponse a la question : "+question+" a été publié vous pouvez vérifiez dans le module FAQ ou raffraichissez la page")
+                        alert("Votre reponse  a été publié vous pouvez vérifiez dans le module FAQ ou raffraichissez la page")
 
                        }
                 });

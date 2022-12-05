@@ -17,6 +17,7 @@ class VueArticle extends VueGenerique
     }
 
     public function formArticle(){
+        
         echo'</br>';
         echo'<form action="http://sae/src/index.php?module=article&action=insertArticle" method="POST" enctype="multipart/form-data">
             <label for="date">Date Article</label>

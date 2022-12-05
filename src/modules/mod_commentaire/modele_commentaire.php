@@ -10,6 +10,7 @@ class ModeleCommentaire extends Connexion{
 
 
         public function ajoutCommentaire(){
+            
             if(isset($_POST['submit_commentaire'])){
                 if(isset($_POST['commentaire']) AND !empty($_POST['commentaire'])){
                     $ajoutercommentaire = parent::$bdd -> prepare('INSERT INTO commentaires (texte,ID_Adherent,ID_article,com_validation) VALUES (?,?,?,?)');

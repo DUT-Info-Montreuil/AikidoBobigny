@@ -8,28 +8,22 @@ class ModeleArticle extends Connexion{
     }
 
     public function insertArticle(){
-        if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
-	        if($_SESSION['token'] == ($_POST['token'])){
-		        $timestamp_ancien = time() - (15*60);
-		        if($_SESSION['token_time'] >= $timestamp_ancien){
+       
         $sql = ('INSERT INTO article (date,titre,texte,img_nom,img_taille,img_type,img_bin) VALUES (?,?,?,?,?,?,?)');
         $sth = parent::$bdd->prepare($sql);
         $sth->execute(array($_POST['dateArticle'],$_POST['titreArticle'],$_POST['texteArticle'],$_FILES['image']['name'],
         $_FILES['image']['size'],$_FILES['image']['type'],file_get_contents($_FILES['image']['tmp_name'])));
-                }}};
+            
     }
 
     public function articleRecherche(){
-        if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
-	        if($_SESSION['token'] == ($_POST['token'])){
-		        $timestamp_ancien = time() - (15*60);
-		        if($_SESSION['token_time'] >= $timestamp_ancien){
+       
         $dateVoulu = $_POST['datevoulu'] ;
         $sql =("SELECT titre,ID_article FROM article WHERE date = '$dateVoulu' ");
         $sth = parent::$bdd->prepare($sql);
         $sth->execute();
         return $sth->fetchAll();
-                }}};
+                
     }
 
 
@@ -41,10 +35,7 @@ class ModeleArticle extends Connexion{
     }
 
     public function deleteArticle(){
-        if(isset($_SESSION['token']) && isset($_SESSION['token_time']) && isset($_POST['token'])){
-	        if($_SESSION['token'] == ($_POST['token'])){
-		        $timestamp_ancien = time() - (15*60);
-		        if($_SESSION['token_time'] >= $timestamp_ancien){
+        
                     if(isset($_POST['articleSup'])){
                         foreach($_POST['articleSup'] as $articleVerif){
                             $sql =("DELETE FROM article WHERE ID_article = $articleVerif");
@@ -55,7 +46,7 @@ class ModeleArticle extends Connexion{
                     echo 'Article(s) effacés avec succès !';
                     }
                 
-                }}};
+            
     }
 
     public function articleRechercheCommentaire(){
