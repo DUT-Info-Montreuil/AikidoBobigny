@@ -4,7 +4,7 @@ include_once ('cont_article.php');
 class ModArticle{
 
     private $vue;
-    private $controleurArtcile;
+    private $controleurArticle;
     public function __construct(){
         $this->vue= new VueArticle();
         $this->controleurArticle = new ContArticle();

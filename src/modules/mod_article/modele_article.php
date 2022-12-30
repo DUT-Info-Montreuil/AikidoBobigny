@@ -63,7 +63,12 @@ class ModeleArticle extends Connexion{
         return $sth->fetchAll();
     }
 
-
+    public function getArticles(){
+        $sql = ("SELECT * FROM article");
+        $sth = parent::$bdd->prepare($sql);
+        $sth->execute();
+        return $sth->fetchAll();
+    }
     
     public function dernierArticle(){
         $sql = ("SELECT * FROM article ORDER BY ID_article DESC LIMIT 0,1");

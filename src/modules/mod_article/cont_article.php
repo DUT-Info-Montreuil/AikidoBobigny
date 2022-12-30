@@ -17,6 +17,8 @@ class ContArticle{
         $this->modelCom = new ModeleCommentaire;
         if(isset($_GET['action'])){
             $this->action = $_GET['action'];
+        } else {
+            $this->action = "article";
         }
     }
 
@@ -57,8 +59,10 @@ class ContArticle{
         
         switch($this->action){
             case("article"):
-                $this->form_recherche();
-                $this->model->dernierArticle();
+                $articles = $this->model->getArticles();
+                $this->view->listeArticles($articles);
+                /* $this->form_recherche();
+                $this->model->dernierArticle(); */
             break;
             case("articleRecherche"):
                 $this->faireRecherche();

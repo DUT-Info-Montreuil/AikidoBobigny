@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="style/inscription.css">
 		<link rel="stylesheet" href="style/table.css">
 		<link rel="stylesheet" href="style/faq.css">
+		<link rel="stylesheet" href="style/articles.css">
 		<script src="https://kit.fontawesome.com/49a257572d.js" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.14/dist/sweetalert2.all.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
