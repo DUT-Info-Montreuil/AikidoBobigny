@@ -13,7 +13,11 @@ class VueFooter
 			'<footer class="footer">
 			<div class="footer-top">
 			<img class="hublogo" src="fichiers/logo_acb.png" alt="logo" />
-		</div>
+			</div>
+			<div class ="footer-copyleft">
+			<h2> Copyleft - all rights reversed. </h2>
+			</div>
+		
 		<div class="footer-bottom">
 			<div id="footer-left">
 				<h2>Documents Pratiques</h2>
@@ -42,7 +46,7 @@ class VueFooter
 				<a href="index.php">Nos reseaux</a>
 			</div>
 		</div>
-
+		
 		</footer>';
 	}
 

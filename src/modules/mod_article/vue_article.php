@@ -1,4 +1,3 @@
-
 <?php
 
 include_once('./modules/mod_commentaire/vue_commentaire.php');
@@ -22,13 +21,13 @@ class VueArticle extends VueGenerique
     {
 
         echo '</br>';
-        echo '<form action="http://sae/src/index.php?module=article&action=insertArticle" method="POST" enctype="multipart/form-data">
+        echo '<form action="index.php?module=article&action=insertArticle" method="POST" enctype="multipart/form-data">
             <label for="date">Date Article</label>
             <input type = "date" name ="dateArticle">
             <label for = "titre">Titre article</label>
             <input type = "text" name = "titreArticle" maxlength = 100>
             <label for ="texte">Texte article</label>
-            <input type = "text" name = "texteArticle">
+            <textarea name = "texteArticle"></textarea>
             <label for = "img">Charger une image : </label>
             <input type = "file" name = "image">
             <input type = "submit" value ="Créer">

@@ -1,6 +1,6 @@
 footer {
 	display: table-row;
-	height: 100px;
+	height: 60px;
 }
 
 .footer {
@@ -33,16 +33,18 @@ footer {
 	transition: 0.5s;
 }
 
-.footer img {
-	width: 150px;
-	margin: auto;
-	display: flex;
-}
 
 .footer-top {
 	margin-top: 2%;
 	width: 100%;
 }
+
+.hublogo{
+	width: 150px;
+	margin: auto;
+	display: flex;
+}
+
 
 .footer-bottom {
 	margin-top: 50px;
@@ -64,14 +66,3 @@ footer {
 	flex-direction: column;
 }
 
-@media (max-width: 764px) {
-
-	.footer h2,
-	.footer h1 {
-		font-size: 12px;
-	}
-
-	.footer a {
-		font-size: 10px;
-	}
-}

@@ -29,7 +29,7 @@ class ModeleCalendar extends Connexion
 	public function getTimeInfos()
 	{
 		$activeDay = date('d');
-		$activeMonth = date('m');
+		$activeMonth = (int)date('m');
 		$activeYear = date('Y');
 		$numDays = date('t', mktime(0, 0, 0, $activeMonth, $activeDay, $activeYear));
 		$numDaysLastMonth = date('j', strtotime("last day of previous month", mktime(0, 0, 0, $activeMonth, $activeDay, $activeYear)));

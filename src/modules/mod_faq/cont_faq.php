@@ -22,9 +22,8 @@ class ContFAQ
     {
         $tab = $this->modele->getfaq();
         $this->vue->affichequestionreponse($tab);
-        if (isset($_SESSION['idadh'])) {
             $this->vue->form_faq();
-        }
+        
     }
 
 

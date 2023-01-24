@@ -13,7 +13,7 @@
 					<a href='index.php'>AÏKIDO BOBIGNY</a>
 				</div>
 				<ul>
-					<li><a href='index.php' class='menu-link'>Acceuil</a></li>
+					<li><a href='index.php' class='menu-link'>Accueil</a></li>
 					<li><a href='index.php?module=aikido' class='menu-link'>L'Aïkido</a></li>
 					<li><a href='index.php?module=senseis' class='menu-link'>Les Senseis</a></li>
 					<li><a href='index.php?module=article' class='menu-link'>Blog</a></li>

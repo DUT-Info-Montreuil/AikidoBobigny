@@ -9,6 +9,7 @@ class ContArticle{
     private $view;
     private $model;
     private $action;
+    private $modelCom;
 
 
     public function __construct(){
@@ -121,7 +122,7 @@ class ContArticle{
     }
 
     public function afficheMod(){
-        return $this->vue->getAffichage();
+        return $this->view->getAffichage();
     }
 
 }

@@ -9,10 +9,9 @@ class ModeleArticle extends Connexion{
 
     public function insertArticle(){
        
-        $sql = ('INSERT INTO article (date,titre,texte,img_nom,img_taille,img_type,img_bin) VALUES (?,?,?,?,?,?,?)');
+        $sql = ('INSERT INTO article (date,titre,texte,img_bin) VALUES (?,?,?,?)');
         $sth = parent::$bdd->prepare($sql);
-        $sth->execute(array($_POST['dateArticle'],$_POST['titreArticle'],$_POST['texteArticle'],$_FILES['image']['name'],
-        $_FILES['image']['size'],$_FILES['image']['type'],file_get_contents($_FILES['image']['tmp_name'])));
+        $sth->execute(array($_POST['dateArticle'],$_POST['titreArticle'],$_POST['texteArticle'],file_get_contents($_FILES['image']['tmp_name'])));
             
     }
 
